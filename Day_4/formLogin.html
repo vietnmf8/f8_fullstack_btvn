@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form Login</title>
+</head>
+<body>
+    <form action="https://api-gateway.fullstack.edu.vn/action_page.php" method="post">
+        <table cellpadding="5" cellspacing="0">
+            <tr> <!--Username-->
+                <td>
+                    <label for="username">Username:</label>
+                </td>
+                <td>
+                    <input id="username" type="text" name="username" placeholder="Enter Username" required>
+                </td>
+            </tr>
+
+            <tr> <!--Password-->
+                <td>
+                    <label for="password">Password:</label>
+                </td>
+                <td>
+                    <input id="password" type="password" name="password" placeholder="Enter Password" required>
+                </td>
+            </tr>
+
+            <tr> <!--City of Employment-->
+                <td>
+                    <label for="cityOfEmployment">City <br> of Employment:</label>
+                </td>
+                <td>
+                    <input id="cityOfEmployment" type="text" name="cityOfEmployment" placeholder="Enter City">
+                </td>
+            </tr>
+
+            <tr> <!--Web server-->
+                <td>
+                    <label for="webServer">Web server:</label>
+                </td>
+                <td>
+                    <select id="webServer" name="webServer">
+                        <option disabled selected hidden="hidden">-Choose a server-</option>
+                        <option>Gà Rừng</option>
+                        <option>Gà Tre</option>
+                        <option>Gà Đen</option>
+                        <option>Gà Công Nghiệp</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr> <!--Please specify your roles-->
+                <td>
+                    <label>Please specify <br> your roles:</label>
+                </td>
+                <td>
+                    <input id="admin" value="Admin" type="radio" name="pleaseSpecifyYourRole">
+                    <label for="admin">Admin</label>
+                    <br>
+                    <input id="engineer" value="Engineer" type="radio" name="pleaseSpecifyYourRole">
+                    <label for="engineer">Engineer</label>
+                    <br>
+                    <input id="manager" value="Manager" type="radio" name="pleaseSpecifyYourRole">
+                    <label for="manager">Manager</label>
+                    <br>
+                    <input id="guest" value="Guest" type="radio" name="pleaseSpecifyYourRole">
+                    <label for="guest">Guest</label>
+                </td>
+            </tr>
+
+            <tr> <!--Single Sign-on the following-->
+                <td>
+                    <label>Single Sign-on <br> the following:</label>
+                </td>
+                <td>
+                    <input id="mail" value="Mail" type="checkbox" name="singleSignOnTheFollowing[]">
+                    <label for="mail">Mail</label>
+                    <br>
+                    <input id="payroll" value="Payroll" type="checkbox" name="singleSignOnTheFollowing[]">
+                    <label for="payroll">Payroll</label>
+                    <br>
+                    <input id="selfService" value="Self-service" type="checkbox" name="singleSignOnTheFollowing[]">
+                    <label for="selfService">Self-service</label>
+                    <br>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit">Login</button>
+                    <button type="reset">Reset</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

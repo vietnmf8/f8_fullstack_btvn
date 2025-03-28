@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form Contact</title>
+</head>
+<body>
+
+    <h1>Get in touch with us by filling contact form below</h1>
+
+    <form action="https://api-gateway.fullstack.edu.vn/action_page.php" method="post">
+        <table cellspacing="0" cellpadding="10">
+            <tr> <!--Hàng 1-->
+                <td> <!--Enter your full name 1-->
+                    <label for="enterYourFullName1" hidden="hidden">Enter your full name</label>
+                    <input type="text" id="enterYourFullName1" name="enterYourFullName1" placeholder="*Enter your full name" required>
+                </td>
+                <td> <!--Enter your full name 2-->
+                    <label for="enterYourFullName2" hidden="hidden">Enter your full name</label>
+                    <input type="text" id="enterYourFullName2" name="enterYourFullName2" placeholder="*Enter your full name" required>
+                </td>
+            </tr>
+
+            <tr> <!--Hàng 2-->
+                <td> <!--Enter your full name 3-->
+                    <label for="enterYourFullName3" hidden="hidden">Enter your full name</label>
+                    <input type="text" id="enterYourFullName3" name="enterYourFullName3" placeholder="*Enter your full name" required>
+                </td>
+            </tr>
+
+            <tr> <!--Hàng 3-->
+                <td colspan="2"> <!--Your message here-->
+                    <label for="yourMessageHere" hidden="hidden">Your message here</label>
+                    <textarea id="yourMessageHere" name="yourMessageHere" placeholder="*Your message here" cols="80" rows="10"></textarea>
+                </td>
+            </tr>
+
+            <tr> <!--Hàng 4-->
+                <td colspan="2"> <!--Submit-->
+                    <button type="submit">Send Message</button>
+                    <span>*Please fill all require form field, thanks</span>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>
