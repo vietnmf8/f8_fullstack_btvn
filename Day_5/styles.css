@@ -1,0 +1,29 @@
+/* TH1 - Selector theo thẻ (p, h1, div…) */
+h1 {
+    color: blue;
+}
+
+p {
+    color: green;
+}
+
+div p {
+    color: orange;
+}
+
+/* TH2 - Selector theo class (.product-item { }) */
+.product-item p {
+    color: chartreuse;
+}
+
+
+/* TH3 - Selector theo id (#header { }) */
+#a {
+    color: brown;
+}
+
+/* TH4 - Selector con (div > p { }) */
+.product > p {
+    color: fuchsia;
+}
+
