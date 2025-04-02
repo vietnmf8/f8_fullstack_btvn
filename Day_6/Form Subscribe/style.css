@@ -1,0 +1,76 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 30px;
+    font-size: 0.625em;
+}
+
+
+.container {
+    background: #334455;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+
+/* Input đổi placeholder sang màu vàng (Giống như chữ Earn income) */
+.container:hover form input[name="email"]::placeholder {
+    color: #FFA502;
+}
+
+/* Nền của input đổi sang màu ghi (#ddd) */
+.container:hover form input[name="email"] {
+    background: #ddd;
+}
+
+/*
+- Màu nền của button chuyển sang màu vàng (Giống như chữ Earn income)
+- Chữ của button chuyển sang màu trắng (#fff)
+*/
+.container:hover form button {
+    background: #FFA502;
+    color: #fff;
+}
+
+
+h1, p {
+    color: #fff;
+}
+
+h1, p, form {
+    margin: 15px;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h1 span {
+    color: #FFA502;
+}
+
+p {
+    font-size: 1.3em;
+    line-height: 1.4;
+}
+
+form input[name="email"] {
+    margin-right: 3px;
+    padding: 8px 30px 8px 8px;
+    border: 1px solid #9F9FA4;
+    border-radius: 3px;
+}
+
+form button {
+    background: #F8DB35;
+    padding: 8px 20px;
+    border: 1px solid #988928;
+    border-radius: 3px;
+}
+
+
+
