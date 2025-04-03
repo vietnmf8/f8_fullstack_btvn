@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-    width: 630px;
+    width: 640px;
 }
 
 h1, h1 + p {
@@ -38,6 +38,7 @@ h1 + p span {
 
 h1 + p a {
     color: #2260C4;
+    font-weight: 550;
 
 }
 
@@ -55,8 +56,8 @@ h1 + p a {
     color: #2260C4;
     font-size: 1.6em;
     text-decoration: none;
-    /*padding-right: 1px;*/
     border-bottom: 1.5px solid #2260C4;
+    font-weight: 550;
 }
 
 .content a::after {

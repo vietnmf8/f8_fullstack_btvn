@@ -18,12 +18,12 @@ body {
 
 
 /* Input đổi placeholder sang màu vàng (Giống như chữ Earn income) */
-.container:hover form input[name="email"]::placeholder {
+.container:hover #email::placeholder {
     color: #FFA502;
 }
 
 /* Nền của input đổi sang màu ghi (#ddd) */
-.container:hover form input[name="email"] {
+.container:hover #email {
     background: #ddd;
 }
 
