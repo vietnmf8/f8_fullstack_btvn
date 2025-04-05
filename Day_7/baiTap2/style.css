@@ -1,0 +1,96 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 50px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    margin: auto;
+    /*border: 1px solid red;*/
+}
+
+.question-1, .question-2, .question-3 {
+    display: block;
+    height: 50px;
+    background-color: #d95925;
+    color: white;
+    position: relative;
+    margin: 10px 0;
+    user-select: none
+}
+
+.question-1 > span, .question-2 > span, .question-3 > span {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+}
+
+
+.question-1::before, .question-2::before, .question-3::before {
+    content: "\2b"; /* Unicode font awesome */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 600;
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+}
+
+.content-1, .content-2, .content-3 {
+    display: none;
+    min-height: 200px;
+    padding: 15px;
+}
+
+ol {
+    margin-left: 20px;
+    padding: 20px;
+}
+
+ol span {
+    font-weight: 600;
+}
+
+span, ol, p {
+    padding: 5px 0;
+}
+
+#randow_color:checked ~ .content-1 {
+    display: block;
+}
+
+#theme_color:checked ~ .content-2 {
+    display: block;
+}
+
+#change_icon:checked ~ .content-3 {
+    display: block;
+}
+
+#randow_color:checked ~ .question-1::before {
+    content: "\f068"; /* Unicode font awesome */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#theme_color:checked ~ .question-2::before {
+    content: "\f068"; /* Unicode font awesome */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#change_icon:checked ~ .question-3::before {
+    content: "\f068"; /* Unicode font awesome */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 600;
+    font-size: 16px;
+}
