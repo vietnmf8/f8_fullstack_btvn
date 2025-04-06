@@ -71,6 +71,10 @@ img:hover {
     padding: 30px 25px;
 }
 
+.menu > li:hover .menu-icon::after {
+    content: "\f106";
+}
+
 .menu li:hover .sub-menu{
     display: block;
 }

@@ -28,7 +28,7 @@ p {
 }
 
 .item-1, .item-2, .item-3 {
-    width: 26%;
+    width: calc(33% - 80px);
     height: 500px;
     background: white;
     display: inline-block;
