@@ -75,7 +75,7 @@ img:hover {
     content: "\f106";
 }
 
-.menu li:hover .sub-menu{
+.menu li:hover > .sub-menu{
     display: block;
 }
 
@@ -127,6 +127,12 @@ img:hover {
 .sub-menu li:nth-of-type(5):hover  {
     background: #ccc;
     border-radius: 0 0 10px 10px;
+}
+
+.sub-menu .sub-menu {
+    position: absolute;
+    top: 0;
+    left: 100%;
 }
 
 
