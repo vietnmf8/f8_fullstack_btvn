@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+<form action="https://api-gateway.fullstack.edu.vn/action_page.php" method="post">
+    <h1 class="title">Hey there</h1>
+    <p class="desc"><span>We'd like to hear from you. </span>Send us your message or just say hy with our contact form or directly via phone, we love to chat</p>
+<!--    Truong 1-->
+    <div class="form-item">
+
+        <div class="label">
+            <div class="rectagle">
+                Enter your name
+                <div class="triagle"></div>
+            </div>
+        </div>
+
+        <div class="icon">
+            <img width="21px" src="./img/name.svg" alt="Name">
+        </div>
+        <label for="yourName"></label>
+        <input type="text" placeholder="Your name" name="yourName" id="yourName" required >
+        <img class="cross" width="16px" src="./img/x.svg" alt="Cross">
+        <img width="8px" src="./img/star.svg" alt="Star">
+    </div>
+
+    <!--    Truong 2-->
+    <div class="form-item">
+
+        <div class="label">
+            <div class="rectagle">
+                Enter your email
+                <div class="triagle"></div>
+            </div>
+        </div>
+
+        <div class="icon">
+            <img width="21px" src="./img/email.svg" alt="Email">
+        </div>
+        <label for="email"></label>
+        <input type="email" placeholder="your@domain.com" name="email" id="email" required>
+        <img class="cross" width="16px" src="./img/x.svg" alt="Cross">
+        <img width="8px" src="./img/star.svg" alt="Star">
+    </div>
+
+    <!--    Truong 3-->
+    <div class="form-item">
+
+        <div class="label">
+            <div class="rectagle">
+                Enter your number
+                <div class="triagle"></div>
+            </div>
+        </div>
+
+        <div class="icon">
+            <img width="21px" src="./img/iphone.svg" alt="Phone">
+        </div>
+        <label for="tel"></label>
+        <input type="tel" placeholder="+44 00 123" name="tel" id="tel" required>
+        <img class="cross" width="16px" src="./img/x.svg" alt="Cross">
+        <img width="8px" src="./img/star.svg" alt="Telephone">
+    </div>
+
+    <!--    Truong 4-->
+    <div class="form-item">
+
+        <div class="label">
+            <div class="rectagle">
+                Enter your subject
+                <div class="triagle"></div>
+            </div>
+        </div>
+
+        <div class="icon">
+            <img width="21px" src="./img/subject.svg" alt="Subject">
+        </div>
+        <label for="subject"></label>
+        <input type="text" placeholder="Subject" name="subject" id="subject" required>
+        <span class="spinner-arrows"></span>
+    </div>
+
+    <!--    Truong 5-->
+    <div class="form-item">
+
+        <div class="label">
+            <div class="rectagle">
+                Enter your message
+                <div class="triagle"></div>
+            </div>
+        </div>
+
+        <div class="icon">
+            <img width="21px" src="./img/message.svg" alt="Message">
+        </div>
+        <label for="Message"></label>
+        <textarea placeholder="Message" name="Message" id="Message" ></textarea>
+        <img class="cross" width="16px" src="./img/x.svg" alt="Cross">
+        <img width="8px" src="./img/star.svg" alt="Star">
+    </div>
+
+
+
+    <div class="end">
+        <input type="checkbox" name="box" id="box">
+        <img src="./img/check.svg" alt="check" class="check">
+        
+        <label for="box">Send me a copy of this message</label>
+        <button type="submit">SEND</button>
+    </div>
+</form>
+
+
+</body>
+</html>
