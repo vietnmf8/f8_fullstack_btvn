@@ -60,7 +60,7 @@ form .desc span {
 .form-item .rectagle {
     position: absolute;
     top: -50px;
-    left: -12px;
+    left: 25px;
     min-width: 150px;
     background: #333333;
     border: 2px solid #333333;
@@ -172,6 +172,22 @@ form .desc span {
     right: 10.5px;
 }
 
+.form-item  select {
+    all: unset;
+    flex: 1;
+    position: relative;
+    margin-right: 31px;
+    top: 15px;
+    color: #dcdcdc;
+}
+
+option {
+    color:#323232;
+}
+
+.form-item select:valid {
+    color:#323232;
+}
 
 
 .form-item:nth-of-type(5) > img {
@@ -202,8 +218,8 @@ form .desc span {
     transform: rotate(180deg);
 }
 
-.form-item:has(input:focus) .icon, .form-item:has(textarea:focus) .icon {
-    background: #333333;
+.form-item:has(input:focus) .label, .form-item:has(textarea:focus) .label {
+    display: block;
 }
 
 .form-item:has(input:focus), .form-item:has(textarea:focus) {
@@ -220,9 +236,19 @@ form .desc span {
 }
 
 
-.form-item:hover .label {
-    display: block;
+/*.form-item:hover .label {*/
+/*    display: block;*/
+/*}*/
+
+.form-item:hover {
+    border: 2px solid #333333;
 }
+
+.form-item:hover .icon {
+    background: #333333;
+}
+
+
 
 .end {
     display: flex;

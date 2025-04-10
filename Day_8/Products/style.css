@@ -106,8 +106,6 @@ body {
 
 .detail-location .detail-location-items {
     width: calc(100%/3 - 20px);
-    height: 195px;
-    background: red;
     border-radius: 5px;
     margin-left: 20px;
     margin-top: 20px;

@@ -49,7 +49,7 @@
             <img width="21px" src="./img/email.svg" alt="Email">
         </div>
         <label for="email"></label>
-        <input type="email" placeholder="your@domain.com" name="email" id="email" required>
+        <input type="email" placeholder="Your@domain.com" name="email" id="email" required>
         <img class="cross" width="16px" src="./img/x.svg" alt="Cross">
         <img width="8px" src="./img/star.svg" alt="Star">
     </div>
@@ -87,7 +87,13 @@
             <img width="21px" src="./img/subject.svg" alt="Subject">
         </div>
         <label for="subject"></label>
-        <input type="text" placeholder="Subject" name="subject" id="subject" required>
+        <select id="subject" name="subject" required>
+            <option value="" disabled selected hidden="hidden">Subject</option>
+            <option value="1">Math</option>
+            <option value="2">Literature</option>
+            <option value="3">English</option>
+            <option value="4">Computer Science</option>
+        </select>
         <span class="spinner-arrows"></span>
     </div>
 
