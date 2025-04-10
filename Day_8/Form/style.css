@@ -84,7 +84,7 @@ form .desc span {
     position: relative;
     margin-right: 31px;
 }
-.form-item input:focus {
+.form-item input:focus, .form-item input:active {
     line-height: 1.5;
 }
 
@@ -218,20 +218,24 @@ option {
     transform: rotate(180deg);
 }
 
-.form-item:has(input:focus) .label, .form-item:has(textarea:focus) .label {
+.form-item:has(input:focus) .label, .form-item:has(textarea:focus) .label, .form-item:has(input:active) .label, .form-item:has(textarea:active) .label  {
     display: block;
 }
 
-.form-item:has(input:focus), .form-item:has(textarea:focus) {
+.form-item:has(select:focus) .label, .form-item:has(select:active) .label {
+    display: block;
+}
+
+.form-item:has(input:focus), .form-item:has(textarea:focus), .form-item:has(input:active), .form-item:has(textarea:active) {
     border: 2px solid #333333;
 }
 
-.form-item:has(input:focus) .cross, .form-item:has(textarea:focus) .cross {
+.form-item:has(input:focus) .cross, .form-item:has(textarea:focus) .cross, .form-item:has(input:active) .cross, .form-item:has(textarea:active) .cross {
     display: block;
     cursor: pointer;
 }
 
-.form-item:has(input:focus) > img, .form-item:has(textarea:focus) > img {
+.form-item:has(input:focus) > img, .form-item:has(textarea:focus) > img, .form-item:has(input:active) > img, .form-item:has(textarea:active) > img {
     display: none;
 }
 
