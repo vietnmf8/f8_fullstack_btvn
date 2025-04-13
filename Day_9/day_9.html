@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <!-- Icon -->
+        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet">
+
+        <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+        <!--Style.css-->
+        <link rel="stylesheet" href="./style.css">
+        <title>F8 Admin</title>
+    </head>
+    <body>
+        <input type="checkbox" name="show" id="show" hidden>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="header-title">
+                <img width="32px" src="https://fullstack.edu.vn/assets/f8-icon-lV2rGpF0.png" alt="">
+                <h2 class="sidebar-title">F8 Admin</h2>
+            </div>
+            <ul class="menu">
+                <span class="menu-title">Menu</span>
+
+                <li class="menu-item">
+                    <span class="mdi mdi-account"></span>
+                    <a href="#!">Quản lý đơn hàng</a>
+                </li>
+
+                <li class="menu-item">
+                    <span class="mdi mdi-account"></span>
+                    <a href="#!">Quản lý xe</a>
+                    <span class="mdi mdi-menu-down"></span>
+                </li>
+
+                <li class="menu-item">
+                    <span class="mdi mdi-account"></span>
+                    <a href="#!">Quản lý dịch vụ</a>
+                </li>
+
+                <li class="menu-item">
+                    <span class="mdi mdi-account"></span>
+                    <a href="#!">Cài đặt khác</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Content -->
+        <div class="main">
+            <div class="content">
+                <h2 class="title">Member</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Mail</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <!--Hàng 1-->
+                        <tr>
+                            <td>1</td>
+                            <td>Tran Van A</td>
+                            <td>a@test.com</td>
+                            <td>
+                                <label for="show">
+                                    <span class="btn btn-edit" href="#!">✎ Edit</span>
+                                </label>
+                                <span class="btn btn-delete" href="#!">🗑 Delete</span>
+                            </td>
+                        </tr>
+
+                        <!--Hàng 2-->
+                        <tr>
+                            <td>2</td>
+                            <td>Tran Van A</td>
+                            <td>a@test.com</td>
+                            <td>
+                                <label for="show"><span class="btn btn-edit" href="#!">✎ Edit</span></label>
+                                <span class="btn btn-delete" href="#!">🗑 Delete</span>
+                            </td>
+                        </tr>
+
+                        <!--Hàng 3-->
+                        <tr>
+                            <td>3</td>
+                            <td>Tran Van A</td>
+                            <td>a@test.com</td>
+                            <td>
+                                <label for="show"><span class="btn btn-edit" href="#!">✎ Edit</span></label>
+                                <span class="btn btn-delete" href="#!">🗑 Delete</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="modal" class="modal-overlay">
+            <div class="modal">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <span class="modal-title">New member</span>
+                    <label for="show"><span class="btn-exit" href="#"><span class="mdi mdi-close"></span></span></label>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+
+                    <!--Trường 1-->
+                    <div class="modal-item">
+                        <select name="skill" id="skill" required>
+                            <option value="" disabled selected hidden="hidden">Skill</option>
+                            <option value="1">Skill 1</option>
+                            <option value="2">Skill 2</option>
+                            <option value="3">Skill 3</option>
+                            <option value="4">Skill 4</option>
+                        </select>
+                        <span class="mdi mdi-menu-down"></span>
+                    </div>
+
+                    <!--Trường 2-->
+                    <div class="modal-item">
+                        <input type="text" placeholder="Name" required/>
+                    </div>
+
+                    <!--Trường 3-->
+                    <div class="modal-item">
+                        <input type="email" placeholder="Email" required/>
+                    </div>
+
+                    <!--Nút-->
+                    <div class="modal-btn">
+                        <label for="show"><span href="#!" class="btn btn-close">Close</span></label>
+                        <label for="show"><span href="#!" class="btn btn-save">Save</span></label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>
