@@ -5,7 +5,7 @@
 }
 
 :root {
-    --heading-font-size: 2rem;
+    --heading-font-size: 3rem;
     --heading-font-weight: 700;
 
     --subheading-font-size: 1.8rem;
@@ -40,6 +40,7 @@ label {
 
 .mdi {
     font-size: var(--heading-font-size);
+    font-weight: var(--heading-font-weight);
 }
 
 
@@ -49,7 +50,7 @@ label {
 
 
 .sidebar {
-    width: 220px;
+    width: 300px;
     background: #1e293b;
     height: 100vh; /* Chiều cao bằng 100% viewport */
     position: fixed; /* Fixed cứng vị trí -> khi lăn chuột xuống vẫn giữ nguyên vị tri của sidebar */
@@ -112,8 +113,8 @@ label {
 /*----------------- Content ------------------------------------------------------------------------*/
 
 .main {
-    margin-left: 220px;
-    width: calc(100% - 220px);
+    margin-left: 300px;
+    width: calc(100% - 300px);
     padding: 40px;
 }
 
@@ -126,6 +127,8 @@ label {
 
 .content .title {
     font-size: var(--heading-font-size);
+    font-weight: var(--subheading-font-weight);
+
 }
 
 .content .table {
@@ -197,15 +200,17 @@ body:has(input[type="checkbox"]:checked) .modal-overlay {
     border-radius: 5px 5px 0 0;
 }
 
-.modal .btn-exit {
+.modal .mdi-close {
     margin-left: auto;
     color: #fff;
+    font-size: var(--heading-font-size);
+    font-weight: var(--heading-font-weight);
 }
 
 .modal .modal-title {
     color: #fff;
-    font-size: var(--subheading-font-size);
-    font-weight: var(--subheading-font-weight);
+    font-size: var(--heading-font-size);
+    font-weight: var(--heading-font-weight);
 }
 
 /*Modal Body*/
