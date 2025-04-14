@@ -1,0 +1,37 @@
+/* * *  PC Thiet bi lon hon (min-width: 1024.02px) * * */
+@media (min-width: 1024.02px) {
+}
+
+/* * * Thiet bi Table & Mobile: @media screen and (max-width: 991px) * * */
+@media screen and (max-width: 991px) {
+    /* * * Start Header * * *  */
+    .header__btn,
+    .header__list {
+        display: none;
+    }
+    .header__btn-menu {
+        background: #2b2b2b;
+        display: block;
+        border: none;
+    }
+}
+/*  * * Thiet bi rieng Table: @media screen and (min-width: 768px) and (max-width: 991px) * * */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .container {
+        max-width: 690px;
+        padding: 72px 0;
+    }
+    .header {
+        padding: 15px 50px;
+    }
+}
+/* * * Thiet bi Mobile: @media screen and (max-width: 767px) * * */
+@media screen and (max-width: 767px) {
+    .container {
+        max-width: 100%;
+        padding: 40px 30px;
+    }
+    .header {
+        padding: 40px 30px;
+    }
+}

@@ -1,0 +1,497 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+/* * * Start CSS Chung * * *  */
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Work Sans", sans-serif;
+    color: #ffffff;
+}
+textarea,
+label,
+input,
+select,
+button {
+    font-size: inherit;
+    font-family: inherit;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    font-family: "Work Sans", sans-serif;
+    background: #2b2b2b;
+}
+/* * * End CSS Chung * * *  */
+/* =============== Start Common button =============  */
+.btn {
+    --width: initial;
+    --height: initial;
+    --bgc: initial;
+    --border-radius: initial;
+    --gap: initial;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap);
+
+    min-width: var(--width);
+    height: var(--height);
+
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+
+    background-color: var(--bgc);
+    border-radius: var(--border-radius);
+    border: currentColor;
+
+    transition: background-color 0.2s ease-in;
+    cursor: pointer;
+    user-select: none;
+}
+.btn:hover {
+    opacity: 0.9;
+}
+.btn--primary {
+}
+.btn--secondary {
+    --width: 186px;
+    --height: 60px;
+    --bgc: #a259ff;
+    --border-radius: 20px;
+    --gap: 12px;
+}
+
+.container {
+    /* 1050 + 115 x 2 */
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 115px;
+}
+/* =============== End Common =============  */
+
+/* * * Start Header * * *  */
+.header {
+    padding: 20px 50px;
+}
+.header__inner {
+    display: flex;
+    align-items: center;
+}
+.header__logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.header__nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+.header__list {
+    display: flex;
+    align-items: center;
+}
+.header__link {
+    font-size: 1.6rem;
+    padding: 12px 20px;
+    color: #fff;
+    transition: color 0.05s ease-in;
+}
+.header__link:hover {
+    color: #a259ff;
+}
+.header__btn {
+    margin-left: 10px;
+}
+
+.header__btn {
+    --width: 152px;
+}
+
+.header__btn-menu {
+    display: none;
+}
+/* * * END Header * * *  */
+
+
+/*--------------------------------------------   Hero   ----------------------------------------*/
+.hero .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center ;
+}
+
+.hero .heroText-and-buttons {
+    width: 48.57%;
+}
+/* Headline And Subhead (Tiêu đề và mô tả) */
+.hero .headline-and-subhead .title {
+    font-weight: 600;
+    font-size: 6.7rem;
+    line-height: 1.1;
+    vertical-align: middle;
+    text-transform: capitalize;
+}
+
+.hero .headline-and-subhead .desc {
+    margin-top: 20px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 1.6;
+    text-transform: capitalize;
+}
+
+/* Buttons */
+.hero .hero-btn {
+    margin-top: 40px;
+    --width: 224px;
+}
+
+/* Additional Info */
+.hero .additional-info {
+    margin-top: 40px;
+    display: flex;
+}
+
+.hero .additional-info .item {
+    flex: 1;
+}
+
+.hero .additional-info .data {
+    font-family: Space Mono;
+    font-weight: 700;
+    font-size: 2.8rem;
+    line-height: 1.4;
+    vertical-align: middle;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+.hero .additional-info .desc {
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 1.6;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+
+/* Highlighted NFT */
+
+.hero .highlighted-nft img {
+    display: block;
+}
+
+.hero .highlighted-nft .caption {
+    padding: 20px;
+    background: #3B3B3B;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.hero .highlighted-nft .title {
+    font-weight: 600;
+    font-size: 2.2rem;
+    line-height: 1.4;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+.hero .highlighted-nft .content {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.hero .highlighted-nft .avatar-desc {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: #fff;
+    margin-left: 12px;
+}
+
+
+/*--------------------------------------------   Trending Collection   ----------------------------------------*/
+.trending .section-headline {
+    max-width: 1046px;
+}
+
+.trending .section-headline .heading {
+    font-weight: 600;
+    font-size: 3.8rem;
+    line-height: 1.2;
+    text-transform: capitalize;
+}
+
+.trending .section-headline .subhead {
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 1.6;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+
+.trending .collection-card-row {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.trending .secondary-image {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.trending .secondary-image-item:nth-of-type(1) img, .trending .secondary-image-item:nth-of-type(2) img {
+    width: 100px;
+    border-radius: 20px;
+}
+
+.trending .secondary-image-item:nth-of-type(3) {
+    width: 100px;
+    height: 100px;
+    background: #a259ff;
+    border-radius: 20px;
+    position: relative;
+}
+
+.trending .secondary-image-item:nth-of-type(3) span {
+    font-family: Space Mono;
+    font-weight: 700;
+    font-size: 2.2rem;
+    line-height: 1.6;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: capitalize;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+
+
+.trending .collection-card .caption {
+    margin-top: 15px;
+}
+
+.trending .collection-card .title {
+    font-weight: 600;
+    font-size: 2.2rem;
+    line-height: 1.4;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+.trending .collection-card .content {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.trending .collection-card .avatar-desc {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: #fff;
+    margin-left: 12px;
+}
+
+
+/*--------------------------------------------   Top creators   ----------------------------------------*/
+
+/* Section Headline & Button */
+.top-creators .section-headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.top-creators .section-headline-text {
+    flex: 3;
+}
+
+
+
+.top-creators .heading {
+    font-weight: 600;
+    font-size: 3.8rem;
+    line-height: 1.2;
+    text-transform: capitalize;
+}
+
+.top-creators .subhead {
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 1.6;
+    text-transform: capitalize;
+    color: #fff;
+
+}
+
+.top-creators .top-creators-btn {
+    flex: 1;
+    --width: 247px;
+    background: transparent;
+    border: 2px solid #A259FF;
+}
+
+
+/* Artist Cards Grid */
+.artist-cards-grid {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+.artist-card-item {
+    position: relative;
+    border-radius: 20px;
+    padding: 20px;
+    background: #3B3B3B;
+    height: 238px;
+    text-align: center;
+}
+
+.artist-card-item .artist-info {
+    margin-top: 20px;
+}
+
+.artist-card-item .artist-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 2.2rem;
+    line-height: 1.4;
+    text-transform: capitalize;
+}
+
+.artist-card-item .additional-info {
+    display: flex;
+    justify-content:center;
+    column-gap: 10px;
+    margin-top: 5px;
+}
+
+.artist-card-item  .total-sales {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color:#858584;
+}
+
+.artist-card-item  .number {
+    font-family: Space Mono;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.artist-card-item .ranking {
+    width: 30px;
+    height: 30px;
+    background: #2B2B2B;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.artist-card-item .ranking .number {
+    font-family: Space Mono;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 30px;
+    text-align: center;
+    color: #858584;
+}
+
+
+/*--------------------------------------------   Browse Categories   ----------------------------------------*/
+
+
+.browse-categories .section-headline {
+    font-weight: 600;
+    font-size: 3.8rem;
+    line-height: 1.2;
+    text-transform: capitalize;
+}
+
+.browse-categories .category-card-grid {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.browse-categories .category-card-grid .photo-icon {
+    position: relative;
+    min-height: 240px;
+    min-width: 240px;
+    overflow: hidden;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+
+.browse-categories .category-card-grid img {
+    display: block;
+}
+
+
+.browse-categories .category-card-grid .image-placeholder {
+    filter: blur(4px);
+}
+
+.browse-categories .category-card-item:nth-of-type(1) .overlay, .browse-categories .category-card-item:nth-of-type(4) .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    height: 100%;
+}
+
+.browse-categories .category-card-grid .category-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.browse-categories .category-card-grid .collection-name {
+    background: #3b3b3b;
+    padding: 20px 30px 25px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.browse-categories .category-card-grid .name-card {
+    font-weight: 600;
+    font-size: 2.2rem;
+    line-height: 1.4;
+    text-transform: capitalize;
+    color: #fff;
+}

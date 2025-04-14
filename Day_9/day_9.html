@@ -27,9 +27,8 @@
                 <img width="32px" src="https://fullstack.edu.vn/assets/f8-icon-lV2rGpF0.png" alt="">
                 <h2 class="sidebar-title">F8 Admin</h2>
             </div>
+            <span class="menu-title">Menu</span>
             <ul class="menu">
-                <span class="menu-title">Menu</span>
-
                 <li class="menu-item">
                     <span class="mdi mdi-account"></span>
                     <a href="#!">Quản lý đơn hàng</a>
@@ -108,47 +107,50 @@
         </div>
 
         <!-- Modal -->
-        <div id="modal" class="modal-overlay">
-            <div class="modal">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <span class="modal-title">New member</span>
-                    <label for="show"><span class="mdi mdi-close"></span></label>
+        <label for="show">
+            <div id="modal" class="modal-overlay">
+                <div class="modal">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <span class="modal-title">New member</span>
+                        <label for="show"><span class="mdi mdi-close"></span></label>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <form class="modal-body">
+
+                        <!--Trường 1-->
+                        <div class="modal-item">
+                            <select name="skill" id="skill" required>
+                                <option value="" disabled selected hidden="hidden">Skill</option>
+                                <option value="1">Skill 1</option>
+                                <option value="2">Skill 2</option>
+                                <option value="3">Skill 3</option>
+                                <option value="4">Skill 4</option>
+                            </select>
+                            <span class="mdi mdi-menu-down"></span>
+                        </div>
+
+                        <!--Trường 2-->
+                        <div class="modal-item">
+                            <input type="text" placeholder="Name" required/>
+                        </div>
+
+                        <!--Trường 3-->
+                        <div class="modal-item">
+                            <input type="email" placeholder="Email" required/>
+                        </div>
+
+                        <!--Nút-->
+                        <div class="modal-btn">
+                            <label for="show"><span href="#!" class="btn btn-close">Close</span></label>
+                            <label for="show"><span href="#!" class="btn btn-save">Save</span></label>
+                        </div>
+                    </form>
+
                 </div>
-
-                <!-- Modal Body -->
-                <div class="modal-body">
-
-                    <!--Trường 1-->
-                    <div class="modal-item">
-                        <select name="skill" id="skill" required>
-                            <option value="" disabled selected hidden="hidden">Skill</option>
-                            <option value="1">Skill 1</option>
-                            <option value="2">Skill 2</option>
-                            <option value="3">Skill 3</option>
-                            <option value="4">Skill 4</option>
-                        </select>
-                        <span class="mdi mdi-menu-down"></span>
-                    </div>
-
-                    <!--Trường 2-->
-                    <div class="modal-item">
-                        <input type="text" placeholder="Name" required/>
-                    </div>
-
-                    <!--Trường 3-->
-                    <div class="modal-item">
-                        <input type="email" placeholder="Email" required/>
-                    </div>
-
-                    <!--Nút-->
-                    <div class="modal-btn">
-                        <label for="show"><span href="#!" class="btn btn-close">Close</span></label>
-                        <label for="show"><span href="#!" class="btn btn-save">Save</span></label>
-                    </div>
-                </div>
-
             </div>
-        </div>
+        </label>
+
     </body>
 </html>

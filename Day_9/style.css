@@ -81,9 +81,9 @@ label {
     margin-top: 20px;
     list-style: none;
 }
-.sidebar .menu-title {
+.menu-title {
     display: inline-block;
-    margin-bottom: 10px;
+    margin-top: 20px;
     font-size: var(--subheading-font-size);
     font-weight: var(--subheading-font-weight);
 }
