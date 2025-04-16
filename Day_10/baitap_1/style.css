@@ -24,6 +24,7 @@ body {
     margin-top: 50px;
     display: flex;
     justify-content: center;
+    column-gap: 100px;
 }
 
 .timeline {
@@ -68,12 +69,12 @@ body {
     text-align: right;
 }
 
-.container:has(.together-we-build:hover),
-.container:has(.completed-1000-cases:hover),
-.container:has(.we-are-number-one:hover),
-.container:has(.intellectual-property:hover){
-    column-gap: 100px;
-}
+/*.container:has(.together-we-build:hover),*/
+/*.container:has(.completed-1000-cases:hover),*/
+/*.container:has(.we-are-number-one:hover),*/
+/*.container:has(.intellectual-property:hover){*/
+/*    column-gap: 100px;*/
+/*}*/
 
 .together-we-build:hover .tag,
 .completed-1000-cases:hover .tag,
