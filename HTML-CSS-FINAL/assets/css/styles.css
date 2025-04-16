@@ -80,6 +80,11 @@ body {
     margin: 0 auto;
     padding: 80px 115px;
 }
+
+.border-test {
+    border: 1px solid red;
+}
+
 /* =============== End Common =============  */
 
 /* * * Start Header * * *  */
@@ -131,7 +136,7 @@ body {
 .hero .container {
     display: flex;
     justify-content: space-between;
-    align-items: center ;
+    align-items: flex-start;
 }
 
 .hero .heroText-and-buttons {
@@ -157,14 +162,15 @@ body {
 
 /* Buttons */
 .hero .hero-btn {
-    margin-top: 40px;
+    margin-top: 30px;
     --width: 224px;
 }
 
 /* Additional Info */
 .hero .additional-info {
-    margin-top: 40px;
+    margin-top: 30px;
     display: flex;
+    column-gap: 30px;
 }
 
 .hero .additional-info .item {
@@ -227,6 +233,8 @@ body {
 
 
 /*--------------------------------------------   Trending Collection   ----------------------------------------*/
+
+
 .trending .section-headline {
     max-width: 1046px;
 }
@@ -252,7 +260,7 @@ body {
     margin-top: 60px;
     display: flex;
     justify-content: space-between;
-    gap: 30px;
+    column-gap: 30px;
 }
 
 .trending .secondary-image {
@@ -488,6 +496,10 @@ body {
 
 /*--------------------------------------------   Discover More NFTs   ----------------------------------------*/
 
+.discover .container {
+    padding: 80px 114px;
+}
+
 /*Section Headline & Button*/
 .discover .section-heading-and-button {
     display: flex;
@@ -523,7 +535,7 @@ body {
     margin-top: 60px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    column-gap: 30px;
 }
 
 .discover .nft-cards-row .image-placeholder {
@@ -617,6 +629,7 @@ body {
     display: flex;
     align-items: flex-end;
     position: relative;
+    padding: 60px 115px;
 }
 
 .magic .overlay {
@@ -675,7 +688,7 @@ body {
     margin-top: 30px;
     background: #fff;
     color: #2B2B2B;
-    width: 198px;
+    --width: 198px;
 }
 
 /* Auction Timer */
@@ -712,6 +725,8 @@ body {
     font-size: 1.2rem;
     line-height: 1.1%;
     color: #fff;
+    display: inline-block;
+    margin-top: 10px;
 }
 
 .magic .auction-timer .timer {
@@ -751,6 +766,7 @@ body {
 
 
 .works .card-row .info-card {
+    text-align: center;
     width: 330px;
     height: 439px;
     padding: 10px 30px 30px 30px;
@@ -760,7 +776,6 @@ body {
 
 .works .info-card .card-details {
     margin-top: 20px;
-    text-align: center;
 }
 
 .works .info-card .sub-title {
@@ -782,6 +797,9 @@ body {
 
 /*--------------------------------------------   Join   ----------------------------------------*/
 
+.join .container {
+    padding: 40px 115px 80px;
+}
 
 .join .join-frame {
     padding: 60px;
@@ -815,7 +833,6 @@ body {
     margin-top: 40px;
     width: 425px;
     height: 60px;
-    padding: 16px 0 16px 20px;
     background: #fff;
     border-radius: 20px 30px 30px 20px;
     display: flex;
@@ -823,18 +840,29 @@ body {
     justify-content: space-between;
 }
 
-.join .subscribe-form .placeholder {
+.join .subscribe-form input {
+    all: unset; /* Reset lại thẻ input */
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    border-radius: 20px 0 0 20px;
+
     font-weight: 400;
     font-size: 1.6rem;
     line-height: 1.4;
     color: #2B2B2B;
+}
 
+.join .subscribe-form input::placeholder {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .join .subscribe-form .subscribe-btn {
     background: #A259FF;
     color: #fff;
-    width: 211px;
+    --width: 211px;
 }
 
 
@@ -919,9 +947,8 @@ footer .subscribe-form-and-info {
 
 footer .subscribe-form {
     margin-top: 20px;
-    width: 425px;
+    width: 420px;
     height: 60px;
-    padding: 16px 0 16px 20px;
     background: #fff;
     border-radius: 20px 30px 30px 20px;
     display: flex;
@@ -929,18 +956,29 @@ footer .subscribe-form {
     justify-content: space-between;
 }
 
-footer .subscribe-form .placeholder {
+footer .subscribe-form input {
+    all: unset; /* Reset lại thẻ input */
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    border-radius: 20px 0 0 20px;
     font-weight: 400;
     font-size: 1.6rem;
     line-height: 1.4;
     color: #2B2B2B;
+}
 
+
+footer .subscribe-form input::placeholder {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 footer .subscribe-form .subscribe-btn {
     background: #A259FF;
     color: #fff;
-    width: 211px;
+    --width: 179px;
 }
 
 
