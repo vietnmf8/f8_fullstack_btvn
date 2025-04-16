@@ -15,7 +15,10 @@
         border: none;
     }
 }
-/*  * * Thiet bi rieng Table: @media screen and (min-width: 768px) and (max-width: 991px) * * */
+
+
+
+/*  * * Thiet bi rieng Table: @media screen and (min-width: 768px) and (max-width: 991px) | Ipad Air * * */
 @media screen and (min-width: 768px) and (max-width: 991px) {
     .container {
         max-width: 690px;
@@ -24,7 +27,84 @@
     .header {
         padding: 15px 50px;
     }
+
+    /*Hero*------------------------------------------------------------------------*/
+
+    .hero .container {
+        padding: 80px 0;
+    }
+
+    .heroText-and-buttons, .highlighted-nft {
+        max-width: 330px;
+    }
+
+    .hero .headline-and-subhead .title {
+        font-size: 3.8rem;
+        line-height:1.2;
+    }
+
+    .hero .headline-and-subhead .desc {
+        font-size: 1.6rem;
+        line-height: 1.4;
+        text-align: justify-all;
+        padding-right: 15px;
+        text-transform: none;
+    }
+
+    .hero .additional-info .data {
+        font-size: 2.2rem;
+        line-height: 1.6;
+    }
+
+    .hero .additional-info .desc {
+        font-size: 1.6rem;
+        line-height: 1.4;
+    }
+
+    /*Trending------------------------------------------------------------------------*/
+
+    .trending .container {
+        padding: 40px 0;
+    }
+
+    .trending .section-headline .heading {
+        font-size: 2.8rem;
+        line-height: 1.4;
+    }
+
+    .trending .section-headline .subhead {
+        font-size: 1.6rem;
+        line-height: 1.4;
+    }
+
+    .trending .collection-card-row {
+        margin-top: 40px;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    /*Top Creators------------------------------------------------------------------------*/
+
+    .top-creators .container {
+        padding: 40px 0;
+    }
+
+    .top-creators .section-headline {
+        column-gap: 100px;
+    }
+
+    .top-creators .heading {
+        font-size: 2.8rem;
+        line-height: 1.4;
+    }
+
+    .top-creators .subhead {
+        font-size: 1.6rem;
+        line-height: 1.4;
+    }
 }
+
+
 /* * * Thiet bi Mobile: @media screen and (max-width: 767px) * * */
 @media screen and (max-width: 767px) {
     .container {

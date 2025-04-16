@@ -198,8 +198,13 @@ body {
 
 /* Highlighted NFT */
 
+.highlighted-nft {
+    width: 48.57%;
+}
+
 .hero .highlighted-nft img {
     display: block;
+    max-width: 100%; /* Đặt max-width thì ảnh sẽ có thể thu nhỏ lại */
 }
 
 .hero .highlighted-nft .caption {

@@ -1,0 +1,238 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    --heading-font-family: "Space Grotesk", sans-serif;
+    --heading-font-weight: 700;
+    --content-font-family: "Inter", sans-serif;
+    --content-font-weight: 400;
+    --primary-color: #27283b;
+    --content-color: #7a7a7e;
+}
+
+.container {
+    width: 1547px;
+    max-width: 100%;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.timeline {
+    width: 39.43%;
+}
+
+.image-content {
+    width: 38.72%;
+    max-width: 100%;
+}
+
+/* -------------------------------------- Timeline -------------------------------------- */
+.together-we-build,
+.completed-1000-cases,
+.we-are-number-one,
+.intellectual-property  {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+
+.together-we-build:hover,
+.completed-1000-cases:hover,
+.we-are-number-one:hover,
+.intellectual-property:hover {
+    flex-direction: row-reverse;
+}
+
+.together-we-build:hover .timeline-content,
+.completed-1000-cases:hover .timeline-content,
+.we-are-number-one:hover .timeline-content,
+.intellectual-property:hover .timeline-content{
+    text-align: left;
+}
+
+.together-we-build:hover > p,
+.completed-1000-cases:hover > p,
+.we-are-number-one:hover > p,
+.intellectual-property:hover > p{
+    text-align: right;
+}
+
+.container:has(.together-we-build:hover),
+.container:has(.completed-1000-cases:hover),
+.container:has(.we-are-number-one:hover),
+.container:has(.intellectual-property:hover){
+    column-gap: 100px;
+}
+
+.together-we-build:hover .tag,
+.completed-1000-cases:hover .tag,
+.we-are-number-one:hover .tag,
+.intellectual-property:hover .tag{
+    color: #fff;
+    background-color: #a26f5a;
+}
+
+
+/* Timeline Content */
+.timeline-content {
+    width: 261px;
+    text-align: right;
+}
+
+
+.timeline-content .timeline-title {
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    color: var(--primary-color);
+    font-size: 2rem;
+    line-height: 25px;
+}
+
+.timeline-content .timeline-desc {
+    margin-top: 10px;
+    font-family: var(--content-font-family);
+    font-weight: var(--content-font-weight);
+    color: var(--content-color);
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+.timeline-content .tag {
+    display: inline-block;
+    min-width: 84px;
+    padding: 5px 15px;
+    margin-top: 18px;
+    background: #f2f2f2;
+    border-radius: 999px;
+    font-family: var(--content-font-family);
+    font-weight: var(--heading-font-weight);
+    color: var(--content-color);
+    font-size: 1.6rem;
+    text-decoration: none;
+}
+
+
+/* Timeline Content */
+.pattern {
+    width: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.pattern .icon {
+    width: 25px;
+    height: 25px;
+    background: #ecf5f3;
+    border-radius: 50%;
+    display: flex;
+}
+
+.pattern .small-icon {
+    margin: auto;
+    width: 10px;
+    height: 10px;
+    background: #5ABBAB;
+    background: linear-gradient(180deg, rgba(90, 187, 171, 1) 0%, rgba(60, 135, 123, 1) 89%);
+    border-radius: 50%;
+}
+
+.pattern .separate {
+    width: 1px;
+    height: 141px;
+    background: #f2f2f2;
+}
+
+
+/*Number*/
+.timeline-number {
+    width: 261px;
+    font-family: var(--content-font-family);
+    font-weight: var(--content-font-weight);
+    color: var(--content-color);
+    font-size: 1.6rem;
+    line-height: 25px;
+}
+
+
+/* -------------------------------------- image-content -------------------------------------- */
+
+.image-content {
+    position: relative;
+}
+
+.image-content .image {
+    width: 450px;
+    height: 450px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.box-content {
+    width: 280px;
+    height: 379px;
+    background-image: url("https://nads.1cdn.vn/2024/11/22/74da3f39-759b-4f08-8850-4c8f2937e81a-1_mangeshdes.png");
+    background-size: cover;
+    position: absolute;
+    top: 18%;
+    left: 0;
+    padding: 10px
+}
+
+.box-content .rectangle {
+    background: #596297;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.box-content .number {
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    color: var(--primary-color);
+    font-size: 8rem;
+    background-image: url("https://nads.1cdn.vn/2024/11/22/74da3f39-759b-4f08-8850-4c8f2937e81a-1_mangeshdes.png");
+    background-size: cover;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+    inset: 0;
+    width: 280px;
+    height: 379px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 30px 30px 60px 30px;
+}
+
+.number span {
+    position: absolute;
+    bottom: 60px;
+    right: 30px;
+}
+
+
+.box-content .desc {
+    font-family: var(--content-font-family);
+    font-weight: var(--content-font-weight);
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    position: absolute;
+    bottom: 40px;
+    right: 30px;
+}

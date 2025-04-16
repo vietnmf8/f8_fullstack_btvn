@@ -1,0 +1,162 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    --heading-font-family: "Space Grotesk", sans-serif;
+    --heading-font-weight: 700;
+    --content-font-family: "Inter", sans-serif;
+    --content-font-weight: 400;
+    --primary-color: #27283b;
+    --content-color: #7a7a7e;
+}
+
+.container {
+    margin: 0 auto;
+    margin-top: 100px;
+    height: 600px;
+    width: 1110px;
+    max-width: 100%;
+}
+
+.list-products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+
+.list-item {
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 50px;
+    position: relative;
+}
+
+.list-item:hover {
+    background-image: url("https://goeugovietnam.com/view/admin/Themes/kcfinder/upload/images/tour/Anh.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.list-item:hover .overlay {
+    background: rgba(162, 111, 90, 0.8);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-item:hover .overlay-border {
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+}
+
+.list-item .content {
+    position: relative;
+}
+
+
+.list-item .mdi {
+    color: #a26f5a;
+    font-size: 6rem;
+}
+
+.list-item:hover .mdi-pig-variant-outline {
+    display: none;
+}
+
+.list-item:hover .title {
+    color: #fff;
+    margin-top: 0;
+}
+
+.list-item:hover .desc {
+    color: #fff;
+}
+
+.list-item .title {
+    margin-top: 20px;
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    color: var(--primary-color);
+    font-size: 2rem;
+    line-height: 25px;
+}
+
+.list-item .desc {
+    margin-top: 10px;
+    font-family: var(--content-font-family);
+    font-weight: var(--content-font-weight);
+    color: var(--content-color);
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+.list-item .call-to-action {
+    display: none;
+
+}
+.list-item:hover .call-to-action {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    position: absolute;
+    bottom: 50px;
+}
+
+.list-item .name {
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    color: var(--primary-color);
+    font-size: 1.4rem;
+}
+
+
+.list-item:hover .name {
+    color: #fff;
+}
+
+.list-item .mdi-change {
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+
+.list-item .mdi-arrow-right-drop-circle-outline {
+    font-size: 3rem;
+    position: absolute;
+    inset: 0;
+}
+
+.list-item .mdi-arrow-right-drop-circle {
+    display: none;
+    font-size: 3rem;
+    position: absolute;
+    inset: 0;
+}
+
+.list-item:hover .mdi-arrow-right-drop-circle-outline {
+    color: #fff;
+}
+
+.list-item .call-to-action:hover .mdi-arrow-right-drop-circle {
+    display: inline-block;
+    color: #fff;
+}
+
+.list-item .call-to-action:hover .mdi-arrow-right-drop-circle-outline {
+    display: none;
+}
