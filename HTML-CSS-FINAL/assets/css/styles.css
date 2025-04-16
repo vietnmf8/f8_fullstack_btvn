@@ -328,12 +328,6 @@ body {
     align-items: flex-end;
 }
 
-.top-creators .section-headline-text {
-    flex: 3;
-}
-
-
-
 .top-creators .heading {
     font-weight: 600;
     font-size: 3.8rem;
@@ -348,11 +342,9 @@ body {
     line-height: 1.6;
     text-transform: capitalize;
     color: #fff;
-
 }
 
 .top-creators .top-creators-btn {
-    flex: 1;
     --width: 247px;
     background: transparent;
     border: 2px solid #A259FF;
@@ -454,14 +446,9 @@ body {
     border-top-right-radius: 20px;
 }
 
-
-.browse-categories .category-card-grid img {
-    display: block;
-}
-
-
 .browse-categories .category-card-grid .image-placeholder {
     filter: blur(4px);
+    display: block;
 }
 
 .browse-categories .category-card-item:nth-of-type(1) .overlay, .browse-categories .category-card-item:nth-of-type(4) .overlay {
@@ -471,6 +458,7 @@ body {
     background: rgba(255, 255, 255, 0.1);
     width: 100%;
     height: 100%;
+    backdrop-filter: blur(4px);
 }
 
 .browse-categories .category-card-grid .category-icon {
@@ -494,4 +482,483 @@ body {
     line-height: 1.4;
     text-transform: capitalize;
     color: #fff;
+}
+
+
+
+/*--------------------------------------------   Discover More NFTs   ----------------------------------------*/
+
+/*Section Headline & Button*/
+.discover .section-heading-and-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.discover .heading {
+    font-weight: 600;
+    font-size: 3.8rem;
+    line-height: 1.2;
+    text-transform: capitalize;
+}
+
+.discover .subhead {
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 1.6;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+.discover .discover-btn {
+    --width: 187px;
+    background: transparent;
+    border: 2px solid #A259FF;
+}
+
+
+/*NFT Cards Row*/
+.discover .nft-cards-row {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.discover .nft-cards-row .image-placeholder {
+    display: block;
+}
+
+.discover .nft-card:nth-of-type(3) .image-placeholder  {
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.discover .nft-cards-row .nft-info {
+    padding: 20px 30px 25px;
+    background: #3b3b3b;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.discover .nft-cards-row  .nft-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 2.2rem;
+    line-height: 1.4;
+    text-transform: capitalize;
+}
+
+.discover .nft-cards-row .artist-avatar-and-name {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+}
+
+.discover .nft-cards-row .nft-artist-name {
+    color: #fff;
+    font-family: Space Mono;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.4;
+}
+
+.discover .nft-cards-row  .additional-info {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.discover .nft-cards-row .price, .discover .nft-cards-row .highest-bid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+}
+
+.discover .nft-cards-row .price {
+    text-align: left;
+}
+
+.discover .nft-cards-row .highest-bid {
+    text-align: right;
+}
+
+.discover .nft-cards-row .price-tag, .discover .nft-cards-row .highest-bid-tag {
+    font-family: Space Mono;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.1;
+    color: #858584;
+}
+
+.discover .nft-cards-row .price-number, .discover .nft-cards-row .highest-bid-number {
+    font-family: Space Mono;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: #fff;
+}
+
+
+
+/*--------------------------------------------   Magic Mashrooms (NFT Highlight)   ----------------------------------------*/
+
+/* Background */
+.magic .container {
+    background-image: url("../img/50c73503d13e1fe1a0e3277804ef1192.png");
+    min-height: 640px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+
+.magic .overlay {
+    position: absolute;
+    background: #A259FF;
+    background: linear-gradient(180deg, rgba(162, 89, 255, 0) 0%, rgba(162, 89, 255, 1) 100%);
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    z-index: 0;
+}
+
+
+
+/* NFT Frame */
+
+.magic .nft-frame {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 1;
+
+}
+
+.magic .artist-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 12px;
+    width: 151px;
+    height: 44px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background: #3B3B3B;
+}
+
+.magic .avatar-name {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.magic .title {
+    display: block;
+    margin-top: 30px;
+    font-weight: 600;
+    font-size: 5.1rem;
+    line-height: 1.1;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+.magic .magic-btn {
+    margin-top: 30px;
+    background: #fff;
+    color: #2B2B2B;
+    width: 198px;
+}
+
+/* Auction Timer */
+
+.magic .auction-timer {
+    background: #3B3B3B80;
+    width: 295px;
+    height: 147px;
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.magic .auction-timer .action-title {
+    font-family: Space Mono;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.1;
+    color: #fff;
+}
+
+.magic .auction-timer .number, .magic .auction-timer .dots  {
+    font-family: Space Mono;
+    font-weight: 700;
+    font-size: 3.8rem;
+    line-height: 1.2;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+.magic .auction-timer .unit {
+    font-family: Space Mono;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.1%;
+    color: #fff;
+}
+
+.magic .auction-timer .timer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: 10px;
+}
+
+
+/*--------------------------------------------   Magic Mashrooms (NFT Highlight)   ----------------------------------------*/
+
+
+.works .section-headline .title {
+    font-weight: 600;
+    font-size: 3.8rem;
+    line-height: 1.2;
+    text-transform: capitalize;
+}
+
+.works .section-headline .desc {
+    color: #fff;
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 1.6;
+    text-transform: capitalize;
+}
+
+.works .card-row {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 30px;
+    margin-top: 48px;
+}
+
+
+.works .card-row .info-card {
+    width: 330px;
+    height: 439px;
+    padding: 10px 30px 30px 30px;
+    border-radius: 20px;
+    background: #3B3B3B;
+}
+
+.works .info-card .card-details {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.works .info-card .sub-title {
+    font-weight: 600;
+    font-size: 2.2rem;
+    line-height: 1.4;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+.works .info-card .paragraph {
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: #fff;
+}
+
+
+/*--------------------------------------------   Join   ----------------------------------------*/
+
+
+.join .join-frame {
+    padding: 60px;
+    background: #3B3B3B;
+    width: 1050px;
+    height: 430px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 80px;
+}
+
+.join .content .headline {
+    font-weight: 600;
+    font-size: 3.8rem;
+    line-height: 1.2;
+    text-transform: capitalize;
+}
+
+.join .content .subhead {
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 1.6;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+.join .subscribe-form {
+    margin-top: 40px;
+    width: 425px;
+    height: 60px;
+    padding: 16px 0 16px 20px;
+    background: #fff;
+    border-radius: 20px 30px 30px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.join .subscribe-form .placeholder {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: #2B2B2B;
+
+}
+
+.join .subscribe-form .subscribe-btn {
+    background: #A259FF;
+    color: #fff;
+    width: 211px;
+}
+
+
+/*--------------------------------------------   Footer   ----------------------------------------*/
+
+footer .container {
+    background: #3B3B3B;
+}
+
+.footer-frame {
+    padding: 0 31.29px;
+}
+
+footer .footer-info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.nft-marketplace-info {
+    flex: 1;
+}
+
+footer .explore {
+    width: 240px;
+}
+
+
+/* NFT Marketplace */
+
+footer .additional-info {
+    margin-top: 30px;
+    width: 238px;
+
+}
+
+footer .desc {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: #CCCCCC;
+}
+
+footer .community-info {
+    margin-top: 20px;
+}
+
+footer .icons {
+    margin-top: 15px;
+}
+
+/* Explore */
+
+footer .explore-title {
+    font-family: Space Mono;
+    font-weight: 700;
+    font-size: 2.2rem;
+    line-height: 1.6;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+footer .page {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    row-gap: 20px;
+}
+
+
+/* Subscribe */
+
+
+footer .subscribe-form-and-info {
+    margin-top: 25px;
+}
+
+.subscribe-form-and-info > .desc {
+    display: inline-block;
+    width: 330px;
+}
+
+footer .subscribe-form {
+    margin-top: 20px;
+    width: 425px;
+    height: 60px;
+    padding: 16px 0 16px 20px;
+    background: #fff;
+    border-radius: 20px 30px 30px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer .subscribe-form .placeholder {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: #2B2B2B;
+
+}
+
+footer .subscribe-form .subscribe-btn {
+    background: #A259FF;
+    color: #fff;
+    width: 211px;
+}
+
+
+/* no-copy-right */
+
+footer .no-copy-right {
+    margin-top: 30px;
+}
+
+footer .divider {
+    border: 1px solid #858584;
+}
+
+footer .no-copy-right span {
+    margin-top: 20px;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.1;
+    color: #CCCCCC;
 }
