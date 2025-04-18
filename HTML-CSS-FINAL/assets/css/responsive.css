@@ -534,6 +534,14 @@
         margin-top: 40px;
     }
 
+    .top-creators .artist-card-item .total-sales {
+        flex: 1;
+    }
+
+    .top-creators .artist-card-item .number {
+        flex: 1;
+    }
+
     /*----Browse Category----------------------------------------------------*/
 
     .browse-categories .section-headline {
@@ -732,6 +740,7 @@
         flex-direction: column;
         row-gap: 30px;
     }
+
     footer .additional-info {
         width: 100%;
         margin-top: 26px;
