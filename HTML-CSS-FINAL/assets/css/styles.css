@@ -452,8 +452,9 @@ body {
 
 .browse-categories .category-card-grid .photo-icon {
     position: relative;
-    min-height: 240px;
-    min-width: 240px;
+    max-height: 240px;
+    max-width: 240px;
+    /*width: 240px;*/
     overflow: hidden;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -540,7 +541,7 @@ body {
     margin-top: 60px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 30px;
+    gap: 30px;
 }
 
 .discover .nft-cards-row .image-placeholder {
@@ -773,7 +774,8 @@ body {
 .works .card-row .info-card {
     text-align: center;
     width: 330px;
-    height: 439px;
+    /*height: 439px;*/
+    min-height: 320px;
     padding: 10px 30px 30px 30px;
     border-radius: 20px;
     background: #3B3B3B;
@@ -810,12 +812,23 @@ body {
     padding: 60px;
     background: #3B3B3B;
     width: 1050px;
-    height: 430px;
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     column-gap: 80px;
+}
+
+.join .join-frame .photo {
+    width: 425px;
+    height: 310px;
+    flex: 1;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.join .join-frame .content {
+    flex: 1;
 }
 
 .join .content .headline {
@@ -862,6 +875,7 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    color: #2B2B2B;
 }
 
 .join .subscribe-form .subscribe-btn {

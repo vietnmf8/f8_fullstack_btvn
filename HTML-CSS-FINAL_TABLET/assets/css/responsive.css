@@ -1,0 +1,376 @@
+/* * *  PC Thiet bi lon hon (min-width: 1024.02px) * * */
+@media (min-width: 1024.02px) {
+}
+
+/* * * Thiet bi Table & Mobile: @media screen and (max-width: 991px) * * */
+@media screen and (max-width: 991px) {
+    /* * * Start Header * * *  */
+    .header__btn,
+    .header__list {
+        display: none;
+    }
+    .header__btn-menu {
+        background: #2b2b2b;
+        display: block;
+        border: none;
+    }
+}
+
+
+
+/*  * * Thiet bi rieng Table: @media screen and (min-width: 768px) and (max-width: 991px) | Ipad Air * * */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .container {
+        max-width: 690px;
+        padding: 72px 0;
+    }
+    .header {
+        padding: 15px 50px;
+    }
+
+    /*Hero*------------------------------------------------------------------------*/
+
+    .hero .container {
+        padding: 80px 0;
+    }
+
+    .heroText-and-buttons, .highlighted-nft {
+        max-width: 330px;
+    }
+
+    .hero .headline-and-subhead .title {
+        font-size: 3.8rem;
+        line-height:1.2;
+    }
+
+    .hero .headline-and-subhead .desc {
+        font-size: 1.6rem;
+        line-height: 1.4;
+        text-align: justify-all;
+        padding-right: 15px;
+        text-transform: none;
+    }
+
+    .hero .additional-info .data {
+        font-size: 2.2rem;
+        line-height: 1.6;
+    }
+
+    .hero .additional-info .desc {
+        font-size: 1.6rem;
+        line-height: 1.4;
+    }
+
+    /*Trending------------------------------------------------------------------------*/
+
+    .trending .container {
+        padding: 40px 0;
+    }
+
+    .trending .section-headline .heading {
+        font-size: 2.8rem;
+        line-height: 1.4;
+    }
+
+    .trending .section-headline .subhead {
+        font-size: 1.6rem;
+        line-height: 1.4;
+    }
+
+    .trending .collection-card-row {
+        margin-top: 40px;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    /*Top Creators------------------------------------------------------------------------*/
+
+    .top-creators .container {
+        padding: 40px 0;
+    }
+
+    .top-creators .section-headline {
+        column-gap: 100px;
+    }
+
+    .top-creators .heading {
+        font-size: 2.8rem;
+        line-height: 1.4;
+    }
+
+    .top-creators .subhead {
+        font-size: 1.6rem;
+        line-height: 1.4;
+    }
+
+    .artist-cards-grid {
+        margin-top: 40px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .artist-cards-grid .artist-card-item {
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        column-gap: 20px
+    }
+
+    .artist-card-item .ranking {
+        top: 13px;
+        left: 13px;
+    }
+
+    .artist-card-item .artist-info {
+        margin-top: 0;
+        text-align: left;
+        flex: 1;
+    }
+
+    .artist-card-item .additional-info {
+        justify-content: flex-start;
+        column-gap: 5px;
+    }
+
+    .artist-card-item .total-sales, .artist-card-item .number {
+        flex: 1;
+    }
+
+    .artist-cards-grid .artist-avatar {
+        width: 60px;
+    }
+
+
+    /*Browse Categories------------------------------------------------------------------------*/
+
+    .browse-categories .container {
+        padding: 40px 0;
+    }
+
+    .browse-categories .section-headline {
+        font-size: 2.8rem;
+        line-height: 1.4;
+    }
+
+    .browse-categories .category-card-grid {
+        margin-top: 40px;
+    }
+
+    /*.browse-categories .category-card-grid .photo-icon {*/
+    /*    width: 150px;*/
+    /*}*/
+
+    .browse-categories .category-card-grid .image-placeholder {
+        width: 150px;
+    }
+
+    .browse-categories .category-card-grid .name-card {
+        font-size: 1.6rem;
+        line-height: 1.4;
+    }
+
+    .browse-categories .category-card-grid .collection-name {
+        padding: 20px 20px 25px;
+    }
+
+    .browse-categories .category-card-item:nth-of-type(5) .name-card::after, .browse-categories .category-card-item:nth-of-type(6) .name-card::after, .browse-categories .category-card-item:nth-of-type(7) .name-card::after {
+        content: '\00a0'; /* Khoảng trắng space */
+        display: block;
+    }
+
+
+    /*Discover More NFTs------------------------------------------------------------------------*/
+    .discover .container {
+        padding: 40px 0 80px;
+    }
+
+    .discover .heading {
+        font-size: 2.8rem;
+        line-height: 1.4;
+    }
+
+    .discover .subhead {
+        font-size: 1.6rem;
+        line-height: 1.4;
+    }
+
+    .discover .nft-cards-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /*Magic Mashrooms (NFT Highlight)------------------------------------------------------------------------*/
+    .magic .container {
+        max-width: 100%;
+        padding: 60px 0;
+    }
+
+    .magic .nft-frame {
+        max-width: 670px;
+        margin: 0 auto
+    }
+
+    .magic .title {
+        font-size: 3.8rem;
+        line-height: 1.2;
+    }
+
+
+    /*How it works------------------------------------------------------------------------*/
+    .works .container {
+        padding: 40px 0;
+    }
+
+    .works .section-headline .title {
+        font-size: 2.8rem;
+        line-height: 1.4;
+    }
+
+    .works .section-headline .desc {
+        font-size: 1.6rem;
+        line-height: 1.4;
+    }
+
+    .works .card-row {
+        margin-top: 40px;
+    }
+
+    .works .info-card .icon {
+        width: 160px;
+    }
+
+    .works .card-row .info-card {
+        padding: 10px 20px 30px 20px;
+    }
+
+    .works .info-card .sub-title {
+        font-size: 1.6rem;
+        line-height: 1.4;
+        text-align: center;
+    }
+
+    .works .info-card .paragraph {
+        font-size: 1.2rem;
+        line-height: 1.4;
+        text-align: center;
+    }
+
+
+    /*Join------------------------------------------------------------------------*/
+    .join .container {
+        padding: 40px 0 80px;
+    }
+
+    .join .join-frame {
+        column-gap: 30px;
+        padding: 40px 30px;
+        width: 100%;
+        align-items: flex-start;
+
+
+    }
+
+    .join .join-frame .photo {
+        height: 280px;
+        object-fit: cover;
+    }
+
+    .join .content .headline {
+        font-size: 2.8rem;
+        line-height: 1.4;
+    }
+
+    .join .content .subhead {
+        font-size: 1.6rem;
+        line-height: 1.4;
+    }
+
+    .join .subscribe-form {
+        width: 100%;
+        height: 46px;
+        border-radius: 20px;
+        position: relative;
+    }
+
+    .join .subscribe-form input::placeholder {
+        color: #2B2B2B;
+    }
+
+    .join .subscribe-form .subscribe-btn {
+        position: absolute;
+        top: calc(100% + 16px);
+        width: 100%;
+        height: 46px;
+    }
+
+
+    /*Footer-----------------------------------------------------------------------*/
+     footer .container {
+         padding: 40px 0;
+         max-width: 100%;
+     }
+
+    .footer-frame {
+        padding: 0 0;
+        max-width: 690px;
+        margin: 0 auto;
+    }
+
+    footer .footer-info {
+        flex-direction: column;
+        row-gap: 30px;
+    }
+
+    footer .additional-info {
+        width: 100%;
+    }
+
+    .subscribe-form-and-info > .desc {
+        width: 100%;
+    }
+
+    footer .subscribe-form input::placeholder {
+        color: #2B2B2B;
+    }
+
+    footer .no-copy-right {
+        padding: 0 0;
+        max-width: 690px;
+        margin: 49px auto 0;
+    }
+
+
+}
+
+
+
+
+/* * * Thiet bi Mobile: @media screen and (max-width: 767px) * * */
+@media screen and (max-width: 767px) {
+    .container {
+        max-width: 100%;
+        padding: 40px 30px;
+    }
+    .header {
+        padding: 40px 30px;
+    }
+
+    /*----Hero----------------------------------------------------*/
+    .hero .container {
+        flex-direction: column;
+    }
+
+    .hero .heroText-and-buttons {
+        width: 100%;
+    }
+
+    .hero .headline-and-subhead .title {
+        font-size: 2.8rem;
+        line-height: 1.4;
+    }
+
+    .hero .headline-and-subhead .desc {
+        margin-top: 10px;
+        font-size: 1.6rem;
+        line-height: 1.4;
+    }
+    
+}
