@@ -890,6 +890,8 @@ body {
 
 footer .container {
     background: #3B3B3B;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 .footer-frame {
