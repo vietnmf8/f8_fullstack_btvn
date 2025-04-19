@@ -139,6 +139,7 @@
     .trending .section-headline .subhead {
         font-size: 1.6rem;
         line-height: 1.4;
+        text-transform: none;
     }
 
     .trending .collection-card-row {
@@ -166,6 +167,7 @@
     .top-creators .subhead {
         font-size: 1.6rem;
         line-height: 1.4;
+        text-transform: none;
     }
 
     .artist-cards-grid {
@@ -252,6 +254,7 @@
     .discover .subhead {
         font-size: 1.6rem;
         line-height: 1.4;
+        text-transform: none;
     }
 
     .discover .nft-cards-row {
@@ -288,6 +291,7 @@
     .works .section-headline .desc {
         font-size: 1.6rem;
         line-height: 1.4;
+        text-transform: none;
     }
 
     .works .card-row {
@@ -342,6 +346,7 @@
     .join .content .subhead {
         font-size: 1.6rem;
         line-height: 1.4;
+        text-transform: none;
     }
 
     .join .subscribe-form {
@@ -433,6 +438,7 @@
         margin-top: 10px;
         font-size: 1.6rem;
         line-height: 1.4;
+        text-transform: none;
     }
 
     .highlighted-nft {
@@ -526,6 +532,17 @@
         display: none;
     }
 
+    .top-creators .subhead {
+        font-size: 1.6rem;
+        line-height: 1.4;
+        text-transform: none;
+    }
+
+    .top-creators .heading {
+        font-size: 2.8rem;
+        line-height: 1.4;
+    }
+
     .top-creators .top-creators-btn-mobile {
         display: flex !important;
         --width: 247px;
@@ -584,6 +601,17 @@
         grid-template-columns: repeat(1, 1fr);
         margin-top: 40px;
         gap: 20px;
+    }
+
+    .discover .heading {
+        font-size: 2.8rem;
+        line-height: 1.4;
+    }
+
+    .discover .subhead {
+        font-size: 1.6rem;
+        line-height: 1.4;
+        text-transform: none;
     }
 
     /*----Magic----------------------------------------------------*/
@@ -681,6 +709,7 @@
         width: 100%;
         padding: 0;
         flex-direction: column;
+        background: none;
     }
 
     .join .join-frame .photo {
