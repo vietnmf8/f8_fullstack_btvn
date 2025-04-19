@@ -456,6 +456,10 @@
         max-width: 100%; /* Đặt max-width thì ảnh sẽ có thể thu nhỏ lại */
     }
 
+    .hero .highlighted-nft-mobile > img {
+        width: 100%; /* Đặt max-width thì ảnh sẽ có thể thu nhỏ lại */
+    }
+
     .hero .highlighted-nft-mobile .caption {
         padding: 20px;
         background: #3B3B3B;
@@ -581,6 +585,14 @@
     .discover .container {
         max-width: 100%;
         padding: 40px 30px;
+    }
+
+    .browse-categories .category-card-grid .photo-icon {
+        max-width: 100%;
+    }
+
+    .browse-categories .category-card-grid .image-placeholder {
+        width: 100%;
     }
 
 

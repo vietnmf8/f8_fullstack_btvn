@@ -546,6 +546,7 @@ body {
 
 .discover .nft-cards-row .image-placeholder {
     display: block;
+    width: 100%;
 }
 
 .discover .nft-card:nth-of-type(3) .image-placeholder  {
