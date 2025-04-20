@@ -75,7 +75,9 @@
     }
 
 
-
+    .browse-categories .category-card-grid .category-icon {
+        width: 80px;
+    }
 
 
 }
