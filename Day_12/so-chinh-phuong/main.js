@@ -16,6 +16,8 @@ Dung vòng lặp: chạy i từ 0 (vì 0 cũng là số chính phương), phạm
 Sơ đồ khối:
 
 
+
+
                                                     ┌─────────────────────────────────────────────────────┐
                                                     │                                                     │
                                                     │     Khoi tao bien:                                  │
@@ -32,18 +34,18 @@ Sơ đồ khối:
                                                     └─────────────────────────┬───────────────────────────┘
                                                                               │
                                                                               │
-                                                                              │                                                                                 ┌───────────────────────────────────────────────┐
-       ┌───────────────────────────────────────────────┐                      │                               ┌───────────────────────────┐                     │                                               │
-       │                                               │                      │                               │                           │                     │    In ra:                                     │
-       │    In ra:                                     │                      ▼                               │   Tao vong lap:           │                     │                                               │
-       │                                               │             ┌────────────────┐                       │                           │                     │        Neu soChinhPhuong = false              │
-       │        Neu soChinhPhuong = false              │  false      │                │     true              │   Bien i = 0              │    false            │        -> n khong phai la so chinh phuong     │
-       │        -> n khong phai la so chinh phuong     │◄──────────  │     n >= 0     │  ──────────────────►  │   Pham vi: i * i <= n     │ ──────────────────► │                                               │
-       │                                               │             │                │                       │   Buoc lap: i++           │                     │                                               │
-       │                                               │             └────────────────┘                       │                           │                     │        Neu soChinhPhuong = true               │
-       │        Neu soChinhPhuong = true               │                                                      └───────────────────────────┘                     │        -> n la so chinh phuong                │
-       │        -> n la so chinh phuong                │                                                                                                        │                                               │
-       │                                               │                                                            ▲      │                                    └───────────────────────────────────────────────┘
+                                                                              │
+       ┌───────────────────────────────────────────────┐                      │                               ┌───────────────────────────┐
+       │                                               │                      │                               │                           │
+       │    In ra:                                     │                      ▼                               │   Tao vong lap:           │
+       │                                               │             ┌────────────────┐                       │                           │
+       │        Neu soChinhPhuong = false              │  false      │                │     true              │   Bien i = 0              │
+       │        -> n khong phai la so chinh phuong     │◄──────────  │     n >= 0     │  ──────────────────►  │   Pham vi: i * i <= n     │ ─
+       │                                               │             │                │                       │   Buoc lap: i++           │
+       │                                               │             └────────────────┘                       │                           │
+       │        Neu soChinhPhuong = true               │                                                      └───────────────────────────┘
+       │        -> n la so chinh phuong                │
+       │                                               │                                                            ▲      │
        └───────────────────────────────────────────────┘                                                            │      │
                                                                                           ┌─────────────────────────┘      │
                                                                                           │     quay lai vong lap          │
@@ -63,18 +65,32 @@ Sơ đồ khối:
                                                                                                                                                                             │
                                                                                                                                                                             │
                                                                                                                                                                             ▼
-                                                                                                                                              ┌───────────────────────────────────────────────┐
-                                                                                                                                              │                                               │
-                                                                                                                                              │    In ra:                                     │
-                                                                                                                                              │                                               │
-                                                                                                                                              │        Neu soChinhPhuong = false              │
-                                                                                                                                              │        -> n khong phai la so chinh phuong     │
-                                                                                                                                              │                                               │
-                                                                                                                                              │                                               │
-                                                                                                                                              │        Neu soChinhPhuong = true               │
-                                                                                                                                              │        -> n la so chinh phuong                │
-                                                                                                                                              │                                               │
-                                                                                                                                              └───────────────────────────────────────────────┘
+                                                                                                                                                               ┌────────────────────────┐
+                                                                                                                                                               │                        │
+                                                                                                                                                               │   Ket thuc vong lap    │
+                                                                                                                                                               │                        │
+                                                                                                                                                               └────────────┬───────────┘
+                                                                                                                                                                            │
+                                                                                                                                                                            │
+                                                                                                                                                                            │
+                                                                                                                                                                            │
+                                                                                                                                                                            │
+                                                                                                                                                                            ▼
+                                                                                                                                               ┌───────────────────────────────────────────────┐
+                                                                                                                                               │                                               │
+                                                                                                                                               │    In ra:                                     │
+                                                                                                                                               │                                               │
+                                                                                                                                               │        Neu soChinhPhuong = false              │
+                                                                                                                                               │        -> n khong phai la so chinh phuong     │
+                                                                                                                                               │                                               │
+                                                                                                                                               │                                               │
+                                                                                                                                               │        Neu soChinhPhuong = true               │
+                                                                                                                                               │        -> n la so chinh phuong                │
+                                                                                                                                               │                                               │
+                                                                                                                                               └───────────────────────────────────────────────┘
+
+
+
 
 
 
@@ -86,7 +102,6 @@ Sơ đồ khối:
 
 
 let n = 16
-let i = 0
 let soChinhPhuong = false
 
 if (n >= 0) {
@@ -96,8 +111,6 @@ if (n >= 0) {
             break;
         }
     }
-} else {
-    soChinhPhuong = false
 }
 
 if (soChinhPhuong) {

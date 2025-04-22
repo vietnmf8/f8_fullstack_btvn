@@ -83,7 +83,7 @@ let soNguyenTo = true
 
 if (n >= 2) {
     for (let i = 2; i < n ** (1 / 2); i++) {
-        if (n % 2 === 0) {
+        if (n % i === 0) {
             soNguyenTo = false;
             break
         }

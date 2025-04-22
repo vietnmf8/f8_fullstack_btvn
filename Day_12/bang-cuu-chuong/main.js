@@ -28,8 +28,7 @@ Sơ đồ khối:
                                                       │         j: so hang thu hai       │
                                                       │                                  │
                                                       │    ────────────────────────      │
-                                                      │         i = 0                    │
-                                                      │         j = 0                    │
+                                                      │                           │
                                                       │                                  │
                                                       │                                  │
                                                       └────────────────┬─────────────────┘
@@ -91,8 +90,8 @@ Sơ đồ khối:
 
 console.log("Bảng cửu chương từ 1 -> 10")
 
-let i = 0   //Số hạng đầu tiên
-let j = 0   //Số hạng thứ 2
+let i   //Số hạng đầu tiên
+let j   //Số hạng thứ 2
 
 for (let i = 1; i <= 10; i++) {
     console.log(`Bảng cửu chương ${i}:`)
