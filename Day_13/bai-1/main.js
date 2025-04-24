@@ -93,23 +93,34 @@ SƠ ĐỒ:
 
 
  */
-// Khởi tạo mảng và gán cờ cho min = max = index 0
+// Khởi tạo mảng
 const numbers = [3, 6, 4, 2, 7]
-let max = numbers[0]
-let min = numbers[0]
 
+//Kiểm tra mảng rỗng
+if (numbers.length === 0) {
+    console.log("Mảng rỗng, không có giá trị min, max")
+} else {
+    // Khởi tạo giá trị ban đầu
+    let max = numbers[0];
+    let min = numbers[0];
+    let maxIndex = 0;
+    let minIndex = 0;
 
-// Duyệt qua mảng để tìm min,max
-for (let i = 1; i < numbers.length; i++) {
-    // Kiểm tra số lớn nhất
-    if (numbers[i] > max) {
-        max = numbers[i];
+    //Duyệt qua mảng để tìm min, max và vị trí tương ứng
+    for (let i = 1; j < numbers.length; j++) {
+        //Kiểm tra số lớn nhất
+        if (numbers[i] > max) {
+            max = numbers[i];
+            maxIndex = i;
+        }
+
+        //Kiểm tra số nhỏ nhất, tách biệt với điều kiện max
+        if (numbers[i] < min) {
+            min = numbers[i];
+            minIndex = i;
+        }
     }
-    // Kiểm tra số nhỏ nhất
-    else if (numbers[i] < min) {
-        min = numbers[i];
-    }
+
+    console.log("Số lớn nhất là:", max, " tại vị trí", maxIndex);
+    console.log("Số nhỏ nhất là:", min, " tại vị trí", minIndex);
 }
-
-console.log(max)
-console.log(min)

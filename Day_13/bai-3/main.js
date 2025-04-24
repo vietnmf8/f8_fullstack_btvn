@@ -95,26 +95,33 @@ Sơ đồ:
 let input = [1, 2, 3, 2, 1, 4, 5, 4, 6];
 let output = [];
 
-// Tạo vòng lặp duyệt qua mảng input (gốc)
-for (let i = 0; i < input.length; i++) {
-    // Gán cờ cho biến duplicate - biến trùng lăp = false -> không trùng lặp
-    let duplicate = false;
-    // Tạo vòng lặp duyệt qua mảng output (mới)
-    for (let j = 0; j < output.length; j++) {
-        if (input[i] === output[j]) {
-            duplicate = true; // đã trùng lặp
 
-            // Thoát vòng lặp
-            break;
+if (input.length === 0) {
+    console.log("Mảng rỗng");
+} else {
+    // Tạo vòng lặp duyệt qua mảng input (gốc)
+    for (let i = 0; i < input.length; i++) {
+        // Gán cờ cho biến duplicate - biến trùng lăp = false -> không trùng lặp
+        let duplicate = false;
+        // Tạo vòng lặp duyệt qua mảng output (mới)
+        for (let j = 0; j < output.length; j++) {
+            if (input[i] === output[j]) {
+                duplicate = true; // đã trùng lặp
+
+                // Thoát vòng lặp
+                break;
+            }
+
         }
 
+        // Nếu duplicate = false -> thêm giá trị từ input sang output
+        // "!" -> khác
+        if (!duplicate) {
+            output.push(input[i]);
+        }
     }
 
-    // Nếu duplicate = false -> thêm giá trị từ input sang output
-    // "!" -> khác
-    if (!duplicate) {
-        output.push(input[i]);
-    }
+    console.log(output);
 }
 
-console.log(output);
+
