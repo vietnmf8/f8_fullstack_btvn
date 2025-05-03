@@ -9,7 +9,6 @@
     .header__list {
         display: none;
     }
-
     .header__btn-menu {
         background: #2b2b2b;
         display: block;
@@ -45,6 +44,7 @@
         justify-content: flex-start;
         column-gap: 5px;
     }
+
 
 
     /* Browse Category */
@@ -83,18 +83,19 @@
 }
 
 
+
 /*  * * Thiet bi rieng Table: @media screen and (min-width: 768px) and (max-width: 991px) | Ipad Air * * */
 @media screen and (min-width: 768px) and (max-width: 991px) {
     .container {
         max-width: 690px;
         padding: 72px 0;
     }
-
     .header {
         padding: 15px 50px;
     }
 
     /*Hero*------------------------------------------------------------------------*/
+
     .hero .container {
         padding: 80px 0;
     }
@@ -105,7 +106,7 @@
 
     .hero .headline-and-subhead .title {
         font-size: 3.8rem;
-        line-height: 1.2;
+        line-height:1.2;
     }
 
     .hero .headline-and-subhead .desc {
@@ -127,6 +128,7 @@
     }
 
     /*Trending------------------------------------------------------------------------*/
+
     .trending .container {
         padding: 40px 0;
     }
@@ -150,6 +152,7 @@
 
 
     /*Top Creators------------------------------------------------------------------------*/
+
     .top-creators .container {
         padding: 40px 0;
     }
@@ -207,26 +210,33 @@
 
 
     /*Browse Categories------------------------------------------------------------------------*/
+
     /*.browse-categories .container {*/
     /*    padding: 40px 0;*/
     /*}*/
+
     /*.browse-categories .section-headline {*/
     /*    font-size: 2.8rem;*/
     /*    line-height: 1.4;*/
     /*}*/
+
     /*.browse-categories .category-card-grid {*/
     /*    margin-top: 40px;*/
     /*}*/
+
     /*.browse-categories .category-card-grid .image-placeholder {*/
     /*    width: 150px;*/
     /*}*/
+
     /*.browse-categories .category-card-grid .name-card {*/
     /*    font-size: 1.6rem;*/
     /*    line-height: 1.4;*/
     /*}*/
+
     /*.browse-categories .category-card-grid .collection-name {*/
     /*    padding: 20px 20px 25px;*/
     /*}*/
+
     .browse-categories .category-card-item:nth-of-type(5) .name-card::after, .browse-categories .category-card-item:nth-of-type(6) .name-card::after, .browse-categories .category-card-item:nth-of-type(7) .name-card::after {
         content: '\00a0'; /* Khoảng trắng space */
         display: block;
@@ -251,7 +261,6 @@
 
     .discover .nft-cards-row {
         grid-template-columns: repeat(2, 1fr);
-        margin-top: 40px;
     }
 
     /*Magic Mashrooms (NFT Highlight)------------------------------------------------------------------------*/
@@ -362,10 +371,10 @@
 
 
     /*Footer-----------------------------------------------------------------------*/
-    footer .container {
-        padding: 40px 0;
-        max-width: 100%;
-    }
+     footer .container {
+         padding: 40px 0;
+         max-width: 100%;
+     }
 
     .footer-frame {
         padding: 0 0;
@@ -400,13 +409,14 @@
 }
 
 
+
+
 /* * * Thiet bi Mobile: @media screen and (max-width: 767px) * * */
 @media screen and (max-width: 767px) {
     .container {
         max-width: 100%;
         padding: 40px 30px;
     }
-
     .header {
         padding: 40px 30px;
     }
@@ -501,6 +511,7 @@
     }
 
     /*----Trending----------------------------------------------------*/
+
     .trending .section-headline .heading {
         font-size: 2.8rem;
         line-height: 1.4;
@@ -522,6 +533,7 @@
 
 
     /*----Top creator----------------------------------------------------*/
+
     .top-creators .top-creators-btn {
         display: none;
     }
@@ -554,6 +566,7 @@
     }
 
     /*----Browse Category----------------------------------------------------*/
+
     .browse-categories .section-headline {
         font-size: 2.8rem;
         line-height: 1.4;
@@ -616,6 +629,7 @@
     }
 
     /*----Magic----------------------------------------------------*/
+
     .magic .container {
         padding: 40px 30px;
     }
@@ -648,6 +662,8 @@
     }
 
     /*----Work----------------------------------------------------*/
+
+
     .works .section-headline .title {
         font-size: 2.8rem;
         line-height: 1.4;
@@ -694,6 +710,7 @@
         font-size: 1.2rem;
         line-height: 1.4;
     }
+
 
 
     /*Join*/
@@ -757,7 +774,7 @@
     }
 
 
-    /*Footer*/
+/*Footer*/
     .footer-frame {
         padding: 0;
     }

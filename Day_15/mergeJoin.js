@@ -125,7 +125,8 @@ flowers =  [
 ]
 
  */
-
+// Sắp xếp mảng colors theo id để sử dụng thuật toán Binary Search
+colors.sort((a, b) => a.id - b.id);
 
 function binarySearch(array, targetID) {
     let left = 0;

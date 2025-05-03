@@ -3,7 +3,6 @@
 ::after {
     box-sizing: border-box;
 }
-
 /* * * Start CSS Chung * * *  */
 a {
     text-decoration: none;
@@ -18,7 +17,6 @@ h6 {
     font-family: "Work Sans", sans-serif;
     color: #ffffff;
 }
-
 textarea,
 label,
 input,
@@ -27,16 +25,13 @@ button {
     font-size: inherit;
     font-family: inherit;
 }
-
 html {
     font-size: 62.5%;
 }
-
 body {
     font-family: "Work Sans", sans-serif;
     background: #2b2b2b;
 }
-
 /* * * End CSS Chung * * *  */
 /* =============== Start Common button =============  */
 .btn {
@@ -66,14 +61,11 @@ body {
     cursor: pointer;
     user-select: none;
 }
-
 .btn:hover {
     opacity: 0.9;
 }
-
 .btn--primary {
 }
-
 .btn--secondary {
     --width: 186px;
     --height: 60px;
@@ -98,51 +90,34 @@ body {
 /* * * Start Header * * *  */
 .header {
     padding: 20px 50px;
-    position: sticky;
-    top: 0;
-    left: 0;
-    background: #2b2b2b;
-    z-index: 999;
 }
-
 .header__inner {
     display: flex;
     align-items: center;
 }
-
 .header__logo-link {
     display: flex;
     align-items: center;
     gap: 12px;
 }
-
-.header__logo-link img:nth-child(2) {
-    position: relative;
-    top: 2px;
-}
-
 .header__nav {
     margin-left: auto;
     display: flex;
     align-items: center;
 }
-
 .header__list {
     display: flex;
     align-items: center;
 }
-
 .header__link {
     font-size: 1.6rem;
     padding: 12px 20px;
     color: #fff;
     transition: color 0.05s ease-in;
 }
-
 .header__link:hover {
     color: #a259ff;
 }
-
 .header__btn {
     margin-left: 10px;
 }
@@ -154,7 +129,6 @@ body {
 .header__btn-menu {
     display: none;
 }
-
 /* * * END Header * * *  */
 
 
@@ -168,7 +142,6 @@ body {
 .hero .heroText-and-buttons {
     width: 48.57%;
 }
-
 /* Headline And Subhead (Tiêu đề và mô tả) */
 .hero .headline-and-subhead .title {
     font-weight: 600;
@@ -331,6 +304,7 @@ body {
 }
 
 
+
 .trending .collection-card .caption {
     margin-top: 15px;
 }
@@ -397,7 +371,6 @@ body {
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
 }
-
 .artist-card-item {
     position: relative;
     border-radius: 20px;
@@ -421,19 +394,19 @@ body {
 
 .artist-card-item .additional-info {
     display: flex;
-    justify-content: center;
+    justify-content:center;
     column-gap: 10px;
     margin-top: 5px;
 }
 
-.artist-card-item .total-sales {
+.artist-card-item  .total-sales {
     font-weight: 400;
     font-size: 1.6rem;
     line-height: 1.4;
-    color: #858584;
+    color:#858584;
 }
 
-.artist-card-item .number {
+.artist-card-item  .number {
     font-family: Space Mono;
     font-weight: 400;
     font-size: 1.6rem;
@@ -450,7 +423,6 @@ body {
     top: 20px;
     left: 20px;
 }
-
 .artist-card-item .ranking .number {
     font-family: Space Mono;
     font-weight: 400;
@@ -527,6 +499,7 @@ body {
 }
 
 
+
 /*--------------------------------------------   Discover More NFTs   ----------------------------------------*/
 
 .discover .container {
@@ -576,7 +549,7 @@ body {
     width: 100%;
 }
 
-.discover .nft-card:nth-of-type(3) .image-placeholder {
+.discover .nft-card:nth-of-type(3) .image-placeholder  {
     object-fit: cover;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -589,7 +562,7 @@ body {
     border-bottom-right-radius: 20px;
 }
 
-.discover .nft-cards-row .nft-name {
+.discover .nft-cards-row  .nft-name {
     color: #fff;
     font-weight: 600;
     font-size: 2.2rem;
@@ -612,7 +585,7 @@ body {
     line-height: 1.4;
 }
 
-.discover .nft-cards-row .additional-info {
+.discover .nft-cards-row  .additional-info {
     margin-top: 25px;
     display: flex;
     justify-content: space-between;
@@ -651,12 +624,12 @@ body {
 }
 
 
+
 /*--------------------------------------------   Magic Mashrooms (NFT Highlight)   ----------------------------------------*/
 
 /* Background */
 .magic .container {
     background-image: url("../img/50c73503d13e1fe1a0e3277804ef1192.png");
-    max-width: 100%;
     min-height: 640px;
     background-size: cover;
     background-position: center;
@@ -675,6 +648,7 @@ body {
     inset: 0;
     z-index: 0;
 }
+
 
 
 /* NFT Frame */
@@ -743,7 +717,7 @@ body {
     color: #fff;
 }
 
-.magic .auction-timer .number, .magic .auction-timer .dots {
+.magic .auction-timer .number, .magic .auction-timer .dots  {
     font-family: Space Mono;
     font-weight: 700;
     font-size: 3.8rem;
@@ -879,7 +853,7 @@ body {
     width: 425px;
     height: 60px;
     background: #fff;
-    border-radius: 20px 23px 23px 20px;
+    border-radius: 20px 30px 30px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -954,19 +928,13 @@ footer .desc {
     color: #CCCCCC;
 }
 
-footer .page .desc:hover {
-    color: #a259ff;
-}
-
 footer .community-info {
     margin-top: 20px;
 }
 
-
 footer .icons {
     margin-top: 15px;
 }
-
 
 /* Explore */
 
@@ -1004,7 +972,7 @@ footer .subscribe-form {
     width: 420px;
     height: 60px;
     background: #fff;
-    border-radius: 20px 23px 23px 20px;
+    border-radius: 20px 30px 30px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
