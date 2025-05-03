@@ -26,85 +26,121 @@ const orders = [
     {id: 1009, customerId: 4, items: [{productId: 101, quantity: 1}, {productId: 102, quantity: 1}]},
     {id: 1010, customerId: 5, items: [{productId: 103, quantity: 4}, {productId: 104, quantity: 3}]},
 ];
-// Phân tích đề bai:
+
 /*
-1/ Tính tổng giá trị đơn hàng của từng customer
-2/ Trong mỗi customer, thống kê và sắp xếp các sản phẩm đã mua theo tổng giá trị giảm dần
-3/ Sắp xếp danh sách customer theo tổng chi tiêu giảm dần
+Kết quả:
+[
+//     {
+//         id: 1,
+//         name: "John Doe",
+//         totalSpent: 3600,
+//         products: [
+//             { name: "Laptop", quantity: 3, totalSpent: 3600 },
+//             { name: "Phone", quantity: 1, totalSpent: 800 },
+//             { name: "Headphones", quantity: 3, totalSpent: 450 }
+//         ]
+//     },
+
+    ...
+]
+ */
+//------------------------------------------
+/*
+Phân tích đề bài:
+1/ Gom nhóm đơn hàng theo khách hàng:
+- Gom nhóm tất cả đơn hàng theo từng khách hàng
+
+2/ Tính toán số lượng sản phẩm và tổng tiền
+- Với mỗi khách hàng:
+    + Tính tổng số tiền đã chi
+    + Tổng số lượng từng loại sản phẩm
+
+3/ Sắp xếp kết quả:
+- Sắp xếp danh sách khách hàng theo TỔNG CHI TIÊU
+- Sắp xếp sản phẩm của mỗi khách hàng theo TỔNG CHI TIÊU
+
+
+
 
 
 So do:
 
-             ┌────────────────────────────────────────────┐
-             │                                            │
-             │  Tao productMap tu productId trong orders  │
-             │ ─────────────────────────────────────────  │
-             │                                            │
-             │     Tao productMap = {                     │
-             │       productId: {name, price}             │
-             │     }                                      │
-             │                                            │
-             └───────────────────────┬────────────────────┘
-                                     │
-                                     │
-                                     │
-                                     ▼
-                ┌─────────────────────────────────────┐
-                │                                     │
-                │  Lap order trong orders             │
-                │  Join customer.id - customerId      │
-                │                                     │
-                └───────────────────┬─────────────────┘
-                                    │
-                                    │
-                                    │
-                                    ▼
-                ┌─────────────────────────────────────┐
-                │                                     │
-                │   Lap item trong order.items        │
-                │   Lay name, price tu productMap     │
-                │                                     │
-                └──────────────────┬──────────────────┘
-                                   │
-                                   │
-                                   │
-                                   │
-                                   │
-                                   ▼
-      ┌─────────────────────────────────────────────────────────┐
-      │                                                         │
-      │   Cong don quantity va totalSpent                       │
-      │   ->  customerMap[customerId].products[productId]       │
-      │                                                         │
-      │   Cong don tong chi tieu cua khach hang                 │
-      │   ->  customerMap[customerId]                           │
-      │                                                         │
-      └───────────────────────────┬─────────────────────────────┘
-                                  │
-                                  │
-                                  │
-                                  ▼
-              ┌──────────────────────────────────────┐
-              │                                      │
-              │      Chuyen tu Object -> Array       │
-              │                                      │
-              │                                      │
-              │      Object.Values                   │
-              │                                      │
-              │                                      │
-              └──────────────────┬───────────────────┘
-                                 │
-                                 │
-                                 │
-                                 │
-                                 ▼
-  ┌──────────────────────────────────────────────────────┐
-  │                                                      │
-  │  Sort customer theo tong totalspent giam dan         │
-  │  Sort san pham cua customer theo totalspent giam dan │
-  │                                                      │
-  └──────────────────────────────────────────────────────┘
 
+
+                             ┌─────────────────────────────┐
+                             │                             │
+                             │   Khoi tao mang ket qua:    │
+                             │                             │
+                             │        result = []          │
+                             │                             │
+                             └─────────────┬───────────────┘
+                                           │
+                                           │
+                                           ▼
+                             ┌────────────────────────────┐
+                             │                            │
+                             │  Lap qua tung khac hang    │ ◄──────────────────────────┐
+                             │                            │                            │
+                             └─────────────┬──────────────┘                            │
+                                           │                                           │
+                          Con khach hang   │   Het khach hang                          │
+                       ┌───────────────────┴────────────────────┐                      │
+                       │                                        │                      │
+                       │                                        │                      │
+                       ▼                                        ▼                      │
+             ┌────────────────────┐           ┌────────────────────────────────────┐   │
+             │                    │           │                                    │   │
+             │ Lay thong tin KH   │           │  Sap xep KH theo tong chi tieu     │   │
+             │                    │           │  giam dan                          │   │
+             └─────────┬──────────┘           │                                    │   │
+                       │                      └────────────────┬───────────────────┘   │
+                       │                                       │                       │
+                       ▼                                       │                       │
+            ┌──────────────────────┐                           ▼                       │
+            │ Loc don hang cua KH  │          ┌────────────────────────────────────┐   │
+            └──────────┬───────────┘          │                                    │   │
+                       │                      │    In ra result                    │   │
+                       │                      │                                    │   │
+                       ▼                      └────────────────────────────────────┘   │
+        ┌──────────────────────────────┐                                               │
+        │                              │                                               │
+        │  Tao doi tuong thong tin KH  │                                               │
+        │                              │                                               │
+        └──────────────┬───────────────┘                                               │
+                       │                                                               │
+                       │                                                               │
+                       ▼                                                               │
+        ┌────────────────────────────────────┐                                         │
+        │                                    │                                         │
+        │  Tinh tong chi tieu                │                                         │
+        │  va cap nhat thong tin san pham    │                                         │
+        │                                    │                                         │
+        └───────────────┬────────────────────┘                                         │
+                        │                                                              │
+                        │                                                              │
+                        ▼                                                              │
+        ┌─────────────────────────────────┐                                            │
+        │                                 │                                            │
+        │  Gom nhom san pham theo loai    │                                            │
+        │                                 │                                            │
+        └──────────────┬──────────────────┘                                            │
+                       │                                                               │
+                       │                                                               │
+                       ▼                                                               │
+     ┌────────────────────────────────────────┐                                        │
+     │                                        │                                        │
+     │  Sap xep san pham theo tong chi tieu   │                                        │
+     │                                        │                                        │
+     └────────────────┬───────────────────────┘                                        │
+                      │                                                                │
+                      │                                                                │
+                      ▼                                                                │
+     ┌────────────────────────────────────────┐                                        │
+     │                                        │                                        │
+     │  Them thong tin KH vao result          │                                        │
+     │                                        │ ───────────────────────────────────────┘
+     │                                        │
+     └────────────────────────────────────────┘
 
 
 
@@ -112,130 +148,71 @@ So do:
 
  */
 
-//*******************************************************************************************************
-// Yêu cầu 1: Tính tổng giá trị đơn hàng của từng customer
 
-// Bước 1: Tạo productMap để tra giá và tên theo productId
-const productMap = {};
-for (const product of products) {
-    productMap[product.id] = {
-        name: product.name,
-        price: product.price,
-    };
-}
+function analyzeCustomerOrders(customers, products, orders) { // Start Function
+    // Bước 1: Khởi tạo mảng kết quả:
+    const result = [];
 
-/*
-productMap = {
-  '101': { name: 'Laptop', price: 1200 },
-  '102': { name: 'Phone', price: 800 },
-  '103': { name: 'Tablet', price: 500 },
-  '104': { name: 'Smartwatch', price: 300 },
-  '105': { name: 'Headphones', price: 150 }
-}
- */
+    // Bước 2: Xử lý từng khách hàng
+    for (const customer of customers) {
 
-//--------------------------------------------------------
+        // Bước 3: Lọc các đơn hàng của khác hàng (customerOrders)
+        const customerOrders = orders.filter(order => order.customerId === customer.id)
 
-// Bước 2: Tạo customerMap để gom dữ liệu theo customerId
-const customerMap = {};
-for (const order of orders) {
-    const customerId = order.customerId;    // 1  2  3  4  5
-    if (!customerMap[customerId]) {
-        const customerInfo = customers.find(customer => customer.id === customerId);
-        // customerInfo = { id: 1, name: 'John Doe' }
-        customerMap[customerId] = {
-            id: customerInfo.id,
-            name: customerInfo.name,
+        // Bước 4: Tạo đối tượng thông tin khách hàng (customerInfo)
+        const customerInfo = {
+            id: customer.id,
+            name: customer.name,
             totalSpent: 0,
-            products: {},
+            products: []
         }
-    }
-    /*
-    customerMap = {
-      '1': { id: 1, name: 'John Doe', totalSpent: 0, products: {} },
-      '2': { id: 2, name: 'Jane Smith', totalSpent: 0, products: {} },
-      '3': { id: 3, name: 'Alice Johnson', totalSpent: 0, products: {} },
-      '4': { id: 4, name: 'Bob Brown', totalSpent: 0, products: {} },
-      '5': { id: 5, name: 'Charlie Green', totalSpent: 0, products: {} }
-    }
-    */
 
-    for (const item of order.items) {
-        const {productId, quantity} = item; //{ productId: 101, quantity: 2 }
-        // tương đương với: productId === 101; quantity === 2
-        // tương đương với cú pháp:
-        // productId = item.productId
-        // quantity = item.quantity
-        const productInfo = productMap[productId];      //{ name: 'Laptop', price: 1200 }
-        const cost = quantity * productInfo.price;      //2400...
+        // Bước 5: Tạo đối tượng trung gian để gom nhóm sản phẩm
+        const productMap = {};
 
-        if (!customerMap[customerId].products[productId]) {
-            customerMap[customerId].products[productId] = {
-                name: productInfo.name,
-                quantity: 0,
-                totalSpent: 0,
+        // Bước 6: Xử lý từng đơn hàng của khách hàng
+        for (const order of customerOrders) {
+            for (const item of order.items) {
+                // Tìm thông tin sản phẩm
+                const product = products.find(p => p.id === item.productId);
+
+                // Tính tổng giá trị của mặt hàng trong đơn hàng
+                const itemTotal = product.price * item.quantity;
+
+                // Cập nhật tổng chi tiêu của khách hàng
+                customerInfo.totalSpent += itemTotal;
+
+                // Cập nhật thông tin sản phẩm trong productMap
+                if (!productMap[product.id]) {
+                    productMap[product.id] = {
+                        name: product.name,
+                        quantity: 0,
+                        totalSpent: 0,
+                    }
+                }
+
+                // Cộng dồn
+                productMap[product.id].quantity += item.quantity;
+                productMap[product.id].totalSpent += itemTotal;
             }
         }
 
-        customerMap[customerId].products[productId].quantity += quantity;
-        customerMap[customerId].products[productId].totalSpent += cost;
-        customerMap[customerId].totalSpent += cost;
-    }
-}
-/*
-customerMap = {
-
-    1: {
-        id: 1,
-        name: 'John Doe',
-        totalSpent: 4850,
-        products: {
-            101: { name: 'Laptop', quantity: 3, totalSpent: 3600 },
-            102: { name: 'Phone', quantity: 1, totalSpent: 800 },
-            105: { name: 'Headphones', quantity: 3, totalSpent: 450 }
+        // Bước 7: Chuyển productMap thành mảng (Array) -> dễ sắp xếp
+        for (const productId in productMap) {
+            customerInfo.products.push(productMap[productId]);
         }
-    },
 
-...
-}
-*/ //customerMap sau khi nối với orders và products
+        // Bước 8: Sắp xếp sản phẩm theo tổng chi tiêu giảm dần
+        customerInfo.products.sort((a, b) => b.totalSpent - a.totalSpent);
 
+        // Bước 9: Thêm thông tin khách hàng vào kết quả
+        result.push(customerInfo);
 
-//--------------------------------------------------------
-// Bước 3: Chuyển customerMap sang mảng để sort
-// Object.values -> trả ra một mảng chứa các value
-
-/* Object.values(customerMap) = [
-     {
-        id: 1,
-        name: 'John Doe',
-        totalSpent: 4850,
-        products: {
-            101: { name: 'Laptop', quantity: 3, totalSpent: 3600 },
-            102: { name: 'Phone', quantity: 1, totalSpent: 800 },
-            105: { name: 'Headphones', quantity: 3, totalSpent: 450 }
-    },
-...
-]
- */
-
-
-const result = Object.values(customerMap).map(customer => {
-    // Chuyển product từ Object -> Array và sort giảm dần theo tổng chi tiêu
-
-    // Object.values(customer.products) -> [ { name: 'Laptop', quantity: 3, totalSpent: 3600 },...]
-    const sortedProducts = Object.values(customer.products).sort((a, b) => b.totalSpent - a.totalSpent);
-    // sortedProducts -> [ { name: 'Laptop', quantity: 3, totalSpent: 3600 },...] đã được sắp xếp
-
-    return {
-        ...customer,
-        products: sortedProducts,
+        // Bước 10: Sắp xếp khách hàng theo tổng chi tieu giảm dần
+        result.sort((a, b) => b.totalSpent - a.totalSpent);
+        return result;
     }
-})
+} // End function
 
-
-//--------------------------------------------------------
-// Bước 4: Sort danh sách customer theo tổng chi tiêu giảm dần
-result.sort((a, b) => b.totalSpent - a.totalSpent);
-
-console.log(result)
+const result = analyzeCustomerOrders(customers, products, orders);
+console.log(result);
