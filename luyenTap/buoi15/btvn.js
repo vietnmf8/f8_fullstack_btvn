@@ -23,27 +23,22 @@ const flowers = [
 colors.sort((a, b) => a.id - b.id);
 flowers.sort((a, b) => a.colorId - b.colorId);
 
-// Bước 2: Khởi tạo 2 biến bat đầu của mảng
-let a = 0, flowerStartIdx = 0;
-// Bước 3.1 : Vòng lặp ngoài
-for (let flowerIndex = 0; flowerIndex < flowers.length; flowerIndex++) {
-    // Vòng lặp trong có phần tử ít hơn và duy nhất
-    for (let colorIndex = 0; colorIndex < colors.length; colorIndex++) {
-        // Gọi ra các đối tượng
-        const flower = flowers[flowerIndex];
-        const color = colors[colorIndex];
 
-        // Nếu colorId = id -> lấy và
-        if (flower.colorId === color.id) {
-            flower.color = color.name;
-            break; //Vì vòng lặp color là duy nhất, nên bằng nhau là break luôn
-        }
+let colorIndex = 0, flowerIndex = 0;
+// Bước 2: Dung môi trường while
+while (colorIndex < colors.length && flowerIndex < flowers.length) {
+    const flower = flowers[flowerIndex];
+    const color = colors[colorIndex];
 
-        if (flower.colorId > color.id) {
-            // a++
-        }
-
+    if (flower.colorId === color.id) {
+        flower.color = color.name;
+        flowerIndex++
+    } else if (flower.colorId > color.id) {
+        colorIndex++
+    } else {
+        flowerIndex++
     }
 }
-console.log(flowers);
+
+console.log(flowers)
 

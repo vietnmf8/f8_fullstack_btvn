@@ -19,16 +19,12 @@ const flowers = [
 // ]
 
 
-// Lặp mảng chiếm nhiều giá trị hơn trong phần kết quả
+// Không dùng hashMap
 flowers.forEach(flower => {
-    // Lấy ra ID
-    const colorID = flower.colorID;
+    const colorID = flower.colorID // 1  2  1
+    const color = colors.find(color => color.id === colorID)    //{ id: 1, name: 'red' }
 
-    // Lấy ra đối phần tử trong colors thoả mãn điều kiện id = colorID
-    const item = colors.find((item) => item.id === colorID);
-
-    //Thêm vào flowers
-    flower.color = item.name
+    flower.color = color.name
 })
 
 console.log(flowers)

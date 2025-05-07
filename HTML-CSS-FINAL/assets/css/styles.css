@@ -30,6 +30,7 @@ button {
 
 html {
     font-size: 62.5%;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -163,6 +164,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    column-gap: 30px;
 }
 
 .hero .heroText-and-buttons {
@@ -295,6 +297,9 @@ body {
     column-gap: 30px;
 }
 
+.trending .collection-card-row .primary-image img {
+    width: 100%;
+}
 
 .trending .secondary-image {
     margin-top: 15px;
@@ -303,14 +308,16 @@ body {
     gap: 15px;
 }
 
+
 .trending .secondary-image-item:nth-of-type(1) img, .trending .secondary-image-item:nth-of-type(2) img {
     width: 100px;
     border-radius: 20px;
+    max-width: 100%;
+    display: block;
 }
 
 .trending .secondary-image-item:nth-of-type(3) {
     width: 100px;
-    height: 100px;
     background: #a259ff;
     border-radius: 20px;
     position: relative;
@@ -852,6 +859,7 @@ body {
     justify-content: space-between;
     align-items: center;
     column-gap: 80px;
+    max-width: 100%;
 }
 
 .join .join-frame .photo {
@@ -884,7 +892,7 @@ body {
 
 .join .subscribe-form {
     margin-top: 40px;
-    width: 425px;
+    width: 100%;
     height: 60px;
     background: #fff;
     border-radius: 20px 23px 23px 20px;
@@ -975,6 +983,10 @@ footer .icons {
     margin-top: 15px;
 }
 
+footer .icons img:hover {
+    filter: brightness(1.2);
+}
+
 
 /* Explore */
 
@@ -1035,6 +1047,7 @@ footer .subscribe-form input::placeholder {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    color: #2B2B2B;
 }
 
 footer .subscribe-form .subscribe-btn {

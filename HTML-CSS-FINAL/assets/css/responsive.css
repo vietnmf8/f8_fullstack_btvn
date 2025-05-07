@@ -99,6 +99,14 @@
         padding: 80px 0;
     }
 
+    .hero .hero-btn {
+        margin-top: 20px;
+    }
+
+    .hero .additional-info {
+        margin-top: 20px;
+    }
+
     .heroText-and-buttons, .highlighted-nft {
         max-width: 330px;
     }
@@ -515,6 +523,18 @@
     .trending .collection-card-row {
         margin-top: 40px;
         justify-content: center;
+    }
+
+    .trending .collection-card {
+        flex: 1;
+    }
+
+    .trending .secondary-image-item {
+        flex: 1;
+    }
+
+    .trending .secondary-image-item:nth-of-type(1) img, .trending .secondary-image-item:nth-of-type(2) img {
+        width: 100%;
     }
 
     .trending .collection-card-row .collection-card:nth-of-type(2), .trending .collection-card-row .collection-card:nth-of-type(3) {

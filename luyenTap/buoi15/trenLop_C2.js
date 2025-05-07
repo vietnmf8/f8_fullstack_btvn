@@ -20,17 +20,23 @@ const flowers = [
 
 // Sử dụng hashJoin
 
-// hashMap mảng ít phần tử hơn
+// hashMap phần tử nhỏ hơn
+
 const hashMap = {}
-colors.forEach(item => {
-    hashMap[item.id] = item.name
-})
+for (const color of colors) {
+    if (!hashMap[color.id]) {
+        hashMap[color.id] = color.name
+    }
+}
+console.log(hashMap)
+//{
+//  '1': 'red',
+//  '2': 'blue'
+// }
 
-// { '1': 'red', '2': 'blue' }
-
-flowers.forEach(item => {
-    const colorName = hashMap[item.colorID]
-    item.color = colorName
+flowers.forEach(flower => {
+    const colorName = hashMap[flower.colorID]
+    flower.color = colorName
 })
 
 console.log(flowers)
