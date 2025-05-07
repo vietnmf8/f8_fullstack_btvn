@@ -514,6 +514,7 @@
 
     .trending .collection-card-row {
         margin-top: 40px;
+        justify-content: center;
     }
 
     .trending .collection-card-row .collection-card:nth-of-type(2), .trending .collection-card-row .collection-card:nth-of-type(3) {
@@ -672,6 +673,7 @@
         justify-content: space-evenly;
         min-height: 0;
         column-gap: 20px;
+        width: 100%;
 
     }
 

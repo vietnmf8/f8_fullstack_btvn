@@ -295,6 +295,7 @@ body {
     column-gap: 30px;
 }
 
+
 .trending .secondary-image {
     margin-top: 15px;
     display: flex;
@@ -491,6 +492,7 @@ body {
 .browse-categories .category-card-grid .image-placeholder {
     filter: blur(4px);
     display: block;
+    max-width: 100%;
 }
 
 .browse-categories .category-card-item:nth-of-type(1) .overlay, .browse-categories .category-card-item:nth-of-type(4) .overlay {
@@ -680,7 +682,9 @@ body {
 /* NFT Frame */
 
 .magic .nft-frame {
-    width: 100%;
+    width: calc(1280px - 115px * 2);
+    max-width: 100%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -806,6 +810,10 @@ body {
     padding: 10px 30px 30px 30px;
     border-radius: 20px;
     background: #3B3B3B;
+}
+
+.works .card-row .info-card img {
+    max-width: 100%;
 }
 
 .works .info-card .card-details {
