@@ -210,8 +210,9 @@ function analyzeCustomerOrders(customers, products, orders) { // Start Function
 
         // Bước 10: Sắp xếp khách hàng theo tổng chi tieu giảm dần
         result.sort((a, b) => b.totalSpent - a.totalSpent);
-        return result;
+
     }
+    return result;
 } // End function
 
 const result = analyzeCustomerOrders(customers, products, orders);
