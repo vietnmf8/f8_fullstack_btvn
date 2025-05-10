@@ -209,6 +209,20 @@ for (const product of products) {
 }
 
 
+// Tao hashMap
+const hashMapProduct = {}
+for (const product of products) {
+    if (!hashMapProduct[product.id]) {
+        hashMapProduct[product.id] = {
+            name: product.name,
+            bonus: product.bonusTotalSpent,
+        }
+    }
+}
+
+console.log(hashMapProduct)
+
+
 
 
 
