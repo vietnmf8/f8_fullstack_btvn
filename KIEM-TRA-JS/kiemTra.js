@@ -70,15 +70,17 @@ function sumArray(array) {
 Bài 1: Lấy ra danh sách nhân viên làm việc -> dựa vào status
 
 Đáp án:
-// { id: 1, name: 'Alice', age: 23, status: 'working' }
-// { id: 1, name: 'Alice', age: 23, status: 'working' }
-// { id: 1, name: 'Alice', age: 23, status: 'working' }
-// { id: 1, name: 'Alice', age: 23, status: 'working' }
-// { id: 1, name: 'Alice', age: 23, status: 'working' }
+[
+  { id: 1, name: 'Alice', age: 23, status: 'working' },
+  { id: 2, name: 'Bob', age: 25, status: 'working' },
+  { id: 3, name: 'John', age: 27, status: 'working' },
+  { id: 5, name: 'Eve', age: 20, status: 'working' }
+]
+
 
  */
 for (const employee of employees) {
-    const workingEmployees = employees.find((employee) => employee.status === 'working');
+    const workingEmployees = employees.filter((employee) => employee.status === 'working');
 }
 
 /*
@@ -127,10 +129,12 @@ const bestSellingProduct = products.filter((product) => product.quantity === get
 
 
 /* Bài 5: Tìm ra sản phẩm có doanh thu cao nhất
+{ id: 2, name: 'Laptop', price: 3000, quantity: 4 }
 
  */
 const revenue = products.map((product) => product.price * product.quantity);
 const highRevenueProduct = products.find((product) => product.price * product.quantity === getMaxNumber(revenue))
+console.log(highRevenueProduct)
 
 
 /*

@@ -19,6 +19,7 @@ h6 {
     color: #ffffff;
 }
 
+
 textarea,
 label,
 input,
@@ -31,6 +32,7 @@ button {
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
+    overscroll-behavior: none;
 }
 
 body {
@@ -97,6 +99,11 @@ body {
 /* =============== End Common =============  */
 
 /* * * Start Header * * *  */
+
+.mobile-header {
+    display: none;
+}
+
 .header {
     padding: 20px 50px;
     position: sticky;
@@ -154,6 +161,10 @@ body {
 
 .header__btn-menu {
     display: none;
+}
+
+#trending, #top-creators, #connect {
+    scroll-margin-top: 100px;
 }
 
 /* * * END Header * * *  */
@@ -893,25 +904,29 @@ body {
 .join .subscribe-form {
     margin-top: 40px;
     width: 100%;
-    height: 60px;
-    background: #fff;
+    /*height: 60px;*/
+    /*background: #fff;*/
     border-radius: 20px 23px 23px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: space-between;*/
+    display: block;
 }
 
 .join .subscribe-form input {
     all: unset; /* Reset lại thẻ input */
     width: 100%;
-    height: 100%;
-    padding: 0 20px;
-    border-radius: 20px 0 0 20px;
-
+    /*height: 100%;*/
+    /*border-radius: 20px 0 0 20px;*/
+    border-radius: 20px;
+    background: #fff;
     font-weight: 400;
     font-size: 1.6rem;
     line-height: 1.4;
     color: #2B2B2B;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 60px;
 }
 
 .join .subscribe-form input::placeholder {
@@ -924,11 +939,17 @@ body {
 .join .subscribe-form .subscribe-btn {
     background: #A259FF;
     color: #fff;
-    --width: 211px;
+    /*--width: 211px;*/
+    width: 100%;
+    margin-top: 16px;
 }
 
 
 /*--------------------------------------------   Footer   ----------------------------------------*/
+
+footer {
+    background: #3B3B3B;
+}
 
 footer .container {
     background: #3B3B3B;
@@ -984,7 +1005,7 @@ footer .icons {
 }
 
 footer .icons img:hover {
-    filter: brightness(1.2);
+    filter: brightness(0) saturate(100%) invert(46%) sepia(61%) saturate(4770%) hue-rotate(242deg) brightness(101%) contrast(102%);
 }
 
 

@@ -48,7 +48,56 @@
     <link rel="stylesheet" href="./assets/css/responsive.css"/>
 </head>
 <body>
-<!-- Header -->
+<!--Header có thêm phần drawer-->
+<header class="mobile-header">
+    <input type="checkbox" name="" id="menu-checkbox" class="menu-checkbox" hidden>
+
+    <!-- Overlay-->
+    <label for="menu-checkbox" class="menu-overlay"></label>
+
+    <!--Menu Content-->
+    <div class="menu-drawer">
+        <!-- Drawer Logo -->
+        <div class="header__logo">
+            <a href="" class="header__logo-link">
+                <img
+                        class="header__logo-icon"
+                        src="./assets/icons/market.svg"
+                        alt=""
+                />
+                <img
+                        src="./assets/icons/logo-text.svg"
+                        alt="NFT Marketplace"
+                />
+            </a>
+        </div>
+
+        <!-- Drawer Navigation -->
+        <nav class="header__nav">
+            <ul class="header__list">
+                <li class="header__item">
+                    <a href="#trending" class="header__link">Marketplace</a>
+                </li>
+                <li class="header__item">
+                    <a href="#top-creators" class="header__link">Rankings</a>
+                </li>
+                <li class="header__item">
+                    <a href="#connect" class="header__link">Connect</a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <!-- Drawer Call to action -->
+        <a href="" class="btn btn--secondary header__btn">
+            <img src="./assets/icons/user.svg" alt=""/>
+            <span class="btn__text">Sign Up</span>
+        </a>
+
+    </div>
+</header>
+
+<!--Main Header -->
 <header class="header">
     <div class="header__inner">
         <!-- Logo -->
@@ -84,11 +133,10 @@
             <img src="./assets/icons/user.svg" alt=""/>
             <span class="btn__text">Sign Up</span>
         </a>
-
         <!-- Button menu -->
-        <button class="header__btn-menu">
+        <label for="menu-checkbox" class="header__btn-menu">
             <img src="./assets/icons/menu.svg" alt=""/>
-        </button>
+        </label>
     </div>
 </header>
 <!-- Main -->
@@ -833,9 +881,9 @@
                 <div class="explore">
                     <span class="explore-title">Explore</span>
                     <div class="page">
-                        <a href="#!" class="desc">Marketplace</a>
-                        <a href="#!" class="desc">Rankings</a>
-                        <a href="#!" class="desc">Connect a wallet</a>
+                        <a href="#trending" class="desc">Marketplace</a>
+                        <a href="#top-creators" class="desc">Rankings</a>
+                        <a href="#connect" class="desc">Connect a wallet</a>
                     </div>
                 </div>
 
