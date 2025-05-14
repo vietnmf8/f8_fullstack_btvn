@@ -4,6 +4,17 @@
 
 /* * * Thiet bi Table & Mobile: @media screen and (max-width: 991px) * * */
 @media screen and (max-width: 991px) {
+    body:has(input:checked) {
+        /* overflow: auto;
+  position: fixed;
+  width: 100%;
+  height: 100%; */
+        scroll-behavior: none;
+        /* prevent scroll when open dropdown menu */
+        touch-action: none;
+        -webkit-overflow-scrolling: none;
+    }
+
     /* * * Start Header * * *  */
     .header__btn,
     .header__list {
@@ -69,7 +80,7 @@
     .menu-drawer .header__btn {
         display: flex;
         margin-top: 40px;
-        margin-left: 0;;
+        margin-left: 0;
     }
 
     .mobile-header .menu-checkbox:checked ~ .menu-drawer {
@@ -92,7 +103,7 @@
         height: 100px;
         display: flex;
         justify-content: space-between;
-        column-gap: 20px
+        column-gap: 20px;
     }
 
     .artist-card-item .ranking {
@@ -110,7 +121,6 @@
         justify-content: flex-start;
         column-gap: 5px;
     }
-
 
     /* Browse Category */
     .browse-categories .container {
@@ -139,14 +149,10 @@
         padding: 20px 20px 25px;
     }
 
-
     .browse-categories .category-card-grid .category-icon {
         width: 80px;
     }
-
-
 }
-
 
 /*  * * Thiet bi rieng Table: @media screen and (min-width: 768px) and (max-width: 991px) | Ipad Air * * */
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -159,7 +165,9 @@
         padding: 15px 50px;
     }
 
-    #trending, #top-creators, #connect {
+    #trending,
+    #top-creators,
+    #connect {
         scroll-margin-top: 62px;
     }
 
@@ -176,7 +184,8 @@
         margin-top: 20px;
     }
 
-    .heroText-and-buttons, .highlighted-nft {
+    .heroText-and-buttons,
+    .highlighted-nft {
         max-width: 330px;
     }
 
@@ -225,7 +234,6 @@
         flex-wrap: wrap;
     }
 
-
     /*Top Creators------------------------------------------------------------------------*/
     .top-creators .container {
         padding: 40px 0;
@@ -255,7 +263,7 @@
         height: 100px;
         display: flex;
         justify-content: space-between;
-        column-gap: 20px
+        column-gap: 20px;
     }
 
     .artist-card-item .ranking {
@@ -274,14 +282,14 @@
         column-gap: 5px;
     }
 
-    .artist-card-item .total-sales, .artist-card-item .number {
+    .artist-card-item .total-sales,
+    .artist-card-item .number {
         flex: 1;
     }
 
     .artist-cards-grid .artist-avatar {
         width: 60px;
     }
-
 
     /*Browse Categories------------------------------------------------------------------------*/
     /*.browse-categories .container {*/
@@ -304,11 +312,12 @@
     /*.browse-categories .category-card-grid .collection-name {*/
     /*    padding: 20px 20px 25px;*/
     /*}*/
-    .browse-categories .category-card-item:nth-of-type(5) .name-card::after, .browse-categories .category-card-item:nth-of-type(6) .name-card::after, .browse-categories .category-card-item:nth-of-type(7) .name-card::after {
-        content: '\00a0'; /* Khoảng trắng space */
+    .browse-categories .category-card-item:nth-of-type(5) .name-card::after,
+    .browse-categories .category-card-item:nth-of-type(6) .name-card::after,
+    .browse-categories .category-card-item:nth-of-type(7) .name-card::after {
+        content: "\00a0"; /* Khoảng trắng space */
         display: block;
     }
-
 
     /*Discover More NFTs------------------------------------------------------------------------*/
     .discover .container {
@@ -339,14 +348,13 @@
 
     .magic .nft-frame {
         max-width: 670px;
-        margin: 0 auto
+        margin: 0 auto;
     }
 
     .magic .title {
         font-size: 3.8rem;
         line-height: 1.2;
     }
-
 
     /*How it works------------------------------------------------------------------------*/
     .works .container {
@@ -388,7 +396,6 @@
         text-align: center;
     }
 
-
     /*Join------------------------------------------------------------------------*/
     .join .container {
         padding: 40px 0 80px;
@@ -399,8 +406,6 @@
         padding: 40px 30px;
         width: 100%;
         align-items: flex-start;
-
-
     }
 
     .join .join-frame .photo {
@@ -427,7 +432,7 @@
     }
 
     .join .subscribe-form input::placeholder {
-        color: #2B2B2B;
+        color: #2b2b2b;
     }
 
     .join .subscribe-form input {
@@ -440,7 +445,6 @@
         width: 100%;
         height: 46px;
     }
-
 
     /*Footer-----------------------------------------------------------------------*/
     footer .container {
@@ -468,7 +472,7 @@
     }
 
     footer .subscribe-form input::placeholder {
-        color: #2B2B2B;
+        color: #2b2b2b;
     }
 
     footer .no-copy-right {
@@ -476,10 +480,7 @@
         max-width: 690px;
         margin: 49px auto 0;
     }
-
-
 }
-
 
 /* * * Thiet bi Mobile: @media screen and (max-width: 767px) * * */
 @media screen and (max-width: 767px) {
@@ -496,7 +497,9 @@
         padding: 30px;
     }
 
-    #trending, #top-creators, #connect {
+    #trending,
+    #top-creators,
+    #connect {
         scroll-margin-top: 112px;
     }
 
@@ -542,7 +545,7 @@
 
     .hero .highlighted-nft-mobile .caption {
         padding: 20px;
-        background: #3B3B3B;
+        background: #3b3b3b;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
     }
@@ -613,14 +616,15 @@
         flex: 1;
     }
 
-    .trending .secondary-image-item:nth-of-type(1) img, .trending .secondary-image-item:nth-of-type(2) img {
+    .trending .secondary-image-item:nth-of-type(1) img,
+    .trending .secondary-image-item:nth-of-type(2) img {
         width: 100%;
     }
 
-    .trending .collection-card-row .collection-card:nth-of-type(2), .trending .collection-card-row .collection-card:nth-of-type(3) {
+    .trending .collection-card-row .collection-card:nth-of-type(2),
+    .trending .collection-card-row .collection-card:nth-of-type(3) {
         display: none;
     }
-
 
     /*----Top creator----------------------------------------------------*/
     .top-creators .top-creators-btn {
@@ -642,7 +646,7 @@
         display: flex !important;
         --width: 247px;
         background: transparent;
-        border: 2px solid #A259FF;
+        border: 2px solid #a259ff;
         margin-top: 40px;
     }
 
@@ -664,7 +668,6 @@
         margin-top: 40px;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
-
     }
 
     .browse-categories .container {
@@ -685,7 +688,6 @@
         width: 100%;
     }
 
-
     /*----Discover----------------------------------------------------*/
     .discover .discover-btn {
         display: none;
@@ -695,7 +697,7 @@
         display: flex !important;
         --width: 247px;
         background: transparent;
-        border: 2px solid #A259FF;
+        border: 2px solid #a259ff;
         margin-top: 40px;
     }
 
@@ -744,7 +746,7 @@
         display: flex !important;
         margin-top: 30px;
         background: #fff;
-        color: #2B2B2B;
+        color: #2b2b2b;
         --width: 100%;
     }
 
@@ -765,7 +767,6 @@
         row-gap: 20px;
     }
 
-
     .works .card-row .info-card {
         display: flex;
         padding: 20px;
@@ -774,7 +775,6 @@
         min-height: 0;
         column-gap: 20px;
         width: 100%;
-
     }
 
     .works .card-row .icon {
@@ -796,7 +796,6 @@
         font-size: 1.2rem;
         line-height: 1.4;
     }
-
 
     /*Join*/
     .join .container {
@@ -858,9 +857,8 @@
     }
 
     .join .subscribe-form input::placeholder {
-        color: #2B2B2B;
+        color: #2b2b2b;
     }
-
 
     /*Footer*/
     .footer-frame {
@@ -908,7 +906,6 @@
     }
 
     footer .subscribe-form input::placeholder {
-        color: #2B2B2B;
+        color: #2b2b2b;
     }
-
 }
