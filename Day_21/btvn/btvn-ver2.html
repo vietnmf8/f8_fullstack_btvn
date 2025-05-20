@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="btvn-ver2.css">
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+    <div class="search-bar">
+        <input placeholder="search employees" type="text" name="search">
+        <button>Add new</button>
+    </div>
+
+    <table cellspacing="0">
+        <thead> <!--thead-->
+        <tr>    <!--Hàng tiêu dề-->
+
+        </tr>
+        </thead>
+
+        <tbody> <!--tbody-->
+
+        </tbody>
+    </table>
+</div>
+
+<!--Pop-up thêm/sửa nhân viên-->
+<div class="popup-container" id="employeeFormPopup">
+    <!-- Giao diện pop-up-->
+    <div class="popup">
+        <!--Tiêu đề của pop-up-->
+        <h2 id="popupTitle"></h2>
+        <form id="employeeForm">
+            <input hidden id="employeeId" name="employeeId">
+            <!--Trường Tên-->
+            <div class="popup-form-group">
+                <input type="text" id="name" placeholder="Tên" name="name" required>
+            </div>
+
+            <!--Trường Địa chỉ-->
+            <div class="popup-form-group">
+                <input type="text" id="address" placeholder="Địa chỉ" name="address" required>
+            </div>
+
+            <!--Trường Tuổi-->
+            <div class="popup-form-group">
+                <input type="number" id="age" placeholder="Tuổi" name="age" min="18" required>
+            </div>
+
+            <!--Nhóm button-->
+            <div class="popup-buttons">
+                <!--Mặc định nút button có type=submit -> khi không nhập gì cả -> cancel thì để type=button để trình duyệt không hiểu lầm là submit-->
+                <button type="button" class="popup-cancel-btn" id="cancelBtn">Cancel</button>
+                <button type="submit" class="popup-save-btn">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--Pop-up xác nhân xoá nhân viên-->
+<div class="popup-container" id="deleteConfirmPopup">
+    <div class="popup">
+        <!--Tiêu đề chính là tên của Employee -> xử lý bằng JS-->
+        <h2 id="deleteTitle"></h2>
+        <p>Ban có chắc xoá dữ liệu này không?</p>
+        <div class="popup-buttons">
+            <button type="button" class="popup-no-btn" id="noDeleteBtn">No</button>
+            <button type="button" class="popup-yes-btn" id="yesDeleteBtn">Yes</button>
+        </div>
+    </div>
+</div>
+
+
+<!--<script src="./1.table.js"></script>-->
+<script src="btvn-ver2.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<!--CSS-->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .autocomplete {
+        width: 400px;
+        margin: auto;
+    }
+
+    .autocomplete input {
+        padding: 12px;
+        font-size: 22px;
+        width: 100%;
+    }
+
+    .autocomplete .dropdown {
+        font-size: 20px;
+        box-shadow: 0 0 10px #ccc;
+        max-height: 200px;
+        overflow-y: scroll;
+    }
+
+    .autocomplete .dropdown-item {
+        padding: 8px;
+    }
+
+</style>
+<!-------------------------------------------------------------------->
+
+<!--Body-->
+<body>
+<div class="autocomplete">
+    <input placeholder="province"/>
+    <div class="dropdown">
+
+    </div>
+</div>
+
+<!-------------------------------------------------------------------->
+<!--Javascript-->
+<script>
+    // Tạo dữ diệu từ drop-down
+    const items = [
+        "Ha Noi",
+        "Ha Nam",
+        "Vinh Phuc",
+        "Phu Tho",
+        "Bac Blinh",
+        "Bac Giang",
+        "Vinh Phuc",
+        "Phu Tho",
+        "Bac Blinh",
+        "Bac Giang"
+    ]
+
+    // Tạo biến con trỏ để kiểm tra xem đang trỏ đến vị trí nào
+    let cursor = null
+
+
+    // Tạo hàm render bảng
+    const renderDropdown = (items) => {
+        // Lấy ra dropdown
+        const container = document.querySelector('.dropdown');
+        // Reset phần dữ liệu
+        container.innerHTML = '';
+        // Duyệt từng đối tượng trong items
+        items.forEach(item => {
+            const div = document.createElement('div')
+            div.className = 'dropdown-item'
+            div.textContent = item
+            container.appendChild(div)
+        })
+    }
+    renderDropdown(items)
+
+
+    // Truy cập vào input
+    const inputE = document.querySelector('input');
+    inputE.addEventListener('input', (event) => {
+        //filter dropdown theo searchStr
+        const searchStr = inputE.value.toLowerCase();
+        const filteredItems = items.filter(item => {
+            return item.toLowerCase().includes(searchStr)
+        })
+        renderDropdown(filteredItems)
+    })
+
+    // Hàm để reset background
+    const resetBackground = () => {
+        const itemsE = document.querySelectorAll('.dropdown-item');
+        itemsE.forEach(itemE => {
+            itemE.style.backgroundColor = 'white';
+        })
+    }
+
+    // Sự kiện keydown -> khi nhấn xuống
+    // Sự kiện keyup -> Khi nhả ra
+    // Trong đối tượng event có key: ArrowDown -> Nút mũi tên đi xuống
+    inputE.addEventListener('keydown', (event) => {
+        // Xử lý nút mũi tên xuống
+        if (event.key === 'ArrowDown') {
+            if (cursor === null) {
+                cursor = 1
+            } else if (cursor >= items.length) {
+                cursor = 1
+            } else {
+                cursor++
+            }
+            resetBackground()
+            const itemE = document.querySelector(`.dropdown-item:nth-child(${cursor})`);
+            itemE.style.backgroundColor = '#ccc';
+            console.log(itemE)
+        }
+        // Xử lý nút mũi tên lên
+        if (event.key === 'ArrowUp') {
+            if (cursor === null) {
+                cursor = 1
+            } else {
+                cursor--
+            }
+            resetBackground()
+            const itemE = document.querySelector(`.dropdown-item:nth-child(${cursor})`);
+            itemE.style.backgroundColor = '#ccc';
+            console.log(itemE)
+        }
+        console.log(cursor)
+
+    })
+    console.log(cursor)
+
+
+</script>
+</body>
+</html>

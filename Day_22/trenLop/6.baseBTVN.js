@@ -8,15 +8,29 @@ const headers = [
     {name: 'action', text: 'Hành động', align: 'right'},
 ]
 
-let employees = [
-    {id: 1, name: 'Pham Cong Tin', address: 'Hoai Duc - Ha Noi', age: 27},
-    {id: 2, name: 'Nguyen Nam Tao', address: 'Co Nhue - Ha Noi', age: 27},
-    {id: 3, name: 'Pham Xuan Bac', address: 'Soc Son - Ha Noi', age: 27},
+const employees = [
+    {
+        id: 1,
+        name: 'Pham Cong Tin',
+        address: 'Hoai Duc - Ha Noi',
+        age: 27,
+        searchStr: 'Pham Cong Tin|Hoai Duc - Ha Noi|27'
+    },
+    {
+        id: 2,
+        name: 'Nguyen Nam Tao',
+        address: 'Co Nhue - Ha Noi',
+        age: 27,
+        searchStr: 'Nguyen Nam Tao|Co Nhue - Ha Noi|27'
+    },
+    {
+        id: 3,
+        name: 'Pham Xuan Bac',
+        address: 'Soc Son - Ha Noi',
+        age: 27,
+        searchStr: 'Pham Xuan Bac|Soc Son - Ha Noi|27'
+    },
 ]
-
-// Id của nhân viên đang được chỉnh sửa/xoá
-let currentEmployeeId = null
-
 
 function renderTable(employees) {
 
@@ -67,11 +81,11 @@ function renderTable(employees) {
                 editBtn.setAttribute('class', 'mdi mdi-pencil-outline edit-btn')
                 delBtn.setAttribute('class', 'mdi mdi-trash-can-outline del-btn')
 
-                /* Thêm sự kiện cho nút edit */
-                editBtn.addEventListener('click', () => openEditPopup(employee.id))
-
-                /* Thêm sự kiện cho nút delete */
-                delBtn.addEventListener('click', () => openDeletePopup(employee.id))
+                //Nếu mà thêm sự kiện ở dưới, thì sẽ phải dùng vòng lặp để duyệt các button để thêm sự kiện
+                // -> thêm trực tiếp
+                editBtn.addEventListener('click', () => {
+                    onOpenDialog(employee) // HIển thị dialog ở trạng thái edit -> truyền thẳng vào employee
+                })
 
                 /* Đưa vào <td> */
                 td.appendChild(editBtn)
@@ -131,129 +145,51 @@ inputE.addEventListener('input', event => {
 // 3/ Click vào delBtn -> pop-up hiện ra vơ tiêu đề "Ten của employee" với nội dung "Bạn có chắc chắn xoá dữ liệu này không"
 //  - Trong pop-up có 2 nút nút  Yes và No -> Bấm vào yes thì <tr> đó sẽ biến mất và cập nhật lại id cho đúng thứ tự, bấm vào No thì ẩn pop-up
 
-// Yêu cầu 1: Thêm moi nhân viên
+// Dialog
+// Lấy dialog
+const dialogContainerE = document.querySelector('.dialog-container')
+const cancelBtnE = document.querySelector('.dialog-action .cancel-btn')
+const saveBtnE = document.querySelector('.dialog-action .save-btn')
+// Hàm Javascript Inline để mở dialog
+const onOpenDialog = (employee) => {
+    dialogContainerE.style.display = 'block'
+    // Khi dialog ở trạng thái edit
+    console.log(employee)
 
-// Tạo hàm lấy ID lớn nhất trong danh sách nhân viên
-function getMaxId() {
-    let maxId = 0
-    employees.forEach(employee => {
-        if (employee.id > maxId) {
-            maxId = employee.id
-        }
-    })
+    // Fill dữ liệu từ 3 cái input trong dialog-content
+    document.querySelector('.dialog-content input[name="name"]').value = employee.name
+    document.querySelector('.dialog-content input[name="address"]').value = employee.address
+    document.querySelector('.dialog-content input[name="age"]').value = employee.age
 
-    return maxId
+}
+
+// Hàm đóng dialog
+const onCloseDialog = () => {
+    dialogContainerE.style.display = 'none'
+}
+
+// Hàm Save
+// Khi save thì phải lấy id lớn nhất đẻ thêm mới
+const getMaxId = () => {
+    const ids = employees.map(emp => emp.id)
+    return Math.max(...ids) + 1
 }
 
 
-// Lấy các phần tử DOM
-const addNewBtn = document.querySelector('.search-bar button')
-const employeeFormPopup = document.getElementById('employeeFormPopup')
-const cancelBtn = document.getElementById('cancelBtn')
-const employeeForm = document.getElementById('employeeForm')
-const popupTitle = document.getElementById('popupTitle');
+const onSave = () => {
+    // Lấy 3 cái input trong dialog-content
+    const employee = {
+        id: getMaxId(),
+        name: document.querySelector('.dialog-content input[name="name"]').value,
+        address: document.querySelector('.dialog-content input[name="address"]').value,
+        age: document.querySelector('.dialog-content input[name="age"]').value,
+    };
 
-// Mở pop-up thêm nhân viên mới
-addNewBtn.addEventListener('click', () => {
-    popupTitle.textContent = 'Thêm nhân viên mới';
-    employeeForm.reset();
-    document.getElementById('employeeId').value = '';
-    employeeFormPopup.style.display = 'flex';
-})
+    //Push vào mảng employees ban đầu
+    employees.push(employee)
 
-// Đóng pop-up khi nhấn Cancel
-cancelBtn.addEventListener('click', () => {
-    employeeFormPopup.style.display = 'none';
-})
-
-// Xử lý khi nhấn save
-employeeForm.addEventListener('submit', (event) => {
-    /* Ngăn hành vi Submit Form mặc định */
-    event.preventDefault();
-    const name = document.getElementById('name').value
-    const address = document.getElementById('address').value
-    const age = document.getElementById('age').value
-    const idInput = document.getElementById('employeeId').value
-
-    if (idInput) {
-        // Sửa thông tin
-        const index = employees.findIndex(emp => emp.id === parseInt(idInput))
-        employees[index] = {
-            id: parseInt(idInput),
-            name: name,
-            address: address,
-            age: age,
-        }
-    } else {
-        // Thêm mới
-        const newId = getMaxId() + 1;
-        employees.push({
-            id: newId,
-            name: name,
-            address: address,
-            age: age,
-        })
-    }
-
-    // Đóng bảng và cập nhật
-    employeeFormPopup.style.display = 'none';
-    renderTable(employees);
-})
-
-
-// Yêu cầu 2: Chỉnh sửa nhân viên
-// Tạo một hàm để hiện trạng thái sua nhân viên
-function openEditPopup(employeeId) { // Đối số employee.id
-    const employee = employees.find(emp => emp.id === employeeId)
-    if (!employee) return console.error('Không tìm thấy nhân viên')
-    // Điền sẵn thông tin của <tr> đó
-    popupTitle.textContent = "Chỉnh sửa thông tin"
-    document.getElementById('employeeId').value = employee.id;
-    document.getElementById('name').value = employee.name;
-    document.getElementById('address').value = employee.address;
-    document.getElementById('age').value = employee.age;
-
-    employeeFormPopup.style.display = 'flex';
+    //Render lại bảng
+    renderTable(employees)
+    //Đóng Dialog
+    onCloseDialog()
 }
-
-
-// Yêu cầu 3: Xoá nhân viên
-const deleteConfirmPopup = document.getElementById('deleteConfirmPopup')
-const noDeleteBtn = document.getElementById('noDeleteBtn')
-const yesDeleteBtn = document.getElementById('yesDeleteBtn')
-const deleteTitle = document.getElementById('deleteTitle')
-
-// Mở pop-up xác nhận xoá
-function openDeletePopup(employeeId) {
-    const employee = employees.find(emp => emp.id === employeeId)
-    if (!employee) return console.error('Không tìm thấy nhân viên')
-
-    currentEmployeeId = employeeId;
-    deleteTitle.textContent = employee.name;
-    deleteConfirmPopup.style.display = 'flex';
-}
-
-// Đóng pop-up -> No
-noDeleteBtn.addEventListener('click', event => {
-    deleteConfirmPopup.style.display = 'none'
-    currentEmployeeId = null;
-})
-
-// Xoá nhân viên -> yes
-yesDeleteBtn.addEventListener('click', () => {
-    if (currentEmployeeId) {
-        // Xoá nhân viên khỏi mảng
-        employees = employees.filter(emp => emp.id !== currentEmployeeId)
-
-        // // Cập nhật thứ tự id
-        // employees = employees.map((emp, index) => {
-        //     return {...emp, id: index + 1};
-        // })
-
-        //Đóng pop-up và cập nhật bảng
-        deleteConfirmPopup.style.display = 'none';
-        currentEmployeeId = null
-        renderTable(employees)
-    }
-})
-
