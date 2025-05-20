@@ -342,6 +342,8 @@ const onOpenDialog = (employee) => {
         const filteredItems = provinces.filter(item => {
             return item.toLowerCase().includes(searchStr)
         })
+        cursor = null
+        console.log(cursor)
         // Render lại dropdown với các mục đã lọc
         renderDropdown(filteredItems);
     })
@@ -367,7 +369,6 @@ const onOpenDialog = (employee) => {
         if (event.key === 'ArrowDown') {
             // Ngăn không cho trình duyệt cuộn trang
             event.preventDefault();
-
             if (cursor === null) {
                 cursor = 0
             } else if (cursor >= filteredProvinces.length - 1) {
@@ -375,6 +376,8 @@ const onOpenDialog = (employee) => {
             } else {
                 cursor++
             }
+
+            console.log(cursor)
 
             // reset background
             resetBackground()
@@ -398,6 +401,7 @@ const onOpenDialog = (employee) => {
             } else {
                 cursor--;
             }
+            console.log(cursor)
 
             resetBackground()
             if (dropdownItems[cursor]) {
