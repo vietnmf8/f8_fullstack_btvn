@@ -352,9 +352,6 @@ const isValidProvince = (province) => {
     return provinces.some(p => p.toLowerCase() === province.toLowerCase())
 }
 
-// Thêm biến toàn cục để lưu trữ event handler
-let ageInputHandler;
-
 // Hàm Javascript Inline để mở dialog
 const onOpenDialog = (employee) => {
     dialogContainerE.style.display = 'block'
@@ -368,41 +365,18 @@ const onOpenDialog = (employee) => {
     const provinceInput = document.querySelector('.dialog-content input[name="province"]');
     const ageInput = document.querySelector('.dialog-content input[name="age"]');
 
-    // Xóa event listener cũ cho age input nếu có
-    if (ageInputHandler) {
-        ageInput.removeEventListener('input', ageInputHandler);
-    }
-
-
     // Thêm sự kiện cho input age chỉ cho phép nhập số và giá trị lớn hơn 0
-// Sửa đoạn code xử lý sự kiện cho ageInput
-    ageInputHandler = (event) => {
+    ageInput.addEventListener('input', event => {
         // Lấy giá trị hiện tại của input
         let value = event.target.value;
 
-        // Lưu lại vị trí con trỏ hiện tại
-        const cursorPosition = event.target.selectionStart;
+        // Loại bỏ ký tự không phai số
+        value = value.replace(/[^0-9]/g, '');
 
-        // Trong biểu thức chính quy để loại bỏ cả ký tự 'e' và 'E'
-        const newValue = value.replace(/[^0-9]|[eE]/g, '');
-
-        // Chỉ cập nhật nếu giá trị thực sự thay đổi
-        if (value !== newValue) {
-            // Cập nhật giá trị của input
-            event.target.value = newValue;
-
-            // Đặt lại vị trí con trỏ, điều chỉnh nếu có ký tự bị xóa
-            const cursorOffset = value.length - newValue.length;
-            event.target.setSelectionRange(
-                Math.max(0, cursorPosition - cursorOffset),
-                Math.max(0, cursorPosition - cursorOffset)
-            );
-        }
-
+        // Cập nhật giá trị của input
+        event.target.value = value;
         console.log(value)
-    }
-    // Thêm event listener mới
-    ageInput.addEventListener('input', ageInputHandler);
+    })
 
 
     // Xóa các event listener cũ nếu chúng tồn tại
