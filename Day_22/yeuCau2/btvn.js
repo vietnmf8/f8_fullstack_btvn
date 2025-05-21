@@ -16,7 +16,7 @@ const employees = [
         address: 'Vinh Tuong',
         province: 'Vinh Phuc',
         age: 27,
-        searchStr: 'Cong Pham Tin|Vinh Tuong|Vinh Phuc|27'
+        searchStr: '1|Cong Pham Tin|Vinh Tuong|Vinh Phuc|27'
     },
     {
         id: 2,
@@ -24,7 +24,7 @@ const employees = [
         address: 'Co Nhue',
         province: 'Ha Noi',
         age: 27,
-        searchStr: 'Nguyen Nam Tao|Co Nhue|Ha Noi|27'
+        searchStr: '2|Nguyen Nam Tao|Co Nhue|Ha Noi|27'
     },
     {
         id: 3,
@@ -32,7 +32,7 @@ const employees = [
         address: 'Duy Tien',
         province: 'Ha Nam',
         age: 27,
-        searchStr: 'Pham Xuan Bac|Duy Tien|Ha Nam|27'
+        searchStr: '3|Pham Xuan Bac|Duy Tien|Ha Nam|27'
     },
 ]
 
@@ -44,11 +44,19 @@ const provinces = [
     "Phu Tho",
     "Bac Blinh",
     "Bac Giang",
-    "Vinh Phuc",
-    "Phu Tho",
-    "Bac Blinh",
-    "Bac Giang"
+    "Ha Giang",
+    "Nam Dinh",
+    "Lao Cai",
+    "Thai Binh"
 ]
+
+// Xử lý ngăn chặn XSS
+function sanitizeInput(input) {
+    return String(input)
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
 
 // Biến cursor để theo dõi vị trí con trỏ trong dropdown
 let cursor = null;
@@ -156,6 +164,11 @@ function renderTable(employees) {
                     onOpenDialog(employee) // HIển thị dialog ở trạng thái edit -> truyền thẳng vào employee
                 })
 
+                // Thêm sự kiện click cho nút xoá
+                delBtn.addEventListener('click', () => {
+                    onOpenDeleteConfirm(employee)
+                })
+
                 /* Đưa vào <td> */
                 td.appendChild(editBtn)
                 td.appendChild(delBtn)
@@ -198,7 +211,7 @@ const getSearchField = (employee, searchStr) => {
     // Tách searchStr thành mảng cách phần tử
     const fields = employee.searchStr.split('|')
     // Lưu các tên trường tương ứng để xác định
-    const fieldNames = ['name', 'address', 'province', 'age'];
+    const fieldNames = ['id', 'name', 'address', 'province', 'age'];
     // Chuyển searchStr về lowerCase để so sánh không phân biệt hoa thường
     const lowerSearchStr = searchStr.toLowerCase();
 
@@ -218,7 +231,7 @@ const getSearchField = (employee, searchStr) => {
 //Tạo sự kiện input
 inputE.addEventListener('input', event => {
 // Lấy giá trị từ ô input làm từ khoá tìm kiếm
-    const searchStr = event.target.value
+    const searchStr = sanitizeInput(event.target.value)
 // Kiểm tra nếu không có từ khoá tìm kiếm th hiển thị toan bộ danh sách
     if (!searchStr) {
         return renderTable(employees)
@@ -234,6 +247,7 @@ inputE.addEventListener('input', event => {
     //- addressEmployees: chứa nhân viên có Địa chỉ chứa từ khoá tìm kiếm
     //- ageEmployees: chứa nhân viên có Tuổi chứa từ khoá tìm kiếm
     //- provinceEmployees: chứa nhân viên có Thành phố chứa từ khoá tìm kiếm
+    const idEmployees = [];
     const nameEmployees = [];
     const addressEmployees = [];
     const provinceEmployees = [];
@@ -244,7 +258,9 @@ inputE.addEventListener('input', event => {
         const searchField = getSearchField(employee, searchStr);
 
         //  Thêm nhân viên vào mảng với trường tìm kiếm
-        if (searchField === 'name') {
+        if (searchField === 'id') {
+            idEmployees.push(employee);
+        } else if (searchField === 'name') {
             nameEmployees.push(employee);
         } else if (searchField === 'address') {
             addressEmployees.push(employee);
@@ -253,6 +269,7 @@ inputE.addEventListener('input', event => {
         } else if (searchField === 'age') {
             ageEmployees.push(employee);
         }
+
     })
 
 // Tạo 2 mảng ể phân loại nhan viên:
@@ -282,7 +299,7 @@ inputE.addEventListener('input', event => {
     // Phân loại nhân viên trong mảng nameEmployees
     nameEmployees.forEach(employee => {
         // Tách searchStr để lấy phần name (phần tử đầu tiên sau khi split)
-        const name = employee.searchStr.split('|')[0].toLowerCase();
+        const name = employee.searchStr.split('|')[1].toLowerCase();
         console.log(name)
 
         // Kiểm tra xem tên có bắt đầu bằng từ khoá tìm kiếm không
@@ -298,6 +315,7 @@ inputE.addEventListener('input', event => {
 
 // Kết hợp 2 mảng : nhân viên bắt đầu tìm kiếm từ khoá sẽ hiển thị trước
     const sortedEmployees = [
+        ...idEmployees,
         ...nameTopEmployees,
         ...nameBottomEmployees,
         ...addressEmployees,
@@ -322,6 +340,18 @@ const dialogContainerE = document.querySelector('.dialog-container')
 const cancelBtnE = document.querySelector('.dialog-action .cancel-btn')
 const saveBtnE = document.querySelector('.dialog-action .save-btn')
 
+// Lưu tham chiếu đến các event handler để có thể xóa chúng sau này
+let provinceInputKeydownHandler;
+let provinceInputInputHandler;
+let provinceInputFocusHandler;
+let provinceInputBlurHandler;
+
+
+// Hàm kiểm tra giá trị province có hơp lệ không (có trong danh sách provinces không)
+const isValidProvince = (province) => {
+    return provinces.some(p => p.toLowerCase() === province.toLowerCase())
+}
+
 // Hàm Javascript Inline để mở dialog
 const onOpenDialog = (employee) => {
     dialogContainerE.style.display = 'block'
@@ -331,13 +361,37 @@ const onOpenDialog = (employee) => {
     // Ẩn dropdown ban đâu
     document.querySelector('.dialog-content .dropdown').style.display = 'none';
 
-    // Lấy input cho province
+    // Lấy input cho province và age
     const provinceInput = document.querySelector('.dialog-content input[name="province"]');
+    const ageInput = document.querySelector('.dialog-content input[name="age"]');
+
+    // Thêm sự kiện cho input age chỉ cho phép nhập số và giá trị lớn hơn 0
+    ageInput.addEventListener('input', event => {
+        // Lấy giá trị hiện tại của input
+        let value = event.target.value;
+
+        // Loại bỏ ký tự không phai số
+        value = value.replace(/[^0-9]/g, '');
+
+        // Cập nhật giá trị của input
+        event.target.value = value;
+        console.log(value)
+    })
+
+
+    // Xóa các event listener cũ nếu chúng tồn tại
+    if (provinceInputKeydownHandler) {
+        provinceInput.removeEventListener('keydown', provinceInputKeydownHandler);
+        provinceInput.removeEventListener('input', provinceInputInputHandler);
+        provinceInput.removeEventListener('focus', provinceInputFocusHandler);
+        provinceInput.removeEventListener('blur', provinceInputBlurHandler);
+    }
+
 
     // Thêm sự kiện input cho ô input trong province
-    provinceInput.addEventListener('input', (event) => {
+    provinceInputInputHandler = (event) => {
         // Lấy giá trị từ input làm từ khoá tìm kiếm
-        const searchStr = event.target.value.toLowerCase()
+        const searchStr = sanitizeInput(event.target.value.toLowerCase())
         // Lọc các thành phố theo từ khoá tìm kiếm
         const filteredItems = provinces.filter(item => {
             return item.toLowerCase().includes(searchStr)
@@ -346,24 +400,32 @@ const onOpenDialog = (employee) => {
         console.log(cursor)
         // Render lại dropdown với các mục đã lọc
         renderDropdown(filteredItems);
-    })
+    }
 
     // Thêm sự kiện focus cho provinces
-    provinceInput.addEventListener('focus', (event) => {
+    provinceInputFocusHandler = (event) => {
         // Khi focus vào input, hiển thị tất cả thành phố
         renderDropdown(provinces)
-    })
+    }
 
     // Thêm sự kiện blur cho provinces
-    provinceInput.addEventListener('blur', (event) => {
+    provinceInputBlurHandler = (event) => {
         // Thêm độ trễ nhỏ để có thể click vào dropdown trước khi nó biến mâ
         setTimeout(() => {
             document.querySelector('.dialog-content .dropdown').style.display = 'none';
+
+            // Kiểm tra tính hợp lệ của province khi rời khỏi ô input
+            const provinceValue = event.target.value.trim();
+
+            // Nếu có giá  trị không hợp lệ
+            if (provinceValue && !isValidProvince(provinceValue)) {
+                event.target.value = '';
+            }
         }, 150)
-    })
+    }
 
     // Thêm sự kiện keydown cho province
-    provinceInput.addEventListener('keydown', (event) => {
+    provinceInputKeydownHandler = (event) => {
         const dropdownItems = document.querySelectorAll('.dropdown-item');
         // Xử lý phím mũi tên xuống
         if (event.key === 'ArrowDown') {
@@ -425,10 +487,16 @@ const onOpenDialog = (employee) => {
                 cursor = null;
             }
         }
-    })
+    }
+    // Thêm các event listener mới
+    provinceInput.addEventListener('input', provinceInputInputHandler);
+    provinceInput.addEventListener('focus', provinceInputFocusHandler);
+    provinceInput.addEventListener('blur', provinceInputBlurHandler);
+    provinceInput.addEventListener('keydown', provinceInputKeydownHandler);
 
     // Khi dialog không được truyền employee vào
     if (employee === null) {
+        document.querySelector('.dialog-title').textContent = 'Create Employee'
         document.querySelector('.dialog-content input[name="name"]').value = ''
         document.querySelector('.dialog-content input[name="address"]').value = ''
         document.querySelector('.dialog-content input[name="province"]').value = ''
@@ -450,6 +518,55 @@ const onCloseDialog = () => {
     dialogContainerE.style.display = 'none'
 }
 
+
+// Lấy ra hộp thoại để xác nhận xoá
+const deleteConfirmPopup = document.getElementById('deleteConfirmPopup')
+const deleteTitle = document.getElementById('deleteTitle')
+const noDeleteBtn = document.getElementById('noDeleteBtn')
+const yesDeleteBtn = document.getElementById('yesDeleteBtn')
+
+// Biến để lưu nhân viên hiện tại đang được chọn để xoá
+let currentEmployeeToDelete = null;
+
+// Hàm mở hộp thoại xác nhận xoá
+const onOpenDeleteConfirm = (employee) => {
+    // Lưu nhan viên hiện tại để xoá
+    currentEmployeeToDelete = employee;
+
+    // Cập nhật tiêu đề với tên nhân viên
+    deleteTitle.textContent = employee.name;
+
+    // Hiển thị hộp thoại xác nhận
+    deleteConfirmPopup.style.display = 'block';
+
+    // Thêm sự kiện cho nút No
+    noDeleteBtn.onclick = () => {
+        // Đóng hộp thoại
+        deleteConfirmPopup.style.display = 'none';
+    }
+
+    // Them sự kiện cho nút Next
+    yesDeleteBtn.onclick = () => {
+        // Xoa nhân viên khỏi mảng employees
+        const index = employees.findIndex(emp => emp.id === employee.id);
+        if (index !== -1) {
+            employees.splice(index, 1);
+
+            //Cập nhật
+            employees.forEach((emp, index) => {
+                emp.searchStr = `${emp.id}|${emp.name}|${emp.address}|${emp.province}|${emp.age}`;
+            })
+
+            //Render lại bảng
+            renderTable(employees);
+        }
+        //Đóng hộp thoại
+        deleteConfirmPopup.style.display = 'none';
+    }
+
+}
+
+
 // Hàm Save
 // Khi save thì phải lấy id lớn nhất đẻ thêm mới
 const getMaxId = () => {
@@ -459,21 +576,49 @@ const getMaxId = () => {
 
 
 const onSave = () => {
-    // Lấy 3 cái input trong dialog-content
-    const employee = {
-        id: getMaxId(),
-        name: document.querySelector('.dialog-content input[name="name"]').value,
-        address: document.querySelector('.dialog-content input[name="address"]').value,
-        province: document.querySelector('.dialog-content input[name="province"]').value,
-        age: document.querySelector('.dialog-content input[name="age"]').value,
-    };
+    const name = sanitizeInput(document.querySelector('.dialog-content input[name="name"]').value);
+    const address = sanitizeInput(document.querySelector('.dialog-content input[name="address"]').value);
+    const province = sanitizeInput(document.querySelector('.dialog-content input[name="province"]').value);
+    const ageInput = document.querySelector('.dialog-content input[name="age"]');
+    const age = sanitizeInput(ageInput.value);
+
+    //Kiểm tra tính hợp lệ của dữ liệu
+    // Kiểm tra tuổi phải số và lớn hơn 0
+    if (!age || parseInt(age) > 0) {
+        console.log("Tuổi phải lớn hon 0")
+        ageInput.focus();
+        return;
+    }
+
+    // KIểm tra tính hợp lệ của province
+    if (province && !isValidProvince(province)) {
+        console.log("Thành phố không hợp lệ")
+        document.querySelector('.dialog-content input[name="province"]').focus()
+    }
+
+
+    //Id mới cho nhân viên
+    const newId = getMaxId();
 
     // Tạo searchStr mới bao gồm cả thành phố
+    const searchStr = `${newId}|${name}|${address}|${province}|${age}`;
+
+    // Lấy 3 cái input trong dialog-content
+    const employee = {
+        id: newId,
+        name: name,
+        address: address,
+        province: province,
+        age: parseInt(age),
+        searchStr: searchStr,
+    };
+
 
     //Push vào mảng employees ban đầu
     employees.push(employee)
 
     //Render lại bảng
+    console.log(employees)
     renderTable(employees)
     //Đóng Dialog
     onCloseDialog()
