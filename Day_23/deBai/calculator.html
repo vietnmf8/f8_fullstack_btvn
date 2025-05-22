@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<!--CSS-->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        font-family: Lato, sans-serif;
+    }
+
+    #calculator {
+        border: 1px solid #ccc;
+        width: 400px;
+        height: 800px;
+    }
+
+    #screen {
+        border: 1px solid #ccc;
+        width: 380px;
+        height: 100px;
+        margin: 10px auto;
+    }
+
+    #keyboard {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 10px;
+        gap: 10px;
+    }
+
+    .btn {
+        background: #e7e7e7;
+        height: 50px;
+        width: 50px;
+        flex-basis: calc((100% - 30px) / 4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .btn:nth-child(15) {
+        background: #1d62bd;
+        color: #fff;
+    }
+
+    .btn:nth-child(13) {
+        background: #ea324e;
+        color: #fff;
+    }
+
+    .btn:nth-child(17) {
+        background: #ed6f14;
+        color: #fff;
+    }
+</style>
+
+
+<!--Body-->
+<body>
+<!--Máy tính-->
+<div id="calculator">
+    <!--Màn hình-->
+    <div id="screen"></div>
+    <!--Bàn phím-->
+    <div id="keyboard">
+
+    </div>
+
+</div>
+<!--Javascript-->
+<!--File xử lý các function cho sự kiện-->
+<script type="module" src="handleCalculator.js"></script>
+<!--File render HTML-->
+<script type="module" src="render.js"></script>
+
+
+</body>
+</html>
