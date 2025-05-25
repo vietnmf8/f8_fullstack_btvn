@@ -355,11 +355,17 @@ const isValidProvince = (province) => {
 // Thêm biến toàn cục để lưu trữ event handler
 let ageInputHandler;
 
+// Thêm biến toàn cục để lưu employee đang được edit
+let currentEditingEmployee = null
+
 // Hàm Javascript Inline để mở dialog
 const onOpenDialog = (employee) => {
     dialogContainerE.style.display = 'block'
     // Reset cursor khi mo dialog
     cursor = null;
+
+    // Lưu employee đang được edit
+    currentEditingEmployee = employee;
 
     // Ẩn dropdown ban đâu
     document.querySelector('.dialog-content .dropdown').style.display = 'none';
@@ -539,6 +545,8 @@ const onOpenDialog = (employee) => {
 
 }
 
+
+
 // Hàm đóng dialog
 const onCloseDialog = () => {
     dialogContainerE.style.display = 'none'
@@ -602,17 +610,45 @@ const getMaxId = () => {
 
 
 const onSave = () => {
-    const name = sanitizeInput(document.querySelector('.dialog-content input[name="name"]').value);
-    const address = sanitizeInput(document.querySelector('.dialog-content input[name="address"]').value);
-    const province = sanitizeInput(document.querySelector('.dialog-content input[name="province"]').value);
-    const ageInput = document.querySelector('.dialog-content input[name="age"]');
-    const age = sanitizeInput(ageInput.value);
+    const name = sanitizeInput(document.querySelector('.dialog-content input[name="name"]').value.trim());
+    const address = sanitizeInput(document.querySelector('.dialog-content input[name="address"]').value.trim());
+    const province = sanitizeInput(document.querySelector('.dialog-content input[name="province"]').value.trim());
+    const ageInput = document.querySelector('.dialog-content input[name="age"]'.trim());
+    const age = sanitizeInput(ageInput.value.trim());
 
     //Kiểm tra tính hợp lệ của dữ liệu
-    // Kiểm tra tuổi phải số và lớn hơn 0
-    if (!age || parseInt(age) > 0) {
-        console.log("Tuổi phải lớn hon 0")
+    // Kiểm tra name đã được nhập chưa
+    if (!name) {
+        alert('Vui lòng nhập tên nhân viên');
+        document.querySelector('.dialog-content input[name="name"]').focus();
+        return;
+    }
+
+    if (!address) {
+        alert('Vui lòng nhập địa chỉ');
+        document.querySelector('.dialog-content input[name="address"]').focus();
+        return;
+    }
+
+    // Kiểm tra tuổi
+    if (!age) {
+        alert('Vui lòng nhập tuổi');
         ageInput.focus();
+        return;
+    }
+
+
+    // Kiểm tra tuổi phải số và lớn hơn 0
+    const ageNumber = parseInt(age);
+    if (isNaN(ageNumber) || ageNumber <= 0 || ageNumber > 100) {
+        alert('Tuổi phải là số dương và không quá 100');
+        ageInput.focus();
+        return;
+    }
+
+    if (!province) {
+        alert('Vui lòng nhập thành phố');
+        document.querySelector('.dialog-content input[name="province"]').focus();
         return;
     }
 
@@ -622,32 +658,53 @@ const onSave = () => {
         document.querySelector('.dialog-content input[name="province"]').focus()
     }
 
+    console.log(currentEditingEmployee)
+    // Kiểm tra xem đang ở chế độ edit hay create
+    if (currentEditingEmployee !== null) {
+        // Chế độ Edit, cập nhật employee hiện có
+        const index = employees.findIndex(emp => emp.id === currentEditingEmployee.id);
+        console.log(index)
+        if (index !== -1) {
+            // Cập nhật thông tin Employee
+            employees[index].name = name;
+            employees[index].address = address;
+            employees[index].province = province;
+            employees[index].age = parseInt(age);
+            // Cập nhật searchStr với id cũ
+            employees[index].searchStr = `${employees[index].id}|${name}|${address}|${province}|${age}`;
+        }
+    }   else {
+        //Id mới cho nhân viên
+        const newId = getMaxId();
 
-    //Id mới cho nhân viên
-    const newId = getMaxId();
+        // Tạo searchStr mới bao gồm cả thành phố
+        const searchStr = `${newId}|${name}|${address}|${province}|${age}`;
 
-    // Tạo searchStr mới bao gồm cả thành phố
-    const searchStr = `${newId}|${name}|${address}|${province}|${age}`;
-
-    // Lấy 3 cái input trong dialog-content
-    const employee = {
-        id: newId,
-        name: name,
-        address: address,
-        province: province,
-        age: parseInt(age),
-        searchStr: searchStr,
-    };
+        // Lấy 3 cái input trong dialog-content
+        const employee = {
+            id: newId,
+            name: name,
+            address: address,
+            province: province,
+            age: parseInt(age),
+            searchStr: searchStr,
+        };
 
 
-    //Push vào mảng employees ban đầu
-    employees.push(employee)
+        //Push vào mảng employees ban đầu
+        employees.push(employee)
+    }
+
+
 
     //Render lại bảng
     console.log(employees)
     renderTable(employees)
     //Đóng Dialog
     onCloseDialog()
+
+    // Reset biến currentEditingEmployee
+    currentEditingEmployee = null;
 }
 
 
