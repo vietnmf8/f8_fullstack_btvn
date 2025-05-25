@@ -1,61 +1,251 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Ai là Triệu Phú</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align top for long content */
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #app {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .question-title {
+            border: 1px solid #b0c4de; /* Light steel blue border */
+            padding: 20px;
+            margin-bottom: 15px;
+            font-size: 1.25em; /* Slightly larger */
+            background-color: #e6f0fa; /* Very light blue background */
+            border-radius: 6px; /* Softer corners */
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .question-option {
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            padding: 15px; /* More padding */
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+            background-color: #f9f9f9;
+        }
+
+        .question-option:hover {
+            background-color: #e9e9e9;
+            border-color: #bbb;
+        }
+
+        .question-option.selected {
+            background-color: #ffe0b2; /* Light orange for selected */
+            border-color: #ffb74d; /* Orange border */
+        }
+
+        .question-option.correct {
+            background-color: #c8e6c9; /* Light green for correct */
+            border-color: #66bb6a; /* Green border */
+            color: #2e7d32; /* Darker green text */
+            font-weight: bold;
+        }
+
+        .question-option.incorrect {
+            background-color: #ffcdd2; /* Light red for incorrect */
+            border-color: #e57373; /* Red border */
+            color: #c62828; /* Darker red text */
+        }
+
+        .question-option.disabled {
+            pointer-events: none;
+            opacity: 0.65;
+        }
+        .question-option.hidden-by-5050 {
+            display: none !important; /* Ensure it's hidden for 50/50 */
+        }
+
+
+        .check-btn, .help-btn, #restart-btn {
+            margin-top: 20px;
+            border: none; /* Cleaner look */
+            padding: 12px 22px;
+            cursor: pointer;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.2s;
+            margin-right: 10px; /* Spacing for buttons in a row */
+        }
+        .check-btn:hover, .help-btn:hover:not(:disabled), #restart-btn:hover {
+            background-color: #45a049; /* Darker green */
+        }
+
+        .check-btn:active, .help-btn:active:not(:disabled), #restart-btn:active {
+            background: #3e8e41;
+            user-select: none;
+        }
+
+        .help-btn:disabled {
+            background-color: silver;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        #help-container .help-btn {
+            background-color: #2196F3; /* Blue for help buttons */
+        }
+        #help-container .help-btn:hover:not(:disabled) {
+            background-color: #1e88e5;
+        }
+
+
+        #timer-container, #prize-ladder-container, #help-container, #game-over-message {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+        }
+        #timer-container {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #d32f2f; /* Red timer text */
+            text-align: center;
+        }
+
+        #prize-ladder-container h4, #help-container h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        #prize-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #prize-list li {
+            padding: 6px 10px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+            background-color: #fff;
+            border: 1px solid #eee;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        #prize-list li.current-prize {
+            font-weight: bold;
+            background-color: #ffeb3b; /* Yellow for current prize */
+            color: #333;
+            border-left: 5px solid #f57f17; /* Orange left border */
+        }
+        #prize-list li.milestone {
+            /* Milestones can have a slightly different background or border if current-prize isn't on them */
+            /* color: #1976d2; */ /* Blue for milestones not currently active */
+            border-top: 1px dashed #1976d2;
+            border-bottom: 1px dashed #1976d2;
+        }
+        #prize-list li.milestone.current-prize { /* If milestone is also current prize */
+            /* background-color: #ffc107; Slightly darker yellow */
+            /* border-left-color: #c77000; Darker orange */
+        }
+
+
+        #audience-poll-results, #phone-suggestion, #expert-suggestion {
+            margin-top: 15px;
+            padding: 12px;
+            border: 1px dashed #007bff;
+            background-color: #e7f3ff;
+            border-radius: 4px;
+        }
+        #audience-poll-results h4, #phone-suggestion h4, #expert-suggestion h4 {
+            margin-top:0;
+            margin-bottom: 8px;
+            color: #0056b3;
+        }
+
+        #game-over-message {
+            text-align: center;
+            background-color: #e6f7ff; /* Light blue for game over */
+            border-color: #91d5ff;
+        }
+        #game-over-message h2 {
+            color: #0050b3;
+        }
+        #restart-btn {
+            background-color: #ff9800; /* Orange for restart */
+            margin-top: 10px;
+        }
+        #restart-btn:hover {
+            background-color: #f57c00;
+        }
+
+    </style>
 </head>
-<!--CSS --------------------------------------------------------->
-<style>
-    .question-title {
-        border: 1px solid #ccc;
-        padding: 32px;
-    }
-
-    .question-option {
-        margin-top: 5px;
-        border: 1px solid #ccc;
-        padding: 8px;
-    }
-
-    .check-btn {
-        margin-top: 5px;
-        border: 1px solid #ccc;
-        padding: 10px;
-        cursor: pointer;
-    }
-
-    .check-btn:active {
-        background: #d61b1b;
-        color: #fff;
-        user-select: none;
-    }
-</style>
-
-
-<!--HTML --------------------------------------------------------->
 <body>
-    <div id="app">
-        <!--Question-->
-        <div class="question">
-            <!--Question Title-->
-            <div class="question-title">How are you</div>
-            <!--Question Option -->
-            <div class="question-option" value="a">A: Ok</div>
-            <div class="question-option" value="b">B: hmm</div>
-            <div class="question-option" value="c">C: good</div>
-            <div class="question-option" value="d">D: Viet</div>
-        </div>
-
-        <!--Button Check-->
-        <div class="check-btn">Check</div>
+<div id="app">
+    <!-- Khối thời gian -->
+    <div id="timer-container">
+        Thời gian: <span id="timer">30</span>s
     </div>
+
+    <!-- Khối mức thưởng -->
+    <div id="prize-ladder-container">
+        <h4>Mức thưởng:</h4>
+        <ul id="prize-list"></ul>
+    </div>
+
+    <!-- Khối câu hỏi -->
+    <div class="question">
+        <div class="question-title">Câu hỏi sẽ được hiển thị ở đây</div>
+        <div class="question-option" data-value="a">A:</div>
+        <div class="question-option" data-value="b">B:</div>
+        <div class="question-option" data-value="c">C:</div>
+        <div class="question-option" data-value="d">D:</div>
+    </div>
+
+    <!-- Nút Submit -->
+    <div class="check-btn">Kiểm Tra</div>
+
+    <!-- Khối trợ giúp -->
+    <div id="help-container">
+        <h4>Trợ giúp (Có thể dùng từ câu 6):</h4>
+        <button class="help-btn" id="help-fifty" disabled>50/50</button>
+        <button class="help-btn" id="help-audience" disabled>Hỏi Khán Giả</button>
+        <button class="help-btn" id="help-phone" disabled>Gọi Điện Thoại</button>
+        <button class="help-btn" id="help-expert" disabled>Tư Vấn Chuyên Gia</button>
+        <div id="audience-poll-results" style="display:none;"></div>
+        <div id="phone-suggestion" style="display:none;"></div>
+        <div id="expert-suggestion" style="display:none;"></div>
+    </div>
+
+    <!-- Khối GameOver -->
+    <div id="game-over-message" style="display:none;">
+        <h2 id="game-over-title">Game Over</h2>
+        <p id="final-message-text"></p>
+        <p>Tiền thưởng của bạn: <span id="final-prize-amount">0</span> VND</p>
+        <button id="restart-btn">Chơi Lại</button>
+    </div>
+</div>
 </body>
 
-<!--Javascript --------------------------------------------------------->
+<!--Javascript-->
 <script type="module" src="./references.js"></script>
 <script type="module" src="./const.js"></script>
 <script type="module" src="./render.js"></script>
+<script type="module" src="./gameLogic.js"></script>
 </html>

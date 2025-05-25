@@ -19,7 +19,7 @@
 //      + 4 box hiện đáp án
 //      + 1 box hiện trợ giúp
 //      + 1 box hiện danh sách số câu - tiền thưởng tương ứng
-// - Thêm câu hỏi (màn hình riêng) -> Không làm
+
 // - Bộ câu hỏi:
 //      + Biến questions -> là array để chứa câu hỏi
 // - Tạo biến lưu các sự trợ giúp -> khi click vào trợ giúp nào thì ẩn đi luôn
