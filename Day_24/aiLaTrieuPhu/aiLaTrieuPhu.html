@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!--CSS --------------------------------------------------------->
+<style>
+    .question-title {
+        border: 1px solid #ccc;
+        padding: 32px;
+    }
+
+    .question-option {
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        padding: 8px;
+    }
+
+    .check-btn {
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .check-btn:active {
+        background: #d61b1b;
+        color: #fff;
+        user-select: none;
+    }
+</style>
+
+
+<!--HTML --------------------------------------------------------->
+<body>
+    <div id="app">
+        <!--Question-->
+        <div class="question">
+            <!--Question Title-->
+            <div class="question-title">How are you</div>
+            <!--Question Option -->
+            <div class="question-option" value="a">A: Ok</div>
+            <div class="question-option" value="b">B: hmm</div>
+            <div class="question-option" value="c">C: good</div>
+            <div class="question-option" value="d">D: Viet</div>
+        </div>
+
+        <!--Button Check-->
+        <div class="check-btn">Check</div>
+    </div>
+</body>
+
+<!--Javascript --------------------------------------------------------->
+<script type="module" src="./references.js"></script>
+<script type="module" src="./const.js"></script>
+<script type="module" src="./render.js"></script>
+</html>
