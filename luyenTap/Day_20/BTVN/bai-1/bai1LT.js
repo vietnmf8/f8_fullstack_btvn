@@ -81,4 +81,3 @@ mergedData.forEach((data) => {
 })
 table.appendChild(tbody);
 
-

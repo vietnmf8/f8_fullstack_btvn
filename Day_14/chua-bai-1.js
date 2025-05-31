@@ -20,7 +20,7 @@ for (const student of students) {
     // Bước 2: Lấy tên lớp | VD: "12A1"
     const className = student.class; //"12A1"
     const studentName = student.name; //"An"
-
+x
     if (!results[className]) { //key
         results[className] = []; // key = []
     }

@@ -1,0 +1,155 @@
+.dialog-container {
+    /*display: block;*/
+    display: none;
+}
+
+.dialog-container .overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    inset: 0;
+    display: flex;
+}
+
+.dialog {
+    width: 500px;
+    background: #fff;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.dialog-title {
+    background: #333333;
+    color: #fff;
+    font-size: 32px;
+    padding: 12px;
+}
+
+.dialog-content {
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.dialog-content input {
+    width: 100%;
+    padding: 12px;
+    font-size: 20px;
+}
+
+.dialog-action {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+
+.dialog-action button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1;
+    font-size: 24px;
+    color: #fff;
+}
+
+.dialog-action .cancel-btn {
+    background: red;
+}
+
+.dialog-action .save-btn {
+    background: green;
+}
+
+.autocomplete {
+    position: relative;
+    width: 100%;
+}
+
+.autocomplete .dropdown {
+    position: absolute;
+    width: 100%;
+    box-shadow: 0 0 10px #ccc;
+    max-height: 200px;
+    overflow-y: scroll;
+    background: white;
+    z-index: 10;
+    /*display: none;*/
+}
+
+.autocomplete .dropdown-item {
+    padding: 8px 12px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.autocomplete .dropdown-item:hover {
+    background-color: #f5f5f5;
+}
+
+#deleteConfirmPopup {
+    display: none;
+}
+
+#deleteConfirmPopup .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    width: 350px;
+    text-align: center;
+}
+
+#deleteConfirmPopup h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 24px;
+}
+
+#deleteConfirmPopup p {
+    margin: 15px 0;
+    font-size: 18px;
+}
+
+#deleteConfirmPopup .dialog-action {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#deleteConfirmPopup .popup-no-btn,
+#deleteConfirmPopup .popup-yes-btn {
+    padding: 8px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    width: 45%;
+}
+
+#deleteConfirmPopup .popup-no-btn {
+    background-color: #6c757d;
+}
+
+#deleteConfirmPopup .popup-yes-btn {
+    background-color: #dc3545;
+}
+
+/* Overlay để làm mờ nền khi hiển thị dialog */
+#deleteConfirmPopup::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+

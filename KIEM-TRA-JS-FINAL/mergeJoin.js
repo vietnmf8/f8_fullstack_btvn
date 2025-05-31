@@ -119,9 +119,9 @@ const colors =  [
 
 const flowers =  [
     { id: 1, name: 'flower 1', colorId: 1 },
-    { id: 2, name: 'flower 2', colorId: 1 },
+    { id: 2, name: 'flower 2', colorId: 2 },
     { id: 3, name: 'flower 3', colorId: 1 },
-    { id: 4, name: 'flower 4', colorId: 1 }
+    { id: 4, name: 'flower 4', colorId: 2 }
 ]
 
 
@@ -156,6 +156,7 @@ const mergedFlowers = [];
 flowers.forEach(flower => {
     //Tìm color phù hợp
     const colorFound = binarySearch(colors, flower.colorId); // -> { id: 1, name: 'color 1' }
+    console.log(colorFound)
 
     //Tạo object mới
     const mergedFlower = {
