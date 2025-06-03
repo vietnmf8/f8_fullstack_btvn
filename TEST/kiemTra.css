@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: Lato, sans-serif;
+}
+
+.container {
+    width: 1200px;
+    margin: 50px auto;
+    border: 1px solid #ccc;
+    height: 500px;
+    padding: 30px;
+}
+
+/* Action */
+.action {
+    display: flex;
+    gap: 30px
+}
+input, select, button {
+    padding: 20px;
+    font-size: 2rem;
+}
+button {
+    margin-left: auto;
+}
+
+
+/* Table */
+table {
+    margin-top: 40px;
+    font-size: 2rem;
+    width: 100%;
+}
+
+th {
+    border-top: 1px solid #ccc;
+}
+
+th, td {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+
+}
+
+.mdi-office-building {
+    color: green;
+}
+
+.mdi-calendar-remove {
+    color: orange;
+}
