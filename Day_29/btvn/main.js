@@ -4,29 +4,21 @@ const productsContainer = document.querySelector('.products-container');
 
 /* Call API by Fetch */
  const fetchProducts = async () => {
-    const response = await fetch('https://fakestoreapi.com/products');
-    const products = await response.json();
-    console.log("Data: ", products);
+    try {
+        const response = await fetch('https://fakestoreapi.com/products');
+        const products = await response.json();
+        console.log("Data: ", products);
 
-    // Run function
-    renderProducts(products)
+        // Run function
+        renderProducts(products)
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 fetchProducts()
 
 
-const product = {
-    "id": 1,
-    "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-    "price": 109.95,
-    "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-    "category": "men's clothing",
-    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-    "rating": {
-        "rate": 3.9,
-        "count": 120
-    }
-}
 
 
 /* Function: Create Card */
@@ -38,7 +30,7 @@ const createProductCard = (product) => {
     // Product Img
     const img = document.createElement('img');
     img.className = 'product-img';
-    img.src = product.image
+    img.src = product.image;
     img.alt = product.title;
     card.appendChild(img)
 
