@@ -236,7 +236,7 @@ const handleEditTodo = async (id, currentTitle) => {
 
 
 // Khởi tạo ứng dụng
- initApp = async () => {
+ const initApp = async () => {
 
     todoForm.addEventListener('submit', handleAddTodo);
 
