@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<!--CSS-->
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .calculate {
+        width: 300px;
+        height: 500px;
+        border: 1px solid #ccc;
+    }
+
+    .calculate-screen {
+        width: 270px;
+        height: 100px;
+        border: 1px solid #ccc;
+        margin: 15px auto;
+    }
+
+    .calculate-keyboard {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+    }
+
+    .calculate-button {
+        padding: 10px;
+        width: calc((100% - 30px) / 4);
+        border: 1px solid #ccc;
+        cursor: pointer;
+    }
+</style>
+
+
+<!--Body-->
+<body>
+    <div class="container">
+        <div class="calculate">
+            <div class="calculate-screen"></div>    <!--Màn hình-->
+            <div class="calculate-keyboard">        <!--Bàn phím-->
+                <!--Phần này được render tại render.js-->
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<!--JS-->
+<script type="module" src="./render.js"></script>
+<script type="module" src="./handleCal.js"></script>
+</html>
