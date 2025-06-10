@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // console.log(1)
+    /* Call back hell */
+    // setTimeout(
+    //     function() {
+    //     console.log(2)
+    //         setTimeout(
+    //             function() {
+    //                 console.log(3)
+    //             }, 1000
+    //         )
+    //     }, 1000
+    // )
+
+    const log_1 = () => {
+        console.log(1)
+    }
+    const log_2 = (callbackFunction) => {
+        setTimeout(() => {
+            console.log(2)
+            callbackFunction(log_4)
+        }, 1000)
+    }
+    const log_3 = (callbackFunction) => {
+        setTimeout(() => {
+            console.log(3)
+            callbackFunction()
+        }, 1000)
+    }
+    const log_4 = () => {
+        setTimeout(() => {
+            console.log(4)
+        }, 1000)
+    }
+
+    log_2(log_3)
+
+
+
+</script>
+</body>
+</html>

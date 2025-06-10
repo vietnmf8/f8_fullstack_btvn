@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const doSt = new Promise(
+        //     (resolve, reject) => {
+        //         const test = setTimeout(() => {
+        //             console.log('quynh')
+        //         }, 1000)
+        //     }
+        // )
+        /* Đã hiểu */
+        // const doSt = new Promise(
+        //     // Định nghĩa hàm
+        //     (resolve, reject) => {
+        //         setTimeout(
+        //             () => {
+        //                 console.log('quynh')
+        //             }, 600
+        //         )
+        //         setTimeout(
+        //             () => {
+        //                 resolve('quynh')
+        //             }, 1000
+        //         )
+        //     }
+        // )
+        // doSt.then(
+        //     // Định nghĩa hàm
+        //     () => {
+        //         console.log('done')
+        //     }
+        // )
+
+        /* Đã hiểu */
+        // const doSt = new Promise((resolve, reject) => {
+        //     const test = () => {
+        //         console.log('quynh')
+        //     }
+        //     setTimeout(() => {
+        //         resolve(test)
+        //     }, 1000)
+        // })
+        //
+        // doSt.then((data) => {
+        //     data()
+        // })
+
+        /* Đã hiểu */
+        // let myPromise = new Promise(
+        //     // Định nghĩa function
+        //     function (resolve, reject) {
+        //         // Chỉ chạy 1 trong 2 thất bại hoặc thành công
+        //         reject('Thất bại!')
+        //         resolve('Đã thành công!')
+        //     }
+        // );
+        //
+        // myPromise
+        //     .then(
+        //         // Định nghĩa hàm
+        //         function (value) {
+        //             console.log(value)
+        //         },
+        //         function (error) {
+        //             console.log(error)
+        //         },
+        //     )
+
+        /* Đã hiểu */
+        // const onDisplay = () => {
+        //     console.log('quynh')
+        // }
+        //
+        // const myPromise = new Promise(
+        //     function (resolve, reject) {
+        //         resolve(onDisplay)
+        //     }
+        // )
+        // myPromise.then(
+        //     function (value) {
+        //         console.log(value())
+        //     }
+        // )
+
+        /*Đã hiểu*/
+
+        // const delay = (duration) => {
+        //     return new Promise(
+        //         function (resolve, reject) {
+        //             console.log('vao day nhé!')
+        //             resolve('hihi')
+        //         }
+        //     )
+        // }
+        // // Vì return -> promise
+        // delay(1000)
+        //     .then(
+        //         function(value) {
+        //             console.log(value)
+        //         }
+        //     )
+        //     .catch(
+        //
+        //     )
+
+
+        myPromise = new Promise((resolve, reject) => {
+            setTimeout(
+                function () {
+                    resolve('Xin chào')
+                }, 1000
+            )
+        })
+
+        myPromise
+            .then(
+                function (value) {
+                console.log(value)
+                    return '| nha quynh'
+                }
+            )
+            .then(
+                function (value) {
+                    console.log('vao day', value)
+                    return myPromise // Đã resolve
+                }
+            )
+            .then(
+                function (value) {
+                    console.log(value)
+                }
+            )
+            .catch(
+            function () {
+                console.log('loi')
+            }
+        )
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
