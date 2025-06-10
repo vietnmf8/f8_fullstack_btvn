@@ -1,4 +1,4 @@
-const data = [
+let data = [
     {id: 1, name: 'Nguyễn Văn A', age: 22, email: 'a@example.com'},
     {id: 2, name: 'Trần Thị B', age: 21, email: 'b@example.com'},
     {id: 3, name: 'Lê Văn C', age: 23, email: 'c@example.com'}
