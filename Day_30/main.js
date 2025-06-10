@@ -236,15 +236,12 @@ const handleEditTodo = async (id, currentTitle) => {
 
 
 // Khởi tạo ứng dụng
-// Initialize App
-async function initApp() {
-    // Add form submit event listener
+ initApp = async () => {
+
     todoForm.addEventListener('submit', handleAddTodo);
 
-    // Load todos from API
     todos = await getTodos();
 
-    // Render initial todos
     renderTodos();
 
     // Focus on input
