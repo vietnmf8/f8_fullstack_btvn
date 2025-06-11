@@ -1243,6 +1243,8 @@ window.SL_ClearFeedbackState = function() {
         setTimeout(() => {
             btn.textContent = originalText;
         }, 1500);
+        window.getSelection().removeAllRanges();  // Xóa vùng bôi đen sau khi copy
+
     });
 
     clipboard.on('error', function(e) {
