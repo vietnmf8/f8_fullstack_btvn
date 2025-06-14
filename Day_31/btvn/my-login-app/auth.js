@@ -88,5 +88,5 @@ function redirectToHome() {
 
 function redirectToLogin() {
     console.log('Đang chuyển hướng đến trang login...');
-    window.location.href = 'index.html';
+    window.location.href = 'sessonStorage.html';
 }

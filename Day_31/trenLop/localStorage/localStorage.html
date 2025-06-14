@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Lưu vính viễn -->
+    <script>
+        /* Set: Đặt thuộc tính */
+        localStorage.setItem('name', 'ok nhe')
+        localStorage.viet = 'quynh'
+
+        /* Get: Lay thuộc tính */
+        // const name = localStorage.getItem('name')
+        const name = localStorage.name
+        document.writeln(name)
+
+        /* Remove: Xoa thuộc tính */
+        localStorage.removeItem('name') // Xoa 1
+        localStorage.clear() // Xoa het
+    </script>
+</body>
+</html>
