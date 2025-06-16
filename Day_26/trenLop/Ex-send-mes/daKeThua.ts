@@ -13,7 +13,7 @@ class SmsService implements  MessageService, Test {
         console.log('Sending SMS')
     }
     doTest() {
-        console.log('do Test')
+        console.log('do Index')
     }
 }
 
