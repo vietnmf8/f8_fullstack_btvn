@@ -30,7 +30,7 @@ const postApi = async (endpoint, body) => {
 }
 
 
-// put Api
+// PUT Api
 const putApi = async (endpoint, body) => {
     try {
         const response = await fetch(`${baseUrl}/${endpoint}/`, {
@@ -47,6 +47,21 @@ const putApi = async (endpoint, body) => {
     }
 }
 
-// dele
 
-export {getApi, postApi, putApi}
+// DELETE Api
+const deleteApi = async (endpoint) => {
+    try {
+        const response = await fetch(`${baseUrl}/${endpoint}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        return await response.json()
+    }
+    catch (e) {
+        console.error(e)
+    }
+}
+
+export {getApi, postApi, putApi, deleteApi}

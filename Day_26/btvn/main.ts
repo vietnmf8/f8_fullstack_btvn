@@ -148,7 +148,7 @@ class Reader implements IReader {
     }
 }
 
-/* Test 1 */
+/* Index 1 */
 // Khởi tạo
 // const book1 = new Book(1, 'Tam Cam', 'Viet')
 // const book2 = new Book(2, 'Thanh Giong', 'Nam')

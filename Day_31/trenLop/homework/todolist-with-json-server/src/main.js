@@ -1,4 +1,4 @@
-import {getApi, postApi, putApi} from "./utils/api.js";
+import {getApi, postApi, putApi, deleteApi} from "./utils/api.js";
 
 const todoListRef = document.querySelector(".todo-list");
 const addTodoBtnRef = document.getElementById('add-todo-btn')
@@ -22,6 +22,16 @@ const onEditStatus = async (todo) => {
 
     await onMounted()
 }
+
+/* Step 17: handle onDelete */
+const onDelete = async (todo) => {
+    // Xác nhận trước khi xóa
+    if (confirm('Bạn có chắc muốn xóa todo này?')) {
+        await deleteApi(`todos/${todo.id}`)
+        await onMounted()
+    }
+}
+
 
 
 /* Step 2: Creat 1 todo */
@@ -71,7 +81,7 @@ const createTodo = (todo) => {
     delBtnRef.classList.add('del-btn', 'fa-solid', 'fa-trash')
     /* Step 12: Add click event */
     delBtnRef.addEventListener("click", () => {
-        console.log('del')
+        onDelete(todo)
     })
 
     //todoItemRef append
