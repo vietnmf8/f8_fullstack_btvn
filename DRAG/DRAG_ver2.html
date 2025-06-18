@@ -1,0 +1,1305 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>KÉO THẢ</title><style>
+    /* cspell:disable-file */
+    /* webkit printing magic: print all background colors */
+    html {
+        -webkit-print-color-adjust: exact;
+        scroll-behavior: smooth;
+    }
+    * {
+        box-sizing: border-box;
+        -webkit-print-color-adjust: exact;
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    @media only screen {
+        body {
+            margin: 2em auto;
+            max-width: 900px;
+            color: rgb(55, 53, 47);
+        }
+    }
+
+    body {
+        line-height: 1.5;
+        white-space: pre-wrap;
+    }
+
+    a,
+    a.visited {
+        color: inherit;
+        text-decoration: underline;
+    }
+
+    .pdf-relative-link-path {
+        font-size: 80%;
+        color: #444;
+    }
+
+    h1,
+    h2,
+    h3 {
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 0.75em;
+    }
+
+    h1 {
+        font-size: 1.875rem;
+        margin-top: 1.875rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        margin-top: 1.25rem;
+    }
+
+    .source {
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        padding: 1.5em;
+        word-break: break-all;
+    }
+
+    .callout {
+        border-radius: 3px;
+        padding: 1rem;
+    }
+
+    figure {
+        margin: 1.25em 0;
+        page-break-inside: avoid;
+    }
+
+    figcaption {
+        opacity: 0.5;
+        font-size: 85%;
+        margin-top: 0.5em;
+    }
+
+    mark {
+        background-color: transparent;
+    }
+
+    .indented {
+        padding-left: 1.5em;
+    }
+
+    hr {
+        background: transparent;
+        display: block;
+        width: 100%;
+        height: 1px;
+        visibility: visible;
+        border: none;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    .no-click {
+        user-select: none;
+        pointer-events: none;
+    }
+
+    @media only print {
+        img {
+            max-height: 100vh;
+            object-fit: contain;
+        }
+    }
+
+    @page {
+        margin: 1in;
+    }
+
+    .collection-content {
+        font-size: 0.875rem;
+    }
+
+    .column-list {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .column {
+        padding: 0 1em;
+    }
+
+    .column:first-child {
+        padding-left: 0;
+    }
+
+    .column:last-child {
+        padding-right: 0;
+    }
+
+    .table_of_contents-item {
+        display: block;
+        font-size: 0.875rem;
+        line-height: 1.3;
+        padding: 0.125rem;
+    }
+
+    .table_of_contents-indent-1 {
+        margin-left: 1.5rem;
+    }
+
+    .table_of_contents-indent-2 {
+        margin-left: 3rem;
+    }
+
+    .table_of_contents-indent-3 {
+        margin-left: 4.5rem;
+    }
+
+    .table_of_contents-link {
+        text-decoration: none;
+        opacity: 0.7;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid rgba(55, 53, 47, 0.09);
+        border-collapse: collapse;
+    }
+
+    table {
+        border-left: none;
+        border-right: none;
+    }
+
+    th,
+    td {
+        font-weight: normal;
+        padding: 0.25em 0.5em;
+        line-height: 1.5;
+        min-height: 1.5em;
+        text-align: left;
+    }
+
+    th {
+        color: rgba(55, 53, 47, 0.6);
+    }
+
+    ol,
+    ul {
+        margin: 0;
+        margin-block-start: 0.6em;
+        margin-block-end: 0.6em;
+    }
+
+    li > ol:first-child,
+    li > ul:first-child {
+        margin-block-start: 0.6em;
+    }
+
+    ul > li {
+        list-style: disc;
+    }
+
+    ul.to-do-list {
+        padding-inline-start: 0;
+    }
+
+    ul.to-do-list > li {
+        list-style: none;
+    }
+
+    .to-do-children-checked {
+        text-decoration: line-through;
+        opacity: 0.375;
+    }
+
+    ul.toggle > li {
+        list-style: none;
+    }
+
+    ul {
+        padding-inline-start: 1.7em;
+    }
+
+    ul > li {
+        padding-left: 0.1em;
+    }
+
+    ol {
+        padding-inline-start: 1.6em;
+    }
+
+    ol > li {
+        padding-left: 0.2em;
+    }
+
+    .mono ol {
+        padding-inline-start: 2em;
+    }
+
+    .mono ol > li {
+        text-indent: -0.4em;
+    }
+
+    .toggle {
+        padding-inline-start: 0em;
+        list-style-type: none;
+    }
+
+    /* Indent toggle children */
+    .toggle > li > details {
+        padding-left: 1.7em;
+    }
+
+    .toggle > li > details > summary {
+        margin-left: -1.1em;
+    }
+
+    .selected-value {
+        display: inline-block;
+        padding: 0 0.5em;
+        background: rgba(206, 205, 202, 0.5);
+        border-radius: 3px;
+        margin-right: 0.5em;
+        margin-top: 0.3em;
+        margin-bottom: 0.3em;
+        white-space: nowrap;
+    }
+
+    .collection-title {
+        display: inline-block;
+        margin-right: 1em;
+    }
+
+    .page-description {
+        margin-bottom: 2em;
+    }
+
+    .simple-table {
+        margin-top: 1em;
+        font-size: 0.875rem;
+        empty-cells: show;
+    }
+    .simple-table td {
+        height: 29px;
+        min-width: 120px;
+    }
+
+    .simple-table th {
+        height: 29px;
+        min-width: 120px;
+    }
+
+    .simple-table-header-color {
+        background: rgb(247, 246, 243);
+        color: black;
+    }
+    .simple-table-header {
+        font-weight: 500;
+    }
+
+    time {
+        opacity: 0.5;
+    }
+
+    .icon {
+        display: inline-block;
+        max-width: 1.2em;
+        max-height: 1.2em;
+        text-decoration: none;
+        vertical-align: text-bottom;
+        margin-right: 0.5em;
+    }
+
+    img.icon {
+        border-radius: 3px;
+    }
+
+    .user-icon {
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 100%;
+        margin-right: 0.5rem;
+    }
+
+    .user-icon-inner {
+        font-size: 0.8em;
+    }
+
+    .text-icon {
+        border: 1px solid #000;
+        text-align: center;
+    }
+
+    .page-cover-image {
+        display: block;
+        object-fit: cover;
+        width: 100%;
+        max-height: 30vh;
+    }
+
+    .page-header-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .page-header-icon-with-cover {
+        margin-top: -0.72em;
+        margin-left: 0.07em;
+    }
+
+    .page-header-icon img {
+        border-radius: 3px;
+    }
+
+    .link-to-page {
+        margin: 1em 0;
+        padding: 0;
+        border: none;
+        font-weight: 500;
+    }
+
+    p > .user {
+        opacity: 0.5;
+    }
+
+    td > .user,
+    td > time {
+        white-space: nowrap;
+    }
+
+    input[type="checkbox"] {
+        transform: scale(1.5);
+        margin-right: 0.6em;
+        vertical-align: middle;
+    }
+
+    p {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+
+    .image {
+        border: none;
+        margin: 1.5em 0;
+        padding: 0;
+        border-radius: 0;
+        text-align: center;
+    }
+
+    .code,
+    code {
+        background: rgba(135, 131, 120, 0.15);
+        border-radius: 3px;
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 85%;
+        tab-size: 2;
+    }
+
+    code {
+        color: #eb5757;
+    }
+
+    .code {
+        padding: 1.5em 1em;
+    }
+
+    .code-wrap {
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+
+    .code > code {
+        background: none;
+        padding: 0;
+        font-size: 100%;
+        color: inherit;
+    }
+
+    blockquote {
+        font-size: 1.25em;
+        margin: 1em 0;
+        padding-left: 1em;
+        border-left: 3px solid rgb(55, 53, 47);
+    }
+
+    .bookmark {
+        text-decoration: none;
+        max-height: 8em;
+        padding: 0;
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+    }
+
+    .bookmark-title {
+        font-size: 0.85em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 1.75em;
+        white-space: nowrap;
+    }
+
+    .bookmark-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bookmark-info {
+        flex: 4 1 180px;
+        padding: 12px 14px 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .bookmark-image {
+        width: 33%;
+        flex: 1 1 180px;
+        display: block;
+        position: relative;
+        object-fit: cover;
+        border-radius: 1px;
+    }
+
+    .bookmark-description {
+        color: rgba(55, 53, 47, 0.6);
+        font-size: 0.75em;
+        overflow: hidden;
+        max-height: 4.5em;
+        word-break: break-word;
+    }
+
+    .bookmark-href {
+        font-size: 0.75em;
+        margin-top: 0.25em;
+    }
+
+    .sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+    .code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+    .serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+    .mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+    .pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+    .pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+    .pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+    .pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+    .pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+    .pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+    .pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+    .pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+    .pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+    .pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+    .pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+    .pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+    .pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+    .pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+    .pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+    .pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+    .highlight-default {
+        color: rgba(50, 48, 44, 1);
+    }
+    .highlight-gray {
+        color: rgba(115, 114, 110, 1);
+        fill: rgba(115, 114, 110, 1);
+    }
+    .highlight-brown {
+        color: rgba(159, 107, 83, 1);
+        fill: rgba(159, 107, 83, 1);
+    }
+    .highlight-orange {
+        color: rgba(217, 115, 13, 1);
+        fill: rgba(217, 115, 13, 1);
+    }
+    .highlight-yellow {
+        color: rgba(203, 145, 47, 1);
+        fill: rgba(203, 145, 47, 1);
+    }
+    .highlight-teal {
+        color: rgba(68, 131, 97, 1);
+        fill: rgba(68, 131, 97, 1);
+    }
+    .highlight-blue {
+        color: rgba(51, 126, 169, 1);
+        fill: rgba(51, 126, 169, 1);
+    }
+    .highlight-purple {
+        color: rgba(144, 101, 176, 1);
+        fill: rgba(144, 101, 176, 1);
+    }
+    .highlight-pink {
+        color: rgba(193, 76, 138, 1);
+        fill: rgba(193, 76, 138, 1);
+    }
+    .highlight-red {
+        color: rgba(205, 60, 58, 1);
+        fill: rgba(205, 60, 58, 1);
+    }
+    .highlight-default_background {
+        color: rgba(50, 48, 44, 1);
+    }
+    .highlight-gray_background {
+        background: rgba(248, 248, 247, 1);
+    }
+    .highlight-brown_background {
+        background: rgba(244, 238, 238, 1);
+    }
+    .highlight-orange_background {
+        background: rgba(251, 236, 221, 1);
+    }
+    .highlight-yellow_background {
+        background: rgba(251, 243, 219, 1);
+    }
+    .highlight-teal_background {
+        background: rgba(237, 243, 236, 1);
+    }
+    .highlight-blue_background {
+        background: rgba(231, 243, 248, 1);
+    }
+    .highlight-purple_background {
+        background: rgba(248, 243, 252, 1);
+    }
+    .highlight-pink_background {
+        background: rgba(252, 241, 246, 1);
+    }
+    .highlight-red_background {
+        background: rgba(253, 235, 236, 1);
+    }
+    .block-color-default {
+        color: inherit;
+        fill: inherit;
+    }
+    .block-color-gray {
+        color: rgba(115, 114, 110, 1);
+        fill: rgba(115, 114, 110, 1);
+    }
+    .block-color-brown {
+        color: rgba(159, 107, 83, 1);
+        fill: rgba(159, 107, 83, 1);
+    }
+    .block-color-orange {
+        color: rgba(217, 115, 13, 1);
+        fill: rgba(217, 115, 13, 1);
+    }
+    .block-color-yellow {
+        color: rgba(203, 145, 47, 1);
+        fill: rgba(203, 145, 47, 1);
+    }
+    .block-color-teal {
+        color: rgba(68, 131, 97, 1);
+        fill: rgba(68, 131, 97, 1);
+    }
+    .block-color-blue {
+        color: rgba(51, 126, 169, 1);
+        fill: rgba(51, 126, 169, 1);
+    }
+    .block-color-purple {
+        color: rgba(144, 101, 176, 1);
+        fill: rgba(144, 101, 176, 1);
+    }
+    .block-color-pink {
+        color: rgba(193, 76, 138, 1);
+        fill: rgba(193, 76, 138, 1);
+    }
+    .block-color-red {
+        color: rgba(205, 60, 58, 1);
+        fill: rgba(205, 60, 58, 1);
+    }
+    .block-color-default_background {
+        color: inherit;
+        fill: inherit;
+    }
+    .block-color-gray_background {
+        background: rgba(248, 248, 247, 1);
+    }
+    .block-color-brown_background {
+        background: rgba(244, 238, 238, 1);
+    }
+    .block-color-orange_background {
+        background: rgba(251, 236, 221, 1);
+    }
+    .block-color-yellow_background {
+        background: rgba(251, 243, 219, 1);
+    }
+    .block-color-teal_background {
+        background: rgba(237, 243, 236, 1);
+    }
+    .block-color-blue_background {
+        background: rgba(231, 243, 248, 1);
+    }
+    .block-color-purple_background {
+        background: rgba(248, 243, 252, 1);
+    }
+    .block-color-pink_background {
+        background: rgba(252, 241, 246, 1);
+    }
+    .block-color-red_background {
+        background: rgba(253, 235, 236, 1);
+    }
+    .select-value-color-uiBlue { background-color: undefined; }
+    .select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+    .select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+    .select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+    .select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+    .select-value-color-translucentGray { background-color: undefined; }
+    .select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+    .select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+    .select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+    .select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+    .select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+    .select-value-color-pageGlass { background-color: undefined; }
+    .select-value-color-washGlass { background-color: undefined; }
+
+    .checkbox {
+        display: inline-flex;
+        vertical-align: text-bottom;
+        width: 16;
+        height: 16;
+        background-size: 16px;
+        margin-left: 2px;
+        margin-right: 5px;
+    }
+
+    .checkbox-on {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+    }
+
+    .checkbox-off {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+    }
+
+    .code-block {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        margin-top: -70px;
+    }
+
+
+    .copy-btn {
+        position: absolute;
+        top: 100px;
+        right: 20px;
+        background: #fff5fa;
+        border: 1px solid #905;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background 0.2s;
+        font-family: Lato, sans-serif;
+        color: #905;
+    }
+
+    .copy-btn:hover {
+        background: #905;
+        color: #fff;
+        border:none;
+    }
+
+</style></head><body><article id="20c68cc7-13a8-8026-bf4f-c0beb6a73dd0" class="page sans"><header><h1 class="page-title">KÉO THẢ</h1><p class="page-description"></p></header><div class="page-body"><nav id="20c68cc7-13a8-8098-916d-fd1edb83fd76" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#20c68cc7-13a8-80c1-b625-fe04fa34ee16"><mark class="highlight-red">#</mark> PHẦN 1: CHUẨN BỊ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#20c68cc7-13a8-80cd-a487-c53aa5fa2c6c"><mark class="highlight-yellow">#</mark> 1. Đối tượng Kéo và Thả</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20c68cc7-13a8-8011-9880-d474f57aefa9"><mark class="highlight-pink">#</mark> Drag Items</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20c68cc7-13a8-801c-80b0-df127f6b4101"><mark class="highlight-pink">#</mark> Drop Target</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20c68cc7-13a8-8003-bfdb-cb7be19eac16"><mark class="highlight-pink">#</mark> Nút Submit</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20c68cc7-13a8-806d-92ba-f34900dac184"><mark class="highlight-pink">#</mark> Các layer phản hồi &amp; các button </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#20d68cc7-13a8-80d9-8a58-c0a991467fd7"><mark class="highlight-yellow">#</mark> 2. Thiết lập Tương tác trên Slide (QUAN TRỌNG)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20d68cc7-13a8-8019-90e8-fd176214f44f"><mark class="highlight-pink">#</mark> Convert to Freeform Drag &amp; Drop &amp; Option</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20d68cc7-13a8-803f-a8e4-fbd22ec882b7"><mark class="highlight-pink">#</mark> Tạo Motion Path để Reset</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#20e68cc7-13a8-802e-b267-e2b1ce80fc9e"><mark class="highlight-yellow">#</mark> Tạo biến </a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20e68cc7-13a8-807f-9e78-d2a6d23a1578"><mark class="highlight-pink">#</mark> <strong>Biến Giá trị &amp; Trạng thái:</strong> (Tạo cho mỗi Drag Item)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20e68cc7-13a8-8071-946d-f3257d5cba95"><mark class="highlight-pink">#</mark> Biến Điều khiển Chung</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20e68cc7-13a8-80e6-a92f-c8967320b47c"><mark class="highlight-pink">#</mark> Biến cho Scrolling Panel (Chỉ tạo khi cần)</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#20e68cc7-13a8-804f-8aa2-cf636baa11ef"><mark class="highlight-red">#</mark> PHẦN 2: KHỐI CODE THỰC THI</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#20e68cc7-13a8-8005-9121-e484c15dbf17"><mark class="highlight-yellow">#</mark> Chỉnh sửa tại phần Cấu hình trung tâm</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20e68cc7-13a8-80ba-881c-edc55702523b"><mark class="highlight-pink">#</mark> PHẦN 1: CHẾ ĐỘ HOẠT ĐỘNG CHUNG</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20e68cc7-13a8-80ed-a625-d45487751891"><mark class="highlight-pink">#</mark> PHẦN 2: CẤU HÌNH CÁC ĐỐI TƯỢNG KÉO (ITEMS)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20e68cc7-13a8-8086-baac-ea8bbfe0844f"><mark class="highlight-pink">#</mark> PHẦN 3: CẤU HÌNH CÁC ĐỐI TƯỢNG THẢ (TARGETS) VÀ LUẬT CHƠI</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20e68cc7-13a8-80f8-9ab4-de1b509e6cab"><mark class="highlight-pink">#</mark> PHẦN 4: CẤU HÌNH PHẢN HỒI VÀ BIẾN STORYLINE</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#20e68cc7-13a8-8041-8fbb-c08b2e5b2934"><mark class="highlight-red">#</mark> PHẦN 3: TRIỂN KHAI TRIGGER TRONG STORYLINE</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#20e68cc7-13a8-80f2-8358-db838e68f301"><mark class="highlight-pink">#</mark> 1. Trigger khi Slide bắt đầu (Timeline starts) <mark class="highlight-red">*</mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20e68cc7-13a8-809d-a72b-e45e069ebe62"><mark class="highlight-pink">#</mark> 2. Trigger cho hành động Kéo Thả <mark class="highlight-red">*</mark></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20e68cc7-13a8-80ac-bdc2-e06bc77b9df7"><mark class="highlight-pink">#</mark> 3. Trigger thay đổi Trạng thái trực quan</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20e68cc7-13a8-808e-814a-e07cc6cac548"><mark class="highlight-pink">#</mark> 4. Trigger cho nút SUBMIT</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20e68cc7-13a8-80aa-8dba-cad3f4d54e9d"><mark class="highlight-pink">#</mark> 5. <strong>Trigger để hiện các Layer phản hồi</strong></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20e68cc7-13a8-80a9-9727-d2e38297930f"><mark class="highlight-pink">#</mark> 6. Trigger cho các nút “THỬ LẠI” (TryAgain)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#20e68cc7-13a8-80e5-96fb-f1b025d3aa06"><mark class="highlight-pink">#</mark> 6. Trigger cho các nút “THỬ LẠI” (Warning)</a></div></nav><p id="20c68cc7-13a8-8068-9117-f7ee20df1c46" class="">
+</p><h1 id="20c68cc7-13a8-80c1-b625-fe04fa34ee16" class=""><mark class="highlight-red">#</mark> PHẦN 1: CHUẨN BỊ</h1><h2 id="20c68cc7-13a8-80cd-a487-c53aa5fa2c6c" class=""><mark class="highlight-yellow">#</mark> 1. Đối tượng Kéo và Thả</h2><h3 id="20c68cc7-13a8-8011-9880-d474f57aefa9" class=""><mark class="highlight-pink">#</mark> Drag Items</h3><ul id="20c68cc7-13a8-804d-99db-e4311fdddd64" class="bulleted-list"><li style="list-style-type:disc">Danh sách các đối tượng sẽ được kéo (ví dụ: A, B, C...)</li></ul><figure id="20c68cc7-13a8-8010-8884-de36c0eab25c" class="image"><a href="Picture2.png"><img style="width:6827px" src="Picture2.png"/></a><figcaption>→ Đối tượng Kéo!</figcaption></figure><h3 id="20c68cc7-13a8-801c-80b0-df127f6b4101" class=""><mark class="highlight-pink">#</mark> Drop Target</h3><ul id="20c68cc7-13a8-806d-b323-c5e17316d016" class="bulleted-list"><li style="list-style-type:disc">Danh sách các khu vực sẽ nhận đối tượng kéo (ví dụ: 1, 2, 3...).</li></ul><figure id="20c68cc7-13a8-800c-acf6-d57abeced07b" class="image"><a href="Picture3.png"><img style="width:6827px" src="Picture3.png"/></a><figcaption>→ Đối tượng Thả!</figcaption></figure><p id="20c68cc7-13a8-80dc-8157-f986c22195b4" class="">
+</p><ul id="20c68cc7-13a8-8037-836e-ea113bdf77eb" class="bulleted-list"><li style="list-style-type:disc">Trên mỗi đối tượng này, tạo 3 trạng thái (States) với tên chính xác:<br/> <br/><code>Normal</code>, <code>Drop Correct</code>, <code>Drop Incorrect</code>.</li></ul><figure id="20c68cc7-13a8-804b-be75-e821fb2f2eb8" class="image"><a href="Picture4.png"><img style="width:6827px" src="Picture4.png"/></a><figcaption>→ Tương tự với các đối tượng còn lại!</figcaption></figure><h3 id="20c68cc7-13a8-8003-bfdb-cb7be19eac16" class=""><mark class="highlight-pink">#</mark> Nút Submit</h3><figure id="20d68cc7-13a8-8082-a6ca-e693592f7af6" class="image"><a href="Picture1.png"><img style="width:6827px" src="Picture1.png"/></a></figure><p id="20d68cc7-13a8-8004-aa13-f578d5404a2b" class="">
+</p><h3 id="20c68cc7-13a8-806d-92ba-f34900dac184" class=""><mark class="highlight-pink">#</mark> Các layer phản hồi &amp; các button </h3><ul id="20c68cc7-13a8-8000-9591-f4c481f96b86" class="bulleted-list"><li style="list-style-type:disc"><code>Correct</code> (Khi trả lời đúng)</li></ul><ul id="20c68cc7-13a8-8066-b947-c36246c33416" class="bulleted-list"><li style="list-style-type:disc"><code>Incorrect</code> (Khi trả lời sai và hết lượt)</li></ul><ul id="20c68cc7-13a8-807e-bc04-c02107d38f04" class="bulleted-list"><li style="list-style-type:disc"><code>TryAgain</code> (Khi trả lời sai nhưng còn lượt)</li></ul><ul id="20c68cc7-13a8-8094-bdad-e1e0fceb23a3" class="bulleted-list"><li style="list-style-type:disc"><code>Warning</code> (Khi Drop Target chưa được lấp đầy)</li></ul><figure id="20d68cc7-13a8-800a-b300-c9b5275ac31d" class="image"><a href="Picture1%201.png"><img style="width:6827px" src="Picture1%201.png"/></a></figure><p id="20d68cc7-13a8-80c0-9f1e-eedf4f98048d" class="">
+</p><h2 id="20d68cc7-13a8-80d9-8a58-c0a991467fd7" class=""><mark class="highlight-yellow">#</mark> 2. Thiết lập Tương tác trên Slide (QUAN TRỌNG)</h2><h3 id="20d68cc7-13a8-8019-90e8-fd176214f44f" class=""><mark class="highlight-pink">#</mark> Convert to Freeform Drag &amp; Drop &amp; Option</h3><figure id="20d68cc7-13a8-80aa-b25c-d19765ca6d72" class="image"><a href="Picture1%202.png"><img style="width:6827px" src="Picture1%202.png"/></a></figure><p id="20d68cc7-13a8-80ac-82dc-c99fe6c2c7cb" class="">
+</p><h3 id="20d68cc7-13a8-803f-a8e4-fbd22ec882b7" class=""><mark class="highlight-pink">#</mark> Tạo Motion Path để Reset</h3><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="20d68cc7-13a8-803e-b5c3-ef0e093909d7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><p id="20d68cc7-13a8-80bf-bbea-ddce147231e0" class=""><strong>Mục đích:</strong> Đưa các đối tượng Drag Items quay về vị trí ban đầu</p></div></figure><p id="20d68cc7-13a8-8037-811c-ee32dc87b839" class="">
+</p><figure id="20d68cc7-13a8-806c-8b80-d623c8d7ef94" class="image"><a href="Picture1%203.png"><img style="width:6827px" src="Picture1%203.png"/></a></figure><ul id="20d68cc7-13a8-80ab-9b4e-eae02cc212f2" class="bulleted-list"><li style="list-style-type:disc"><strong>Cách làm:</strong><ol type="1" id="20d68cc7-13a8-80b1-bfec-eb3982fd5825" class="numbered-list" start="1"><li>Chọn một đối tượng kéo (ví dụ: A).</li></ol><ol type="1" id="20d68cc7-13a8-800e-84e0-dcaef0dbb2f4" class="numbered-list" start="2"><li>Vào tab <code>Animations</code> -&gt; <code>Add Motion Path</code> -&gt; <code>Lines</code>.</li></ol><ol type="1" id="20d68cc7-13a8-8047-b767-f054a3c2a154" class="numbered-list" start="3"><li>Trong <code>Path Options</code>, đặt <strong>Duration</strong> là <code>0.10</code> giây và <strong>Length</strong> là <code>0px</code>.</li></ol></li></ul><ul id="20d68cc7-13a8-80f6-9666-dbdd6b5ca32e" class="bulleted-list"><li style="list-style-type:disc"><strong>Lưu ý:</strong> Lặp lại bước này cho <strong>TẤT CẢ</strong> các đối tượng kéo. Mỗi đối tượng sẽ có một motion path dài 0px của riêng nó.</li></ul><p id="20e68cc7-13a8-80b7-87b4-d98cb1147f49" class="">
+</p><p id="20e68cc7-13a8-8022-9bdf-f8306a671981" class="">
+</p><h2 id="20e68cc7-13a8-802e-b267-e2b1ce80fc9e" class=""><mark class="highlight-yellow">#</mark> Tạo biến </h2><h3 id="20e68cc7-13a8-807f-9e78-d2a6d23a1578" class=""><mark class="highlight-pink">#</mark> <strong>Biến Giá trị &amp; Trạng thái:</strong> (Tạo cho mỗi Drag Item)</h3><ul id="20e68cc7-13a8-80e7-831a-fabda4b73a28" class="bulleted-list"><li style="list-style-type:disc"><code>A</code>, <code>B</code>... (Type: <code>Number</code>, Default: <code>0</code>)</li></ul><ul id="20e68cc7-13a8-807d-83e0-d3246ce0eaf7" class="bulleted-list"><li style="list-style-type:disc"><code>A_state</code>, <code>B_state</code>... (Type: <code>Text</code>, Default: trống)</li></ul><h3 id="20e68cc7-13a8-8071-946d-f3257d5cba95" class=""><mark class="highlight-pink">#</mark> Biến Điều khiển Chung</h3><ul id="20e68cc7-13a8-808f-967f-eb5f591a4515" class="bulleted-list"><li style="list-style-type:disc"><code>Completed</code> (Type: <code>True/False</code>, Default: <code>False</code>)</li></ul><ul id="20e68cc7-13a8-8058-834c-d8b11ad92a63" class="bulleted-list"><li style="list-style-type:disc"><code>Attempts</code> (Type: <code>Number</code>, Default: <code>0</code>)</li></ul><ul id="20e68cc7-13a8-8097-afca-e7ce10773785" class="bulleted-list"><li style="list-style-type:disc"><code>Feedback</code> (Type: <code>Text</code>, Default: trống)</li></ul><h3 id="20e68cc7-13a8-80e6-a92f-c8967320b47c" class=""><mark class="highlight-pink">#</mark> Biến cho Scrolling Panel (Chỉ tạo khi cần)</h3><ul id="20e68cc7-13a8-80eb-a7a7-f7de727c873e" class="bulleted-list"><li style="list-style-type:disc"><code>DOMState_A</code>, <code>DOMState_B</code>... (Type: <code>Text</code>, Default: trống)</li></ul><p id="20e68cc7-13a8-80dc-ae9a-cd71e1852543" class="">
+</p><figure id="20e68cc7-13a8-8096-b183-e6c778ddea2f" class="image"><a href="image.png"><img style="width:589.9857788085938px" src="image.png"/></a><figcaption>Kỳ vọng!</figcaption></figure><h1 id="20e68cc7-13a8-804f-8aa2-cf636baa11ef" class=""><mark class="highlight-red">#</mark> PHẦN 2: KHỐI CODE THỰC THI</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/>
+    <div class="code-block">
+        <button class="copy-btn" data-clipboard-target="#code-20e68cc7-13a8-808f-999d-c7e053869012">Copy</button>
+        <pre id="code-20e68cc7-13a8-808f-999d-c7e053869012" class="code"><code class="language-JavaScript">// Khởi tạo tham chiếu đến trình phát Storyline
+var player = GetPlayer();
+
+// ==================================================================================
+// KHỐI CẤU HÌNH TRUNG TÂM (Định dạng chi tiết)
+// ==================================================================================
+window.SL_MainConfig = {
+    // --- PHẦN 1: CHẾ ĐỘ HOẠT ĐỘNG CHUNG ---
+    interactionModes: {
+        validationMode: "individual",       // Logic kiểm tra: "individual" hoặc "set"
+        dropFeedbackMode: "instant",        // Chế độ phản hồi: "instant" (tức thì) hoặc "deferred" (khi nhấn Next)
+        submitButtonInitialMode: "visible",    // Trạng thái nút Next: "hidden" hoặc "visible"
+        isScrollingPanel: false             // Bật/tắt logic cho Scrolling Panel: true hoặc false
+    },
+
+    // --- PHẦN 2: CẤU HÌNH CÁC ĐỐI TƯỢNG KÉO (ITEMS) ---
+     items: {
+        "A": { storylineVar: "A", stateVarName: "A_state", correctGroup: "GROUP_1", dataModelId: "5a8QfYZFerS", domStateVar: "DOMState_A" },
+        "B": { storylineVar: "B", stateVarName: "B_state", correctGroup: "GROUP_3", dataModelId: "5gTuEw9WGpz", domStateVar: "DOMState_B" },
+        "C": { storylineVar: "C", stateVarName: "C_state", correctGroup: "GROUP_2", dataModelId: "5otBhcfWPbl", domStateVar: "DOMState_C" },
+        "D": { storylineVar: "D", stateVarName: "D_state", correctGroup: "GROUP_3", dataModelId: "6nlteSLtnV1", domStateVar: "DOMState_D" },
+        "E": { storylineVar: "E", stateVarName: "E_state", correctGroup: "GROUP_1", dataModelId: "5mh9i48ZwIs", domStateVar: "DOMState_E" },
+        "F": { storylineVar: "F", stateVarName: "F_state", correctGroup: "GROUP_2", dataModelId: "65Xrjg1gAXV", domStateVar: "DOMState_F" }
+    },
+
+    // --- PHẦN 3: CẤU HÌNH CÁC ĐỐI TƯỢNG THẢ (TARGETS) VÀ LUẬT CHƠI ---
+    targets: {
+        "1": { value: 1 },
+        "2": { value: 2 },
+        "3": { value: 3 },
+        "4": { value: 4 },
+        "5": { value: 5 },
+        "6": { value: 6 }
+    },
+    targetGroups: { // Dùng cho validationMode: 'individual'
+        "GROUP_1": [1, 2],
+        "GROUP_2": [3, 4],
+        "GROUP_3": [5, 6],
+    },
+    validationSets: [ // Dùng cho validationMode: 'set'
+        {
+            requiredItems: ["A", "B"],
+            targetValues: [1, 2]
+        }
+    ],
+
+    // --- PHẦN 4: CẤU HÌNH PHẢN HỒI VÀ BIẾN STORYLINE ---
+    feedbackConfig: {
+        completionVar: "Completed",
+        attemptsVar: "Attempts",
+        feedbackVar: "Feedback",
+        correctLayer: "Correct",
+        incorrectLayer: "Incorrect",
+        tryAgainLayer: "TryAgain",
+        warningLayer: "Warning",
+        maxAttempts: 999
+    },
+
+    // --- PHẦN 5: CẤU HÌNH NÂNG CAO ---
+    advancedConfig: {
+        itemStates: {
+            normal: "Normal",
+            dropCorrect: "Drop Correct",
+            dropIncorrect: "Drop Incorrect"
+        },
+        dom: {
+            scrollingPanelId: "5dPk8aunoGp"
+        }
+    }
+};
+
+// ==================================================================================
+// HÀM LƯU TRẠNG THÁI DOM & CSS BAN ĐẦU
+// ==================================================================================
+window.SL_SaveInitialDOMStates = function() {
+    var player = GetPlayer();
+    var itemsToSave = window.SL_MainConfig.items;
+    for (var itemKey in itemsToSave) {
+        if (itemsToSave.hasOwnProperty(itemKey)) {
+            var itemConfig = itemsToSave[itemKey];
+            if (itemConfig.dataModelId && itemConfig.domStateVar) {
+                const shape = document.querySelector(`[data-model-id="${itemConfig.dataModelId}"]`);
+                const container = document.getElementById("acc-" + itemConfig.dataModelId);
+                if (container && shape) {
+                    const containerStyle = window.getComputedStyle(container);
+                    const shapeStyle = window.getComputedStyle(shape);
+                    const initialState = {
+                        containerState: { position: containerStyle.position, left: containerStyle.left, top: containerStyle.top, transform: containerStyle.transform },
+                        shapeState: { transform: shapeStyle.transform }
+                    };
+                    player.SetVar(itemConfig.domStateVar, JSON.stringify(initialState));
+                }
+            }
+        }
+    }
+};
+
+// ==================================================================================
+// HÀM RESET TOÀN BỘ TƯƠNG TÁC
+// ==================================================================================
+window.SL_ResetInteraction = function() {
+    var player = GetPlayer();
+    var config = window.SL_MainConfig;
+    var items = config.items;
+    var fbConfig = config.feedbackConfig;
+    var itemStateNames = config.advancedConfig.itemStates;
+    var domConfig = config.advancedConfig.dom;
+
+    for (var itemKey in items) {
+        if (items.hasOwnProperty(itemKey)) {
+            var itemConfig = items[itemKey];
+            player.SetVar(itemConfig.storylineVar, 0);
+            if (itemConfig.stateVarName) {
+                player.SetVar(itemConfig.stateVarName, "");
+                player.SetVar(itemConfig.stateVarName, itemStateNames.normal);
+            }
+        }
+    }
+    player.SetVar(fbConfig.completionVar, false);
+
+    if (config.interactionModes.isScrollingPanel && domConfig && domConfig.scrollingPanelId) {
+        const scrollPanel = document.querySelector(`[data-model-id="${domConfig.scrollingPanelId}"]`);
+        const scrollAreaContent = scrollPanel ? scrollPanel.querySelector('.scrollarea-area.is-scrollable > div') : null;
+        if (!scrollAreaContent) { return; }
+        for (var itemKey in items) {
+            if (items.hasOwnProperty(itemKey)) {
+                var itemConfig = items[itemKey];
+                if (itemConfig.dataModelId && itemConfig.domStateVar) {
+                    var savedStateString = player.GetVar(itemConfig.domStateVar);
+                    if (savedStateString) {
+                        try {
+                            const savedState = JSON.parse(savedStateString);
+                            const shape = document.querySelector(`[data-model-id="${itemConfig.dataModelId}"]`);
+                            const container = document.getElementById("acc-" + itemConfig.dataModelId);
+                            if (container && shape) {
+                                scrollAreaContent.appendChild(container);
+                                scrollAreaContent.appendChild(shape);
+                                const cState = savedState.containerState;
+                                container.style.position = cState.position;
+                                container.style.left = cState.left;
+                                container.style.top = cState.top;
+                                container.style.transform = cState.transform;
+                                const sState = savedState.shapeState;
+                                shape.style.transform = sState.transform;
+                            }
+                        } catch (e) {}
+                    }
+                }
+            }
+        }
+    }
+};
+
+// ==================================================================================
+// HÀM MỚI: CHỈ RESET CÁC BIẾN CỦA CÂU TRẢ LỜI SAI
+// ==================================================================================
+window.SL_ResetIncorrect_VariablesOnly = function() {
+    var player = GetPlayer();
+    var config = window.SL_MainConfig;
+    var items = config.items;
+
+    for (var itemKey in items) {
+        if (items.hasOwnProperty(itemKey)) {
+            var itemConfig = items[itemKey];
+            var currentItemValue = player.GetVar(itemConfig.storylineVar);
+
+            if (currentItemValue === 0) {
+                continue;
+            }
+
+            var isCorrect = false;
+            if (config.interactionModes.validationMode === 'individual') {
+                var correctGroupKey = itemConfig.correctGroup;
+                if (correctGroupKey && config.targetGroups[correctGroupKey] && config.targetGroups[correctGroupKey].includes(currentItemValue)) {
+                    isCorrect = true;
+                }
+            }
+
+            if (!isCorrect) {
+                player.SetVar(itemConfig.storylineVar, 0);
+            }
+        }
+    }
+};
+
+// ==================================================================================
+// HÀM XỬ LÝ SỰ KIỆN KÉO THẢ CHÍNH
+// ==================================================================================
+window.SL_HandleDrop = function(draggedItemKey, droppedOnTargetKey) {
+    var player = GetPlayer();
+    var config = window.SL_MainConfig;
+    var items = config.items;
+    var targets = config.targets;
+    var interactionModes = config.interactionModes;
+    var itemStateNames = config.advancedConfig.itemStates;
+    var draggedItemConfig = items[draggedItemKey];
+    if (!draggedItemConfig) return;
+    var newValueForDraggedItem = 0;
+    var itemVisualState = itemStateNames.normal;
+    if (droppedOnTargetKey) {
+        var targetConfig = targets[droppedOnTargetKey];
+        if (targetConfig) {
+            newValueForDraggedItem = targetConfig.value;
+            if (interactionModes.dropFeedbackMode === 'instant') {
+                var isCorrectDrop = false;
+                if (interactionModes.validationMode === 'individual') {
+                    var correctGroupKey = draggedItemConfig.correctGroup;
+                    if (correctGroupKey && config.targetGroups[correctGroupKey] && config.targetGroups[correctGroupKey].includes(newValueForDraggedItem)) {
+                        isCorrectDrop = true;
+                    }
+                } else {
+                    var belongingSet = config.validationSets.find(function(set) { return set.targetValues.includes(newValueForDraggedItem); });
+                    if (belongingSet && belongingSet.requiredItems.includes(draggedItemKey)) {
+                        isCorrectDrop = true;
+                    }
+                }
+                itemVisualState = isCorrectDrop ? itemStateNames.dropCorrect : itemStateNames.dropIncorrect;
+            } else {
+                if (interactionModes.validationMode === 'individual') {
+                    var correctGroupKey = draggedItemConfig.correctGroup;
+                    if (correctGroupKey && config.targetGroups[correctGroupKey] && config.targetGroups[correctGroupKey].includes(newValueForDraggedItem)) {
+                        itemVisualState = itemStateNames.dropCorrect;
+                    } else {
+                        itemVisualState = itemStateNames.dropIncorrect;
+                    }
+                } else {
+                    itemVisualState = itemStateNames.normal;
+                }
+            }
+        }
+    }
+    player.SetVar(draggedItemConfig.storylineVar, newValueForDraggedItem);
+    if (draggedItemConfig.stateVarName) {
+        player.SetVar(draggedItemConfig.stateVarName, "");
+        player.SetVar(draggedItemConfig.stateVarName, itemVisualState);
+    }
+    if (droppedOnTargetKey && newValueForDraggedItem !== 0) {
+        for (var otherItemKey in items) {
+            if (otherItemKey === draggedItemKey) continue;
+            var otherItemConfig = items[otherItemKey];
+            if (player.GetVar(otherItemConfig.storylineVar) === newValueForDraggedItem) {
+                player.SetVar(otherItemConfig.storylineVar, 0);
+                if (otherItemConfig.stateVarName) {
+                    player.SetVar(otherItemConfig.stateVarName, "");
+                    player.SetVar(otherItemConfig.stateVarName, itemStateNames.normal);
+                }
+            }
+        }
+    }
+    if (typeof window.SL_CheckDragDropCompletion === 'function') {
+        window.SL_CheckDragDropCompletion();
+    }
+};
+
+// ==================================================================================
+// HÀM TRUNG GIAN "THÔNG MINH" (LOGIC Z-INDEX)
+// ==================================================================================
+window.SL_RelayDropEvent = function(targetKey) {
+    var config = window.SL_MainConfig;
+    var items = config.items;
+    var foundItemKey = null;
+    var highestZIndex = -1;
+    for (var itemKey in items) {
+        if (items.hasOwnProperty(itemKey)) {
+            var itemConfig = items[itemKey];
+            var element = document.querySelector('[data-model-id="' + itemConfig.dataModelId + '"]');
+            if (element && element.style.zIndex) {
+                var currentZIndex = parseInt(element.style.zIndex, 10);
+                if (currentZIndex > highestZIndex) {
+                    highestZIndex = currentZIndex;
+                    foundItemKey = itemKey;
+                }
+            }
+        }
+    }
+    if (foundItemKey) {
+        window.SL_HandleDrop(foundItemKey, targetKey);
+    } else {
+        console.log("SL_RelayDropEvent: Không tìm thấy đối tượng nào có z-index cao nhất.");
+    }
+};
+
+// ==================================================================================
+// HÀM KIỂM TRA TRẠNG THÁI HOÀN THÀNH
+// ==================================================================================
+window.SL_CheckDragDropCompletion = function() {
+    var player = GetPlayer();
+    var config = window.SL_MainConfig;
+    if (!config.feedbackConfig || !config.feedbackConfig.completionVar) return;
+    var allRequiredTargetsAreFilled = true;
+    var targetsToCheck = new Set();
+    if (config.interactionModes.validationMode === 'set') {
+        config.validationSets.forEach(function(set) { set.targetValues.forEach(function(val) { targetsToCheck.add(val); }); });
+    } else {
+        for (var targetKey in config.targets) { targetsToCheck.add(config.targets[targetKey].value); }
+    }
+    if (targetsToCheck.size > 0) {
+        targetsToCheck.forEach(function(targetValue) {
+            var isThisTargetOccupied = false;
+            for (var itemKey in config.items) {
+                if (player.GetVar(config.items[itemKey].storylineVar) === targetValue) { isThisTargetOccupied = true; break; }
+            }
+            if (!isThisTargetOccupied) { allRequiredTargetsAreFilled = false; }
+        });
+    } else {
+        allRequiredTargetsAreFilled = true;
+    }
+    player.SetVar(config.feedbackConfig.completionVar, allRequiredTargetsAreFilled);
+};
+
+// ==================================================================================
+// HÀM CẬP NHẬT TRẠNG THÁI TRỰC QUAN CỦA TẤT CẢ CÁC ĐỐI TƯỢNG
+// ==================================================================================
+window.SL_UpdateAllItemStates = function() {
+    var player = GetPlayer();
+    var config = window.SL_MainConfig;
+    var itemStateNames = config.advancedConfig.itemStates;
+    for (var itemKey in config.items) {
+        if (config.items.hasOwnProperty(itemKey)) {
+            var itemConfig = config.items[itemKey];
+            var currentItemValue = player.GetVar(itemConfig.storylineVar);
+            var itemVisualState = itemStateNames.normal;
+            if (currentItemValue !== 0) {
+                var isCorrectDrop = false;
+                if (config.interactionModes.validationMode === 'individual') {
+                    var correctGroupKey = itemConfig.correctGroup;
+                    if (correctGroupKey && config.targetGroups[correctGroupKey] && config.targetGroups[correctGroupKey].includes(currentItemValue)) {
+                        isCorrectDrop = true;
+                    }
+                } else {
+                    var belongingSet = config.validationSets.find(function(set) { return set.requiredItems.includes(itemKey); });
+                    if (belongingSet && belongingSet.targetValues.includes(currentItemValue)) {
+                        isCorrectDrop = true;
+                    }
+                }
+                itemVisualState = isCorrectDrop ? itemStateNames.dropCorrect : itemStateNames.dropIncorrect;
+            }
+            if (itemConfig.stateVarName) {
+                player.SetVar(itemConfig.stateVarName, "");
+                player.SetVar(itemConfig.stateVarName, itemVisualState);
+            }
+        }
+    }
+};
+
+// ==================================================================================
+// HÀM XỬ LÝ KIỂM TRA ĐÁP ÁN CUỐI CÙNG
+// ==================================================================================
+window.SL_ProcessFinalAnswer = function() {
+    var player = GetPlayer();
+    var config = window.SL_MainConfig;
+    var fbConfig = config.feedbackConfig;
+    if (!fbConfig) return;
+    var isAnswerFullyCorrect = true;
+    if (config.interactionModes.validationMode === 'set') {
+        var allItemsInSets = new Set();
+        for (var i = 0; i < config.validationSets.length; i++) {
+            var set = config.validationSets[i];
+            var requiredItemsSet = new Set(set.requiredItems);
+            var foundItems = [];
+            set.requiredItems.forEach(function(itemKey) { allItemsInSets.add(itemKey); });
+            for (var itemKey in config.items) {
+                var itemValue = player.GetVar(config.items[itemKey].storylineVar);
+                if (set.targetValues.includes(itemValue)) { foundItems.push(itemKey); }
+            }
+            var foundItemsSet = new Set(foundItems);
+            if (requiredItemsSet.size !== foundItemsSet.size) { isAnswerFullyCorrect = false; break; }
+            requiredItemsSet.forEach(function(item) { if (!foundItemsSet.has(item)) { isAnswerFullyCorrect = false; } });
+            if (!isAnswerFullyCorrect) break;
+        }
+        if (isAnswerFullyCorrect) {
+            for (var itemKey in config.items) {
+                if (!allItemsInSets.has(itemKey) && player.GetVar(config.items[itemKey].storylineVar) !== 0) { isAnswerFullyCorrect = false; break; }
+            }
+        }
+    } else {
+        for (var itemKey in config.items) {
+            var itemConfig = config.items[itemKey];
+            var currentItemValue = player.GetVar(itemConfig.storylineVar);
+            var correctGroupKey = itemConfig.correctGroup;
+            if (correctGroupKey) {
+                if (!config.targetGroups[correctGroupKey] || !config.targetGroups[correctGroupKey].includes(currentItemValue)) { isAnswerFullyCorrect = false; break; }
+            } else {
+                if (currentItemValue !== 0) { isAnswerFullyCorrect = false; break; }
+            }
+        }
+    }
+    if (typeof window.SL_UpdateAllItemStates === 'function') {
+        window.SL_UpdateAllItemStates();
+    }
+    if (isAnswerFullyCorrect) {
+        player.SetVar(fbConfig.feedbackVar, fbConfig.correctLayer);
+    } else {
+        var currentAttempts = player.GetVar(fbConfig.attemptsVar);
+        var maxAttempts = fbConfig.maxAttempts || 1;
+        currentAttempts++;
+        player.SetVar(fbConfig.attemptsVar, currentAttempts);
+        if (currentAttempts >= maxAttempts) {
+            player.SetVar(fbConfig.feedbackVar, fbConfig.incorrectLayer);
+        } else {
+            player.SetVar(fbConfig.feedbackVar, fbConfig.tryAgainLayer);
+        }
+    }
+};
+
+// ==================================================================================
+// HÀM TRUNG GIAN XỬ LÝ SỰ KIỆN CLICK NÚT "NEXT"
+// ==================================================================================
+window.SL_HandleNextButtonClick = function() {
+    var player = GetPlayer();
+    var config = window.SL_MainConfig;
+    if (!config.feedbackConfig) return;
+    if (config.interactionModes.submitButtonInitialMode === "visible") {
+        var isDragDropConsideredComplete = player.GetVar(config.feedbackConfig.completionVar);
+        if (!isDragDropConsideredComplete) {
+            if (config.feedbackConfig.warningLayer && config.feedbackConfig.feedbackVar) {
+                player.SetVar(config.feedbackConfig.feedbackVar, config.feedbackConfig.warningLayer);
+            }
+            return;
+        }
+    }
+    if (typeof window.SL_ProcessFinalAnswer === 'function') {
+        window.SL_ProcessFinalAnswer();
+    }
+};
+
+// ==================================================================================
+// HÀM RESET BIẾN PHẢN HỒI (FEEDBACK VARIABLE)
+// ==================================================================================
+window.SL_ClearFeedbackState = function() {
+    var player = GetPlayer();
+    var fbConfig = window.SL_MainConfig.feedbackConfig;
+    if (fbConfig && fbConfig.feedbackVar) {
+        player.SetVar(fbConfig.feedbackVar, "");
+    }
+};
+
+// ==================================================================================
+// KHỐI KHỞI TẠO TỰ ĐỘNG
+// ==================================================================================
+(function() {
+    var config = window.SL_MainConfig;
+    if (typeof window.SL_CheckDragDropCompletion === 'function' && config.feedbackConfig && config.feedbackConfig.completionVar) {
+        window.SL_CheckDragDropCompletion();
+    }
+
+    if (config.interactionModes.isScrollingPanel && config.advancedConfig.dom && typeof window.SL_SaveInitialDOMStates === 'function') {
+        setTimeout(function() {
+            window.SL_SaveInitialDOMStates();
+        }, 100);
+    }
+})();</code>
+    </pre>
+    </div>
+    <p id="20e68cc7-13a8-80dc-b851-f4acbc4c2a2c" class="">
+    </p><h2 id="20e68cc7-13a8-8005-9121-e484c15dbf17" class=""><mark class="highlight-yellow">#</mark> Chỉnh sửa tại phần Cấu hình trung tâm</h2><h3 id="20e68cc7-13a8-80ba-881c-edc55702523b" class=""><mark class="highlight-pink">#</mark> PHẦN 1: CHẾ ĐỘ HOẠT ĐỘNG CHUNG</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20e68cc7-13a8-8068-bf81-e619c4b459fb" class="code"><code class="language-JavaScript">    // --- PHẦN 1: CHẾ ĐỘ HOẠT ĐỘNG CHUNG ---
+    interactionModes: {
+        validationMode: &quot;set&quot;,       // &quot;individual&quot;: Kéo 1 vào 1, 1 vào nhóm | &quot;set&quot;: Kéo các đối tượng đúng vào nhóm (không phân biệt thứ tự)
+        dropFeedbackMode: &quot;instant&quot;,        // Chế độ phản hồi: &quot;instant&quot; (tức thì) hoặc &quot;deferred&quot; (khi nhấn Submit)
+        submitButtonInitialMode: &quot;visible&quot;,    // Trạng thái nút Submit: &quot;hidden&quot; hoặc &quot;visible&quot;
+        isScrollingPanel: true             // true: Có tồn tại | false: Không tồn tại
+    },</code></pre><p id="20e68cc7-13a8-80ec-899e-d296f5a0e29d" class="">
+    </p><h3 id="20e68cc7-13a8-80ed-a625-d45487751891" class=""><mark class="highlight-pink">#</mark> PHẦN 2: CẤU HÌNH CÁC ĐỐI TƯỢNG KÉO (ITEMS)</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20e68cc7-13a8-8083-964b-fff656964a0c" class="code"><code class="language-JavaScript">    // --- PHẦN 2: CẤU HÌNH CÁC ĐỐI TƯỢNG KÉO (ITEMS) ---
+    items: {
+        &quot;A&quot;: { // Đối tượng có tên “A”
+            storylineVar: &quot;A&quot;, // Biến A
+            stateVarName: &quot;A_state&quot;, // Biến A_state (Biến thể hiện trạng thái của A)
+            correctGroup: &quot;GROUP_1&quot;, // Vùng đáp án đúng
+            dataModelId: &quot;6ORjfEvVM4N&quot;, // ID của đối tương A trong DOM
+            domStateVar: &quot;DOMState_A&quot; // Biến hiển thị vị trí của A trong DOM
+        },
+        &quot;B&quot;: {
+            storylineVar: &quot;B&quot;,
+            stateVarName: &quot;B_state&quot;,
+            correctGroup: &quot;GROUP_1&quot;,
+            dataModelId: &quot;5mAvhWeww9V&quot;,
+            domStateVar: &quot;DOMState_B&quot;
+        },
+        &quot;C&quot;: {
+            storylineVar: &quot;C&quot;,
+            stateVarName: &quot;C_state&quot;,
+            correctGroup: null,
+            dataModelId: &quot;6Aa5G8DP1g0&quot;,
+            domStateVar: &quot;DOMState_C&quot;
+        }
+    },</code></pre><p id="20e68cc7-13a8-80ea-bf1b-c5f3079585f0" class="">
+    </p><h3 id="20e68cc7-13a8-8086-baac-ea8bbfe0844f" class=""><mark class="highlight-pink">#</mark> PHẦN 3: CẤU HÌNH CÁC ĐỐI TƯỢNG THẢ (TARGETS) VÀ LUẬT CHƠI</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20e68cc7-13a8-809d-ada1-eaf320c087db" class="code"><code class="language-JavaScript">// --- PHẦN 3: CẤU HÌNH CÁC ĐỐI TƯỢNG THẢ (TARGETS) VÀ LUẬT CHƠI ---
+    targets: {
+        &quot;1&quot;: { value: 1 }, // Giá trị của đối tượng “1”
+        &quot;2&quot;: { value: 2 } // Giá trị của đối tượng “2”
+    },
+    targetGroups: { // Dùng cho validationMode: &#x27;individual&#x27;
+        &quot;GROUP_1&quot;: [1, 2], // Vùng đáp án
+        &quot;GROUP_2&quot;: [3] // Vùng đáp án
+    },
+    validationSets: [ // Dùng cho validationMode: &#x27;set&#x27;
+        {
+            requiredItems: [&quot;A&quot;, &quot;B&quot;],
+            targetValues: [1, 2]
+        }
+    ],</code></pre><p id="20e68cc7-13a8-8051-b290-e4e1612579f2" class="">
+    </p><h3 id="20e68cc7-13a8-80f8-9ab4-de1b509e6cab" class=""><mark class="highlight-pink">#</mark> PHẦN 4: CẤU HÌNH PHẢN HỒI VÀ BIẾN STORYLINE</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20e68cc7-13a8-80e4-9f39-dde97e566b03" class="code"><code class="language-JavaScript">    // --- PHẦN 4: CẤU HÌNH PHẢN HỒI VÀ BIẾN STORYLINE ---
+    feedbackConfig: {
+        completionVar: &quot;Completed&quot;,    // Biến (True/False) báo đã kéo thả xong
+        attemptsVar: &quot;Attempts&quot;,       // Biến (Number) đếm lượt thử
+        feedbackVar: &quot;Feedback&quot;, // Biến (Text) điều khiển hiện layer phản hồi
+        correctLayer: &quot;Correct&quot;,          // Tên layer Đúng
+        incorrectLayer: &quot;Incorrect&quot;,      // Tên layer Sai
+        tryAgainLayer: &quot;TryAgain&quot;,        // Tên layer Thử lại
+        warningLayer: &quot;Warning&quot;, // Tên layer Cảnh báo
+        maxAttempts: 2                          // Số lượt thử tối đa
+    },
+
+    // --- PHẦN 5: CẤU HÌNH NÂNG CAO ---
+    advancedConfig: {
+        itemStates: { // Trạng thái cho đối tượng
+            normal: &quot;Normal&quot;,
+            dropCorrect: &quot;Drop Correct&quot;,
+            dropIncorrect: &quot;Drop Incorrect&quot;
+        },
+        dom: { // ID của Scrolling Pane trong DOM
+            scrollingPanelId: &quot;5dPk8aunoGp&quot;
+        }
+    }
+};</code></pre><p id="20e68cc7-13a8-8088-bc1c-de0d19e991e6" class="">
+    </p><p id="20e68cc7-13a8-80e8-b031-c451eebd2496" class="">
+    </p><h1 id="20e68cc7-13a8-8041-8fbb-c08b2e5b2934" class=""><mark class="highlight-red">#</mark> PHẦN 3: TRIỂN KHAI TRIGGER TRONG STORYLINE</h1><h2 id="20e68cc7-13a8-80f2-8358-db838e68f301" class=""><mark class="highlight-pink">#</mark> 1. Trigger khi Slide bắt đầu (Timeline starts) <mark class="highlight-red">*</mark></h2><figure id="20e68cc7-13a8-806d-bf9f-f7181562bba1" class="image"><a href="image%201.png"><img style="width:421.960205078125px" src="image%201.png"/></a></figure><ul id="20e68cc7-13a8-8029-b9cc-d164dc8bc34e" class="bulleted-list"><li style="list-style-type:disc"><strong>Action:</strong> <code>Execute JavaScript</code></li></ul><ul id="20e68cc7-13a8-804c-a237-ca845c1234cc" class="bulleted-list"><li style="list-style-type:disc"><strong>When:</strong> <code>Timeline starts</code></li></ul><ul id="20e68cc7-13a8-80f8-b007-f692138001fc" class="bulleted-list"><li style="list-style-type:disc"><strong>Object:</strong> <code>this slide</code></li></ul><p id="20e68cc7-13a8-80e1-91ce-dd239ec472d0" class="">
+    </p><h3 id="20e68cc7-13a8-809d-a72b-e45e069ebe62" class=""><mark class="highlight-pink">#</mark> 2. Trigger cho hành động Kéo Thả <mark class="highlight-red">*</mark></h3><figure id="20e68cc7-13a8-8066-94c6-f0486a64a7bc" class="image"><a href="image%202.png"><img style="width:422.9829406738281px" src="image%202.png"/></a></figure><p id="20e68cc7-13a8-808a-84a4-cace8c00de32" class=""><strong>ĐỐI TƯỢNG A:</strong><div class="indented"><p id="20e68cc7-13a8-80d0-83f0-d9940b267739" class=""><strong>2.1 Trigger khi Thả vào một Drop Target 1 </strong><mark class="highlight-red">*</mark></p><ul id="20e68cc7-13a8-805c-93a5-d2705234bdd3" class="bulleted-list"><li style="list-style-type:disc"><strong>Action:</strong> <code>Execute JavaScript</code></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20e68cc7-13a8-807b-a938-f8d56f005fb2" class="code"><code class="language-JavaScript">window.SL_RelayDropEvent("1");</code></pre><ul id="20e68cc7-13a8-802b-bfd0-da527c3a64e7" class="bulleted-list"><li style="list-style-type:disc"><strong>When:</strong> <code>Object Dropped On</code></li></ul><ul id="20e68cc7-13a8-8005-aaac-c55d66812713" class="bulleted-list"><li style="list-style-type:disc"><strong>Object:</strong> <code>A</code></li></ul><ul id="20e68cc7-13a8-800b-8057-f93eab578d20" class="bulleted-list"><li style="list-style-type:disc"><strong>Target:</strong> <code>1</code></li></ul><p id="20e68cc7-13a8-805b-8f3d-def7f7f39461" class="">
+    </p><p id="20e68cc7-13a8-806b-9681-f02cd8b171e0" class=""><strong>2.2 Trigger khi Thả vào một Drop Target 2 </strong><mark class="highlight-red">*</mark></p><ul id="20e68cc7-13a8-80cb-ae6f-f261b5e65ab8" class="bulleted-list"><li style="list-style-type:disc"><strong>Action:</strong> <code>Execute JavaScript</code></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20e68cc7-13a8-802c-83d1-db2e0ca4c2c8" class="code"><code class="language-JavaScript">window.SL_RelayDropEvent("2");</code></pre><ul id="20e68cc7-13a8-809b-86ec-f4dbb2af803e" class="bulleted-list"><li style="list-style-type:disc"><strong>When:</strong> <code>Object Dropped On</code></li></ul><ul id="20e68cc7-13a8-808d-b6e3-c4c7bd27a8d0" class="bulleted-list"><li style="list-style-type:disc"><strong>Object:</strong> <code>A</code></li></ul><ul id="20e68cc7-13a8-8037-99c1-decad36207f5" class="bulleted-list"><li style="list-style-type:disc"><strong>Target:</strong>  <code>2</code></li></ul><p id="20e68cc7-13a8-808b-800b-f7eeeab1e972" class="">
+    </p><p id="20e68cc7-13a8-8019-b0e6-fae677cac76a" class=""><strong>2.3 Trigger khi Thả ra ngoài vùng Target </strong><mark class="highlight-red">*</mark></p><blockquote id="20e68cc7-13a8-8035-bbe6-cf3816492884" class=""><strong>Mục đích:</strong> Để reset biến khi đối tượng được kéo ra khỏi một target.</blockquote><ul id="20e68cc7-13a8-80bd-ad55-fb628272a1db" class="bulleted-list"><li style="list-style-type:disc"><strong>Action:</strong> <code>Execute JavaScript</code></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20e68cc7-13a8-80c5-b4b8-eac54ab97851" class="code"><code class="language-JavaScript">window.SL_HandleDrop(&quot;A&quot;, null);</code></pre><ul id="20e68cc7-13a8-8066-b45a-fd3b44aa7b2c" class="bulleted-list"><li style="list-style-type:disc"><strong>When:</strong>  <code>When the state of</code></li></ul><ul id="20e68cc7-13a8-8097-be44-f7ceeed07bd9" class="bulleted-list"><li style="list-style-type:disc"><strong>Object:</strong> <code>A</code></li></ul><ul id="20e68cc7-13a8-80b3-a47a-d085df633634" class="bulleted-list"><li style="list-style-type:disc"><strong>State:</strong> <code>Normal</code></li></ul><p id="20e68cc7-13a8-80fe-96c4-f37cf44ebae7" class="">
+    </p></div></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="20e68cc7-13a8-8099-9d61-c00d38289b3c"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><p id="20e68cc7-13a8-8074-a3eb-c151a780e7ad" class=""><strong>ĐỐI TƯỢNG B, C set trigger tương tự</strong></p></div></figure><p id="20e68cc7-13a8-80a2-8df9-f24d24df00ff" class="">
+    </p><figure id="20e68cc7-13a8-800d-a688-fd4828cfb19d" class="image"><a href="image%203.png"><img style="width:617.98291015625px" src="image%203.png"/></a><figcaption>→ Kết quả kỳ vọng!</figcaption></figure><p id="20e68cc7-13a8-80f0-9ddd-f37072bb0dde" class="">
+    </p><h3 id="20e68cc7-13a8-80ac-bdc2-e06bc77b9df7" class=""><mark class="highlight-pink">#</mark> 3. Trigger thay đổi Trạng thái trực quan</h3><figure id="20e68cc7-13a8-8030-8ada-d12a25db7db8" class="image"><a href="image%204.png"><img style="width:415.9942932128906px" src="image%204.png"/></a></figure><p id="20e68cc7-13a8-8053-bd1b-d45f591b5910" class=""><strong>Trigger Mẫu cho đối tượng A (Trạng thái Đúng):</strong></p><ul id="20e68cc7-13a8-806f-bf65-f850f9630869" class="bulleted-list"><li style="list-style-type:disc"><strong>Action:</strong> <code>Change state of</code> <code>A</code> <code>to</code> <code>Drop Correct</code></li></ul><ul id="20e68cc7-13a8-802b-b481-d286c1f7eb30" class="bulleted-list"><li style="list-style-type:disc"><strong>When:</strong> <code>When variable changes</code></li></ul><ul id="20e68cc7-13a8-8080-9588-c8028c44a7ee" class="bulleted-list"><li style="list-style-type:disc"><strong>Variable:</strong> <code>A_state</code></li></ul><ul id="20e68cc7-13a8-8035-af04-f06b5eca5238" class="bulleted-list"><li style="list-style-type:disc"><strong>Conditions:</strong> <code>If A_state = Drop Correct</code></li></ul><figure id="20e68cc7-13a8-803e-9e14-e70d3d5130fb" class="image"><a href="image%205.png"><img style="width:273.9772644042969px" src="image%205.png"/></a><figcaption>Kỳ vọng!</figcaption></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="20e68cc7-13a8-8065-acf6-daa11ffb1236"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><p id="20e68cc7-13a8-8078-b380-e84ce9fa3b5e" class=""><strong>Lưu ý:</strong> Làm tương tự cho trạng thái <code>Drop Incorrect</code> và <code>Normal</code>. Sau đó, lặp lại toàn bộ 3 trigger này cho các đối tượng kéo khác (B, C...).</p></div></figure><p id="20e68cc7-13a8-8065-9efd-caf383034203" class="">
+    </p><h3 id="20e68cc7-13a8-808e-814a-e07cc6cac548" class=""><mark class="highlight-pink">#</mark> 4. Trigger cho nút SUBMIT</h3><figure id="20e68cc7-13a8-8033-8099-f1a5587d956d" class="image"><a href="image%206.png"><img style="width:422.9829406738281px" src="image%206.png"/></a></figure><ul id="20e68cc7-13a8-80bb-8af0-ffe0e2c100ab" class="bulleted-list"><li style="list-style-type:disc"><strong>Hành động:</strong> <code>Execute JavaScript</code></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20e68cc7-13a8-8022-842f-f56233b18846" class="code"><code class="language-JavaScript">window.SL_HandleNextButtonClick();</code></pre><ul id="20e68cc7-13a8-8002-80ab-d9af6cfa210e" class="bulleted-list"><li style="list-style-type:disc"><strong>When:</strong> <code>User clicks</code></li></ul><ul id="20e68cc7-13a8-8025-9e3c-c8e4a0a1cdaa" class="bulleted-list"><li style="list-style-type:disc"><strong>Object:</strong> <code>Submit</code></li></ul><p id="20e68cc7-13a8-80c5-b648-ff48eb2e8be6" class=""><br/>Nếu SUBMIT ở trạng thái Hidden → Thêm trigger:<br/></p><figure id="20e68cc7-13a8-8027-972f-dba76e7c6021" class="image"><a href="image%207.png"><img style="width:453.9630432128906px" src="image%207.png"/></a></figure><p id="20e68cc7-13a8-806e-a585-f979ee527575" class="">
+    </p><h3 id="20e68cc7-13a8-80aa-8dba-cad3f4d54e9d" class=""><mark class="highlight-pink">#</mark> 5. <strong>Trigger để hiện các Layer phản hồi</strong></h3><figure id="20e68cc7-13a8-8080-bf8d-dc4d0756d909" class="image"><a href="image%208.png"><img style="width:421.97442626953125px" src="image%208.png"/></a></figure><ul id="20e68cc7-13a8-8040-b580-e63ce27c1046" class="bulleted-list"><li style="list-style-type:disc"><strong>Trigger hiện Layer Correct:</strong><ul id="20e68cc7-13a8-8071-a5ee-cbd17c52e2d3" class="bulleted-list"><li style="list-style-type:circle"><strong>Action:</strong> <code>Show layer</code> <code>Correct</code></li></ul><ul id="20e68cc7-13a8-8016-ac69-c6b0eea6971e" class="bulleted-list"><li style="list-style-type:circle"><strong>When:</strong> <code>When variable changes</code></li></ul><ul id="20e68cc7-13a8-808a-bc1e-da034c856c24" class="bulleted-list"><li style="list-style-type:circle"><strong>Variable:</strong> <code>Feedback</code></li></ul><ul id="20e68cc7-13a8-80ce-816f-d1cb6c2a187f" class="bulleted-list"><li style="list-style-type:circle"><strong>Condition:</strong> <code>Feedback = Correct</code></li></ul></li></ul><figure id="20e68cc7-13a8-805a-9fde-f0417fe34854" class="image"><a href="image%209.png"><img style="width:410.9801025390625px" src="image%209.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="20e68cc7-13a8-8045-90c0-cdfbdca33ed8"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><p id="20e68cc7-13a8-80d9-b40b-c1ec22c1a1a8" class="">Làm tương tự với <code><strong>Layer Incorrect</strong></code><strong> , </strong><code><strong>Layer Warning</strong></code><strong> , </strong><code><strong>Layer TryAgain</strong></code></p></div></figure><p id="20e68cc7-13a8-8069-bdb0-dc23df49bdf1" class="">
+    </p><p id="20e68cc7-13a8-80cc-8c73-c129ffddc21b" class="">
+    </p><h3 id="20e68cc7-13a8-80a9-9727-d2e38297930f" class=""><mark class="highlight-pink">#</mark> 6. Trigger cho các nút “THỬ LẠI” (TryAgain)</h3><figure id="20e68cc7-13a8-8008-a73c-cf62b96084c6" class="image"><a href="image%2010.png"><img style="width:353.9772644042969px" src="image%2010.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20e68cc7-13a8-8045-8139-fe9eb9feedb8" class="code"><code class="language-JavaScript">window.SL_ResetIncorrect_VariablesOnly(); // Reset biến sai
+window.SL_ResetInteraction(); // Reset toàn bộ biến
+    // -> Chọn 1 trong 2!</code></pre><p id="20e68cc7-13a8-80f8-ae72-eea7883d84e0" class="">
+    </p><h3 id="20e68cc7-13a8-80e5-96fb-f1b025d3aa06" class=""><mark class="highlight-pink">#</mark> 6. Trigger cho các nút “THỬ LẠI” (Warning)</h3><figure id="20e68cc7-13a8-8093-87ec-fefe83578645" class="image"><a href="image%2011.png"><img style="width:298.9630432128906px" src="image%2011.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20e68cc7-13a8-80fa-ac79-fbc7f110ffdf" class="code"><code class="language-JavaScript">window.SL_ClearFeedbackState();</code></pre><p id="20e68cc7-13a8-8083-9a1c-f376365d3b64" class="">
+    </p>
+    <p id="20e68cc7-13a8-80cb-90b2-dfe0edbfad70" class="">❤️ Lấy code về test <a href="https://drive.google.com/drive/folders/1UPeD_eHo-jYIIVcUuq-3ZbioVWmdDr_K">tại đây</a></p>
+    <!--    <p id="20f68cc7-13a8-8029-b314-de44e2a820e2" class=""></p>-->
+    <p>❤️ Hướng dẫn lấy ID của đối tượng</p>
+    <video width="100%" controls>
+        <source src="video.mp4" type="video/mp4">
+        Trình duyệt của bạn không hỗ trợ video.
+    </video>
+</div></article><span class="sans" style="font-size:14px;padding-top:2em"></span>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+<script>
+    const clipboard = new ClipboardJS('.copy-btn');
+
+    clipboard.on('success', function(e) {
+        const btn = e.trigger;
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => {
+            btn.textContent = originalText;
+        }, 1500);
+        window.getSelection().removeAllRanges();  // Xóa vùng bôi đen sau khi copy
+
+    });
+
+    clipboard.on('error', function(e) {
+        alert('Failed to copy!');
+    });
+</script>
+
+</body>
+</html>
