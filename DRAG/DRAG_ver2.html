@@ -728,6 +728,7 @@
     <div class="code-block">
         <button class="copy-btn" data-clipboard-target="#code-20e68cc7-13a8-808f-999d-c7e053869012">Copy</button>
         <pre id="code-20e68cc7-13a8-808f-999d-c7e053869012" class="code"><code class="language-JavaScript">// Khởi tạo tham chiếu đến trình phát Storyline
+// Khởi tạo tham chiếu đến trình phát Storyline
 var player = GetPlayer();
 
 // ==================================================================================
@@ -737,7 +738,7 @@ window.SL_MainConfig = {
     // --- PHẦN 1: CHẾ ĐỘ HOẠT ĐỘNG CHUNG ---
     interactionModes: {
         validationMode: "individual",       // Logic kiểm tra: "individual" hoặc "set"
-        dropFeedbackMode: "instant",        // Chế độ phản hồi: "instant" (tức thì) hoặc "deferred" (khi nhấn Next)
+        dropFeedbackMode: "deferred",        // Chế độ phản hồi: "instant" (tức thì) hoặc "deferred" (khi nhấn Next)
         submitButtonInitialMode: "visible",    // Trạng thái nút Next: "hidden" hoặc "visible"
         isScrollingPanel: false             // Bật/tắt logic cho Scrolling Panel: true hoặc false
     },
@@ -825,7 +826,7 @@ window.SL_SaveInitialDOMStates = function() {
 };
 
 // ==================================================================================
-// HÀM RESET TOÀN BỘ TƯƠNG TÁC
+// HÀM RESET TOÀN BỘ TƯƠNG TÁC (ĐÃ CẬP NHẬT)
 // ==================================================================================
 window.SL_ResetInteraction = function() {
     var player = GetPlayer();
@@ -834,7 +835,6 @@ window.SL_ResetInteraction = function() {
     var fbConfig = config.feedbackConfig;
     var itemStateNames = config.advancedConfig.itemStates;
     var domConfig = config.advancedConfig.dom;
-
     for (var itemKey in items) {
         if (items.hasOwnProperty(itemKey)) {
             var itemConfig = items[itemKey];
@@ -846,6 +846,11 @@ window.SL_ResetInteraction = function() {
         }
     }
     player.SetVar(fbConfig.completionVar, false);
+
+    // CẬP NHẬT MỚI: Tự động xóa biến Feedback để reset hoàn toàn
+    if (typeof window.SL_ClearFeedbackState === 'function') {
+        window.SL_ClearFeedbackState();
+    }
 
     if (config.interactionModes.isScrollingPanel && domConfig && domConfig.scrollingPanelId) {
         const scrollPanel = document.querySelector(`[data-model-id="${domConfig.scrollingPanelId}"]`);
@@ -887,16 +892,13 @@ window.SL_ResetIncorrect_VariablesOnly = function() {
     var player = GetPlayer();
     var config = window.SL_MainConfig;
     var items = config.items;
-
     for (var itemKey in items) {
         if (items.hasOwnProperty(itemKey)) {
             var itemConfig = items[itemKey];
             var currentItemValue = player.GetVar(itemConfig.storylineVar);
-
             if (currentItemValue === 0) {
                 continue;
             }
-
             var isCorrect = false;
             if (config.interactionModes.validationMode === 'individual') {
                 var correctGroupKey = itemConfig.correctGroup;
@@ -904,7 +906,6 @@ window.SL_ResetIncorrect_VariablesOnly = function() {
                     isCorrect = true;
                 }
             }
-
             if (!isCorrect) {
                 player.SetVar(itemConfig.storylineVar, 0);
             }
@@ -913,7 +914,7 @@ window.SL_ResetIncorrect_VariablesOnly = function() {
 };
 
 // ==================================================================================
-// HÀM XỬ LÝ SỰ KIỆN KÉO THẢ CHÍNH
+// HÀM XỬ LÝ SỰ KIỆN KÉO THẢ CHÍNH (ĐÃ SỬA LỖI)
 // ==================================================================================
 window.SL_HandleDrop = function(draggedItemKey, droppedOnTargetKey) {
     var player = GetPlayer();
@@ -945,16 +946,7 @@ window.SL_HandleDrop = function(draggedItemKey, droppedOnTargetKey) {
                 }
                 itemVisualState = isCorrectDrop ? itemStateNames.dropCorrect : itemStateNames.dropIncorrect;
             } else {
-                if (interactionModes.validationMode === 'individual') {
-                    var correctGroupKey = draggedItemConfig.correctGroup;
-                    if (correctGroupKey && config.targetGroups[correctGroupKey] && config.targetGroups[correctGroupKey].includes(newValueForDraggedItem)) {
-                        itemVisualState = itemStateNames.dropCorrect;
-                    } else {
-                        itemVisualState = itemStateNames.dropIncorrect;
-                    }
-                } else {
-                    itemVisualState = itemStateNames.normal;
-                }
+                itemVisualState = itemStateNames.normal;
             }
         }
     }
@@ -985,28 +977,30 @@ window.SL_HandleDrop = function(draggedItemKey, droppedOnTargetKey) {
 // HÀM TRUNG GIAN "THÔNG MINH" (LOGIC Z-INDEX)
 // ==================================================================================
 window.SL_RelayDropEvent = function(targetKey) {
-    var config = window.SL_MainConfig;
-    var items = config.items;
-    var foundItemKey = null;
-    var highestZIndex = -1;
-    for (var itemKey in items) {
-        if (items.hasOwnProperty(itemKey)) {
-            var itemConfig = items[itemKey];
-            var element = document.querySelector('[data-model-id="' + itemConfig.dataModelId + '"]');
-            if (element && element.style.zIndex) {
-                var currentZIndex = parseInt(element.style.zIndex, 10);
-                if (currentZIndex > highestZIndex) {
-                    highestZIndex = currentZIndex;
-                    foundItemKey = itemKey;
+    setTimeout(function() {
+        var config = window.SL_MainConfig;
+        var items = config.items;
+        var foundItemKey = null;
+        var highestZIndex = -1;
+        for (var itemKey in items) {
+            if (items.hasOwnProperty(itemKey)) {
+                var itemConfig = items[itemKey];
+                var element = document.querySelector('[data-model-id="' + itemConfig.dataModelId + '"]');
+                if (element && element.style.zIndex) {
+                    var currentZIndex = parseInt(element.style.zIndex, 10);
+                    if (currentZIndex > highestZIndex) {
+                        highestZIndex = currentZIndex;
+                        foundItemKey = itemKey;
+                    }
                 }
             }
         }
-    }
-    if (foundItemKey) {
-        window.SL_HandleDrop(foundItemKey, targetKey);
-    } else {
-        console.log("SL_RelayDropEvent: Không tìm thấy đối tượng nào có z-index cao nhất.");
-    }
+        if (foundItemKey) {
+            window.SL_HandleDrop(foundItemKey, targetKey);
+        } else {
+            console.log("SL_RelayDropEvent: Không tìm thấy đối tượng nào có z-index cao nhất.");
+        }
+    }, 10);
 };
 
 // ==================================================================================
@@ -1263,7 +1257,8 @@ window.SL_ClearFeedbackState = function() {
     </p><h3 id="20e68cc7-13a8-808e-814a-e07cc6cac548" class=""><mark class="highlight-pink">#</mark> 4. Trigger cho nút SUBMIT</h3><figure id="20e68cc7-13a8-8033-8099-f1a5587d956d" class="image"><a href="image%206.png"><img style="width:422.9829406738281px" src="image%206.png"/></a></figure><ul id="20e68cc7-13a8-80bb-8af0-ffe0e2c100ab" class="bulleted-list"><li style="list-style-type:disc"><strong>Hành động:</strong> <code>Execute JavaScript</code></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20e68cc7-13a8-8022-842f-f56233b18846" class="code"><code class="language-JavaScript">window.SL_HandleNextButtonClick();</code></pre><ul id="20e68cc7-13a8-8002-80ab-d9af6cfa210e" class="bulleted-list"><li style="list-style-type:disc"><strong>When:</strong> <code>User clicks</code></li></ul><ul id="20e68cc7-13a8-8025-9e3c-c8e4a0a1cdaa" class="bulleted-list"><li style="list-style-type:disc"><strong>Object:</strong> <code>Submit</code></li></ul><p id="20e68cc7-13a8-80c5-b648-ff48eb2e8be6" class=""><br/>Nếu SUBMIT ở trạng thái Hidden → Thêm trigger:<br/></p><figure id="20e68cc7-13a8-8027-972f-dba76e7c6021" class="image"><a href="image%207.png"><img style="width:453.9630432128906px" src="image%207.png"/></a></figure><p id="20e68cc7-13a8-806e-a585-f979ee527575" class="">
     </p><h3 id="20e68cc7-13a8-80aa-8dba-cad3f4d54e9d" class=""><mark class="highlight-pink">#</mark> 5. <strong>Trigger để hiện các Layer phản hồi</strong></h3><figure id="20e68cc7-13a8-8080-bf8d-dc4d0756d909" class="image"><a href="image%208.png"><img style="width:421.97442626953125px" src="image%208.png"/></a></figure><ul id="20e68cc7-13a8-8040-b580-e63ce27c1046" class="bulleted-list"><li style="list-style-type:disc"><strong>Trigger hiện Layer Correct:</strong><ul id="20e68cc7-13a8-8071-a5ee-cbd17c52e2d3" class="bulleted-list"><li style="list-style-type:circle"><strong>Action:</strong> <code>Show layer</code> <code>Correct</code></li></ul><ul id="20e68cc7-13a8-8016-ac69-c6b0eea6971e" class="bulleted-list"><li style="list-style-type:circle"><strong>When:</strong> <code>When variable changes</code></li></ul><ul id="20e68cc7-13a8-808a-bc1e-da034c856c24" class="bulleted-list"><li style="list-style-type:circle"><strong>Variable:</strong> <code>Feedback</code></li></ul><ul id="20e68cc7-13a8-80ce-816f-d1cb6c2a187f" class="bulleted-list"><li style="list-style-type:circle"><strong>Condition:</strong> <code>Feedback = Correct</code></li></ul></li></ul><figure id="20e68cc7-13a8-805a-9fde-f0417fe34854" class="image"><a href="image%209.png"><img style="width:410.9801025390625px" src="image%209.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="20e68cc7-13a8-8045-90c0-cdfbdca33ed8"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><p id="20e68cc7-13a8-80d9-b40b-c1ec22c1a1a8" class="">Làm tương tự với <code><strong>Layer Incorrect</strong></code><strong> , </strong><code><strong>Layer Warning</strong></code><strong> , </strong><code><strong>Layer TryAgain</strong></code></p></div></figure><p id="20e68cc7-13a8-8069-bdb0-dc23df49bdf1" class="">
     </p><p id="20e68cc7-13a8-80cc-8c73-c129ffddc21b" class="">
-    </p><h3 id="20e68cc7-13a8-80a9-9727-d2e38297930f" class=""><mark class="highlight-pink">#</mark> 6. Trigger cho các nút “THỬ LẠI” (TryAgain)</h3><figure id="20e68cc7-13a8-8008-a73c-cf62b96084c6" class="image"><a href="image%2010.png"><img style="width:353.9772644042969px" src="image%2010.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20e68cc7-13a8-8045-8139-fe9eb9feedb8" class="code"><code class="language-JavaScript">window.SL_ResetIncorrect_VariablesOnly(); // Reset biến sai
+    </p><h3 id="20e68cc7-13a8-80a9-9727-d2e38297930f" class=""><mark class="highlight-pink">#</mark> 6. Trigger cho các nút “THỬ LẠI” (TryAgain)</h3><figure id="20e68cc7-13a8-8008-a73c-cf62b96084c6" class="image"><a href="image%2010.png"><img style="width:353.9772644042969px" src="image%2010.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20e68cc7-13a8-8045-8139-fe9eb9feedb8" class="code"><code class="language-JavaScript">window.SL_PrepareForTryAgain(); // Reset biến sai
+//-----------------------------------------------------
 window.SL_ResetInteraction(); // Reset toàn bộ biến
     // -> Chọn 1 trong 2!</code></pre><p id="20e68cc7-13a8-80f8-ae72-eea7883d84e0" class="">
     </p><h3 id="20e68cc7-13a8-80e5-96fb-f1b025d3aa06" class=""><mark class="highlight-pink">#</mark> 6. Trigger cho các nút “THỬ LẠI” (Warning)</h3><figure id="20e68cc7-13a8-8093-87ec-fefe83578645" class="image"><a href="image%2011.png"><img style="width:298.9630432128906px" src="image%2011.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20e68cc7-13a8-80fa-ac79-fbc7f110ffdf" class="code"><code class="language-JavaScript">window.SL_ClearFeedbackState();</code></pre><p id="20e68cc7-13a8-8083-9a1c-f376365d3b64" class="">
