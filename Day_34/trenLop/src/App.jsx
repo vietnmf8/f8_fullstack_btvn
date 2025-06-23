@@ -1,8 +1,8 @@
 import './App.css'
 import {FTable, EmployeeDialog} from './components'
-import {Button} from "@mui/material";
-import {useEffect, useState} from "react";
-import {get, post} from './utils'
+import {Button, DialogContent, DialogTitle, Dialog, TextField, DialogActions} from "@mui/material";
+import {useState} from "react";
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 const initEmployee = {
     id: null, name: null, age: null, address: null
@@ -10,7 +10,6 @@ const initEmployee = {
 
 function App() {
     const [isOpenDialog, setIsOpenDialog] = useState(false)
-    const [isOpenConfirmDeleteDialog, setIsOpenConfirmDeleteDialog] = useState(false)
 
     const [curEmployee, setCurEmployee] = useState({
         id: null, name: null, age: null, address: null
@@ -23,16 +22,16 @@ function App() {
         { name: 'address', text: 'Address'},
         { name: 'action', text: ''},
     ]
-    const [employees, setEmployees] = useState([])
-
-    const getEmployees = async () => {
-        const data = await get('employees')
-        if (data) setEmployees(data)
-    }
+    const employees = [
+        {id: 1, name: 'viet', age: 23, address: '123/3 đường Lê Lợi, phường Bến Nghé, Quận 1, Thành phố Hồ Chí Minh'},
+        {id: 2, name: 'viet nam', age: 23, address: '123/5B đường Lê Lợi, Phường 6, thành phố Tuy Hòa, tỉnh Phú Yên'},
+        {id: 3, name: 'nam viet', age: 23, address: '123/5B đường Lê Lợi, Phường 6, thành phố Tuy Hòa, tỉnh Phú Yên'}
+    ]
 
     const onEdit = (employee) => {
         const newEmployee = { ...employee }
         setCurEmployee(newEmployee)
+        console.log('test', newEmployee)
         setIsOpenDialog(true)
     }
     const onCreate = () => {
@@ -40,30 +39,11 @@ function App() {
         setIsOpenDialog(true)
     }
 
-    const toBody = (employee) => {
-        return {
-            name: employee.name,
-            age: employee.age,
-            address: employee.address
-        }
+    const onSave = () => {
+        console.log('on save')
     }
 
-    const onSave = async (employee) => {
-        console.log('on save', employee)
-        if (employee.id) {
-            // update
-        }
-        else {
-            await post('employees', toBody(employee))
-        }
-
-        // reload
-        await getEmployees()
-    }
-
-    useEffect(() => {
-        getEmployees()
-    }, []);
+    console.log('reload main screen')
 
     return (
         <>
@@ -74,7 +54,6 @@ function App() {
                 setIsOpen={setIsOpenDialog}
                 employee={curEmployee}
                 setEmployee={setCurEmployee}
-                onSave={onSave}
             />
         </>
     )
