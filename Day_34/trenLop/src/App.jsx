@@ -1,29 +1,34 @@
 import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
 import './App.css'
-import {Table} from './components'
-
-
 
 function App() {
-    const columns = [
-        {name: 'id', text:'ID'},
-        {name: 'name', text:'Ten'},
-        {name: 'age', text:'Tuoi'},
-        {name: 'address', text:'Dia chi'},
-        {name: 'action', text:'Hanh Dong'},
-    ]
-
-    const rows = [
-        {id: 1, name: "Nguyen Minh Viet", age: 20, address: 'Ha Noi'},
-        {id: 2, name: "Tong Thanh Dat", age: 21, address: 'Thach That'},
-        {id: 3, name: "Nguyen Thuy Quynh", age: 22, address: 'Nam Dinh'},
-    ]
-
+  const [count, setCount] = useState(0)
 
   return (
-      <>
-        <Table rows={rows} columns={columns} />
-      </>
+    <>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
   )
 }
 

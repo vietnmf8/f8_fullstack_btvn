@@ -49,7 +49,22 @@ HOOK: useState
 
 
 
-MUI
+MUI:
+1. npm install @mui/material @emotion/react @emotion/styled
+2. npm install @mui/material @mui/styled-engine-sc styled-components
+3. npm install @fontsource/roboto
+4. npm install @mui/icons-material
 
+inlineCSS = sx
+
+
+Han che reload component khong lien quan!
+
+
+
+npm install axios
+
+
+npm i react-router
 
 
