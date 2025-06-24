@@ -42,10 +42,12 @@ npm run dev
 Delete Content:
  + index.css
  + App.css
- + App.jsx (xoa noi dung thoi)
+ + TodoApp.jsx (xoa noi dung thoi)
 
 style inline -> object
 HOOK: useState
+
+
 
 
 
@@ -54,6 +56,8 @@ MUI:
 2. npm install @mui/material @mui/styled-engine-sc styled-components
 3. npm install @fontsource/roboto
 4. npm install @mui/icons-material
+5. npm i react-toastify
+6. npm install axios
 
 inlineCSS = sx
 
@@ -62,7 +66,7 @@ Han che reload component khong lien quan!
 
 
 
-npm install axios
+
 
 
 npm i react-router
