@@ -1,3 +1,6 @@
+/* Font Awesome CDN */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
 /* reset css */
 * {
     margin: 0;
@@ -7,13 +10,12 @@
 }
 
 body {
-    background-color: #8758ff;;
+    background-color: #8758ff;
 }
 
 .container {
     display: block;
     width: 450px;
-
     text-align: center;
     background-color: #1a1a40;
     color: #ffffff;
@@ -49,11 +51,10 @@ h1 {
     width: 300px;
 }
 
-.todo-item{
+.todo-item {
     background-color: #8758ff;
     color: #ffffff;
     cursor: pointer;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -71,21 +72,36 @@ h1 {
     padding: 9px;
 }
 
-.edit-btn, .del-btn{
+.edit-btn, .del-btn {
     cursor: pointer;
     background-color: transparent;
     color: #ffffff;
     font-size: 16px;
     border: none;
+    padding: 4px 8px;
 }
 
-.edit-btn{
+.edit-btn {
     margin-left: auto;
     margin-right: 12px;
 }
 
-.completed{
+.edit-btn:hover {
+    color: #4CAF50;
+}
+
+.del-btn:hover {
+    color: #f44336;
+}
+
+.completed {
     text-decoration-line: line-through;
     text-decoration-color: black;
     color: rgba(255,255,255,0.5);
+}
+
+.todo-content {
+    flex: 1;
+    text-align: left;
+    margin-left: 12px;
 }

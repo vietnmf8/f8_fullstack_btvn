@@ -1,14 +1,13 @@
-import './App.css'
-import {FTable, EmployeeDialog, ConfirmDeleteDialog} from './components'
-import {Button, DialogContent, DialogTitle, Dialog, TextField, DialogActions} from "@mui/material";
-import {useState} from "react";
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import {useEffect, useState} from "react";
+import {get, post} from "../../utils/index.js";
+import {ConfirmDeleteDialog, EmployeeDialog, FTable} from "../../components/index.js";
+import {Button} from "@mui/material";
 
 const initEmployee = {
     id: null, name: null, age: null, address: null
 }
 
-function App() {
+function Employees() {
     const [isOpenDialog, setIsOpenDialog] = useState(false)
     const [isOpenConfirmDeleteDialog, setIsOpenConfirmDeleteDialog] = useState(false)
 
@@ -23,16 +22,21 @@ function App() {
         { name: 'address', text: 'Address'},
         { name: 'action', text: ''},
     ]
-    const employees = [
-        {id: 1, name: 'viet', age: 23, address: '123/3 đường Lê Lợi, phường Bến Nghé, Quận 1, Thành phố Hồ Chí Minh'},
-        {id: 2, name: 'viet nam', age: 23, address: '123/5B đường Lê Lợi, Phường 6, thành phố Tuy Hòa, tỉnh Phú Yên'},
-        {id: 3, name: 'nam viet', age: 23, address: '123/5B đường Lê Lợi, Phường 6, thành phố Tuy Hòa, tỉnh Phú Yên'}
-    ]
+
+    const [employees, setEmployees] = useState([])
+
+    const getEmployees = async () => {
+        const data = await get('employees')
+        console.log("data: ", data)
+        // setEmployees(data || [])
+        //nếu data là undefined, null, hoặc lỗi API trả về false, thì [] sẽ được dùng thay thế.
+        if (data) setEmployees(data)
+    }
 
     const onEdit = (employee) => {
         const newEmployee = { ...employee }
         setCurEmployee(newEmployee)
-        console.log('test', newEmployee)
+        console.log('newEmployee: ', newEmployee)
         setIsOpenDialog(true)
     }
     const onCreate = () => {
@@ -40,11 +44,28 @@ function App() {
         setIsOpenDialog(true)
     }
 
-    const onSave = () => {
-        console.log('on save')
+    // Delete key id
+    const toBody = (employee) => {
+        return {
+            name: employee.name,
+            age: employee.age,
+            address: employee.address,
+        }
     }
 
-    console.log('reload main screen')
+    const onSave = async (employee) => {
+        console.log('on save: ', employee)
+        if (employee.id) {
+            // update
+        }
+        else await post('employees', toBody(employee))
+        // reload
+        await getEmployees()
+    }
+
+    useEffect(() => {
+        getEmployees()
+    }, [])
 
     return (
         <>
@@ -55,10 +76,11 @@ function App() {
                 setIsOpen={setIsOpenDialog}
                 employee={curEmployee}
                 setEmployee={setCurEmployee}
+                onSave={onSave}
             />
             <ConfirmDeleteDialog isOpen={isOpenConfirmDeleteDialog} setIsOpen={setIsOpenConfirmDeleteDialog}/>
         </>
     )
 }
 
-export default App
+export default Employees

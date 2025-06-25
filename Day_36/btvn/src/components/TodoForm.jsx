@@ -1,52 +1,58 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-function TodoForm({ onAddTodo, editingTodo, onEditTodo, onCancelEdit }) {
-    // State cho input
+function TodoForm({ onAdd, onEdit, editingTodo, onCancel }) {
+    // State quản lý input value
     const [inputValue, setInputValue] = useState('');
     // Ref để focus vào input
     const inputRef = useRef(null);
 
-    // useEffect để focus input khi component mount
-    useEffect(() => {
-        inputRef.current?.focus();
-    }, []);
-
-    // useEffect để điền dữ liệu khi edit
+    // Effect để cập nhật input khi có todo đang edit
     useEffect(() => {
         if (editingTodo) {
             setInputValue(editingTodo.title);
-            inputRef.current?.focus();
         } else {
             setInputValue('');
         }
     }, [editingTodo]);
 
+    // Effect để focus vào input
+    useEffect(() => {
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, [editingTodo]);
+
     // Hàm xử lý submit form
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Ngăn reload trang
 
-        let success = false;
-
-        if (editingTodo) {
-            // Mode edit
-            success = await onEditTodo(editingTodo.id, inputValue);
-        } else {
-            // Mode thêm mới
-            success = await onAddTodo(inputValue);
+        // Validate input không được rỗng
+        if (inputValue.trim() === '') {
+            alert('Vui lòng nhập nội dung!');
+            return;
         }
 
-        // Nếu thành công thì clear input và focus
-        if (success) {
-            setInputValue('');
-            inputRef.current?.focus();
+        // Lưu value trước khi clear (để tránh bị mất khi state thay đổi)
+        const valueToSubmit = inputValue.trim();
+
+        // Clear input và focus NGAY LẬP TỨC
+        setInputValue('');
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
+
+        if (editingTodo) {
+            // Đang ở chế độ edit
+            await onEdit(valueToSubmit);
+        } else {
+            // Đang ở chế độ add
+            await onAdd(valueToSubmit);
         }
     };
 
-    // Hàm hủy edit
-    const handleCancel = () => {
-        setInputValue('');
-        onCancelEdit();
-        inputRef.current?.focus();
+    // Hàm handle input change
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value);
     };
 
     return (
@@ -55,41 +61,18 @@ function TodoForm({ onAddTodo, editingTodo, onEditTodo, onCancelEdit }) {
                 ref={inputRef}
                 type="text"
                 className="todo-input"
-                placeholder={editingTodo ? "Sửa nội dung..." : "What is the task today?"}
+                placeholder="What is the task today?"
                 value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={handleInputChange}
             />
-
-            {editingTodo ? (
-                // Hiển thị nút Save và Cancel khi đang edit
-                <>
-                    <button
-                        type="button"
-                        className="add-btn"
-                        onClick={handleSubmit}
-                        style={{marginRight: '8px'}}
-                    >
-                        Lưu
-                    </button>
-                    <button
-                        type="button"
-                        className="add-btn"
-                        onClick={handleCancel}
-                        style={{backgroundColor: '#666'}}
-                    >
-                        Hủy
-                    </button>
-                </>
-            ) : (
-                // Hiển thị nút Add khi thêm mới
-                <button
-                    type="submit"
-                    className="add-btn"
-                    onClick={handleSubmit}
-                >
-                    Add Task
-                </button>
-            )}
+            <button
+                type="button" // Đổi từ submit thành button để tránh reload
+                className="add-btn"
+                id="add-todo-btn"
+                onClick={handleSubmit}
+            >
+                {editingTodo ? 'Edit Task' : 'Add Task'}
+            </button>
         </div>
     );
 }

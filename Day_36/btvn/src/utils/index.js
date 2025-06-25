@@ -8,7 +8,7 @@ const get = async (endpoint) => {
     }
     catch (e) {
         console.log(e)
-        alert('Lỗi khi tải dữ liệu!')
+        //toast the error
     }
     return null
 }
@@ -16,12 +16,12 @@ const get = async (endpoint) => {
 // POST - Thêm todo mới
 const post = async (endpoint, body) => {
     try {
-        const {data} = await api.post(endpoint, body)
+        const {data} = await api.post(endpoint, body) // Sửa từ get thành post
         return data
     }
     catch (e) {
         console.log(e)
-        alert('Lỗi khi thêm dữ liệu!')
+        //toast the error
     }
     return null
 }
@@ -34,7 +34,7 @@ const put = async (endpoint, body) => {
     }
     catch (e) {
         console.log(e)
-        alert('Lỗi khi cập nhật dữ liệu!')
+        //toast the error
     }
     return null
 }
@@ -47,9 +47,9 @@ const del = async (endpoint) => {
     }
     catch (e) {
         console.log(e)
-        alert('Lỗi khi xóa dữ liệu!')
+        //toast the error
     }
     return null
 }
 
-export {get, post, put, del}
+export { get, post, put, del }

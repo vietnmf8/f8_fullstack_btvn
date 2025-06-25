@@ -1,14 +1,30 @@
 import React from 'react';
 
-function TodoItem({ todo, isEditing, onToggle, onDelete, onStartEdit }) {
+function TodoItem({ todo, onEdit, onDelete, onToggle }) {
+    // Hàm xử lý khi click checkbox
+    const handleToggle = () => {
+        onToggle(todo.id);
+    };
+
+    // Hàm xử lý khi click nút edit
+    const handleEdit = () => {
+        onEdit(todo);
+    };
+
+    // Hàm xử lý khi click nút delete
+    const handleDelete = () => {
+        if (confirm('Bạn có chắc muốn xóa todo này?')) {
+            onDelete(todo.id);
+        }
+    };
+
     return (
         <div className="todo-item">
-            {/* Checkbox để đánh dấu hoàn thành */}
+            {/* Checkbox để toggle completed */}
             <input
                 type="checkbox"
                 checked={todo.completed}
-                onChange={onToggle}
-                disabled={isEditing} // Vô hiệu hóa khi đang edit
+                onChange={handleToggle}
             />
 
             {/* Nội dung todo */}
@@ -16,31 +32,19 @@ function TodoItem({ todo, isEditing, onToggle, onDelete, onStartEdit }) {
                 {todo.title}
             </div>
 
-            {/* Nút sửa - hiển thị biểu tượng edit hoặc đang edit */}
+            {/* Nút edit */}
             <button
+                type="button"
                 className="edit-btn fa-solid fa-pen-to-square"
-                onClick={onStartEdit}
-                disabled={isEditing}
-                title={isEditing ? "Đang sửa..." : "Sửa"}
-                style={{
-                    opacity: isEditing ? 0.5 : 1,
-                    cursor: isEditing ? 'not-allowed' : 'pointer'
-                }}
-            >
-            </button>
+                onClick={handleEdit}
+            ></button>
 
-            {/* Nút xóa */}
+            {/* Nút delete */}
             <button
+                type="button"
                 className="del-btn fa-solid fa-trash"
-                onClick={onDelete}
-                disabled={isEditing} // Vô hiệu hóa khi đang edit
-                title="Xóa"
-                style={{
-                    opacity: isEditing ? 0.5 : 1,
-                    cursor: isEditing ? 'not-allowed' : 'pointer'
-                }}
-            >
-            </button>
+                onClick={handleDelete}
+            ></button>
         </div>
     );
 }

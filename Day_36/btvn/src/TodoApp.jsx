@@ -7,10 +7,15 @@ import './TodoApp.css';
 function TodoApp() {
     // State quản lý danh sách todos
     const [todos, setTodos] = useState([]);
-    // State quản lý todo đang được sửa
+    // State quản lý todo đang được edit
     const [editingTodo, setEditingTodo] = useState(null);
 
-    // Hàm tải danh sách todos từ API khi component mount
+    // Load todos khi component mount
+    useEffect(() => {
+        loadTodos();
+    }, []);
+
+    // Hàm load danh sách todos từ API
     const loadTodos = async () => {
         const data = await get('todos');
         if (data) {
@@ -18,104 +23,108 @@ function TodoApp() {
         }
     };
 
-    // useEffect để load todos khi component mount
-    useEffect(() => {
-        loadTodos();
-    }, []);
-
     // Hàm thêm todo mới
-    const handleAddTodo = async (title) => {
-        // Validate input không được rỗng
-        if (!title.trim()) {
-            alert('Vui lòng nhập nội dung công việc!');
-            return false;
-        }
-
-        const newTodo = {
-            title: title.trim(),
+    const addTodo = async (title) => {
+        // Optimistic update - cập nhật UI trước
+        const tempTodo = {
+            id: Date.now(), // ID tạm
+            title,
             completed: false
         };
+        setTodos(prev => [...prev, tempTodo]);
 
-        const result = await post('todos', newTodo);
+        // Call API
+        const result = await post('todos', { title, completed: false });
         if (result) {
-            await loadTodos(); // Reload danh sách
-            return true; // Thành công
+            // Cập nhật lại với ID thực từ server
+            loadTodos();
+        } else {
+            // Rollback nếu API fail
+            setTodos(prev => prev.filter(todo => todo.id !== tempTodo.id));
         }
-        return false;
     };
 
-    // Hàm sửa todo
-    const handleEditTodo = async (id, newTitle) => {
-        if (!newTitle.trim()) {
-            alert('Nội dung không được để trống!');
-            return false;
-        }
+    // Hàm cập nhật todo
+    const updateTodo = async (id, updates) => {
+        // Optimistic update
+        setTodos(prev => prev.map(todo =>
+            todo.id === id ? { ...todo, ...updates } : todo
+        ));
 
-        const todoToUpdate = todos.find(todo => todo.id === id);
-        const updatedTodo = {
-            ...todoToUpdate,
-            title: newTitle.trim()
-        };
-
-        const result = await put(`todos/${id}`, updatedTodo);
-        if (result) {
-            await loadTodos(); // Reload danh sách
-            setEditingTodo(null); // Thoát mode edit
-            return true;
-        }
-        return false;
-    };
-
-    // Hàm toggle trạng thái completed
-    const handleToggleTodo = async (id) => {
-        const todoToUpdate = todos.find(todo => todo.id === id);
-        const updatedTodo = {
-            ...todoToUpdate,
-            completed: !todoToUpdate.completed
-        };
-
-        const result = await put(`todos/${id}`, updatedTodo);
-        if (result) {
-            await loadTodos(); // Reload danh sách
+        // Call API
+        const result = await put(`todos/${id}`, updates);
+        if (!result) {
+            // Rollback nếu API fail
+            loadTodos();
         }
     };
 
     // Hàm xóa todo
-    const handleDeleteTodo = async (id) => {
-        if (confirm('Bạn có chắc muốn xóa công việc này?')) {
-            const result = await del(`todos/${id}`);
-            if (result) {
-                await loadTodos(); // Reload danh sách
-            }
+    const deleteTodo = async (id) => {
+        // Optimistic update
+        const todoToDelete = todos.find(todo => todo.id === id);
+        setTodos(prev => prev.filter(todo => todo.id !== id));
+
+        // Call API
+        const result = await del(`todos/${id}`);
+        if (!result) {
+            // Rollback nếu API fail
+            setTodos(prev => [...prev, todoToDelete]);
         }
     };
 
-    // Hàm bắt đầu chế độ edit
-    const handleStartEdit = (todo) => {
+    // Hàm toggle completed status
+    const toggleComplete = async (id) => {
+        const todo = todos.find(t => t.id === id);
+        if (todo) {
+            await updateTodo(id, {
+                title: todo.title,
+                completed: !todo.completed
+            });
+        }
+    };
+
+    // Hàm bắt đầu edit
+    const startEdit = (todo) => {
         setEditingTodo(todo);
     };
 
+    // Hàm kết thúc edit
+    const finishEdit = async (title) => {
+        if (editingTodo) {
+            // Lưu tạm editingTodo trước khi clear
+            const todoToUpdate = editingTodo;
+            // Clear editingTodo NGAY LẬP TỨC để UI chuyển về Add mode
+            setEditingTodo(null);
+
+            // Sau đó mới call API
+            await updateTodo(todoToUpdate.id, {
+                title,
+                completed: todoToUpdate.completed
+            });
+        }
+    };
+
     // Hàm hủy edit
-    const handleCancelEdit = () => {
+    const cancelEdit = () => {
         setEditingTodo(null);
     };
 
     return (
         <div className="container">
             <h1>Get Things Done!</h1>
-            <form className="todo-form" onSubmit={(e) => e.preventDefault()}>
+            <form className="todo-form">
                 <TodoForm
-                    onAddTodo={handleAddTodo}
+                    onAdd={addTodo}
+                    onEdit={finishEdit}
                     editingTodo={editingTodo}
-                    onEditTodo={handleEditTodo}
-                    onCancelEdit={handleCancelEdit}
+                    onCancel={cancelEdit}
                 />
                 <TodoList
                     todos={todos}
-                    editingTodo={editingTodo}
-                    onToggleTodo={handleToggleTodo}
-                    onDeleteTodo={handleDeleteTodo}
-                    onStartEdit={handleStartEdit}
+                    onEdit={startEdit}
+                    onDelete={deleteTodo}
+                    onToggle={toggleComplete}
                 />
             </form>
         </div>
