@@ -1,183 +1,171 @@
 import './App.css'
-import {Table} from './components'
-import {Button, DialogContent, DialogTitle, Dialog, TextField, DialogActions, Alert} from "@mui/material";
-import {useState} from "react";
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import {useEffect, useState} from "react";
+import {TableComponent, DialogEmployee, DialogDeleteConfirm} from "./components";
+import {Button} from "@mui/material";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 function App() {
-  const [isOpenDialog, setIsOpenDialog] = useState(false)
-  const [employees, setEmployees] = useState([
-    {id: 1, name: 'viet', age: 23, address: '123/3 đường Lê Lợi, phường Bến Nghé, Quận 1, Thành phố Hồ Chí Minh'},
-    {id: 2, name: 'viet nam', age: 23, address: '123/5B đường Lê Lợi, Phường 6, thành phố Tuy Hòa, tỉnh Phú Yên'},
-    {id: 3, name: 'nam viet', age: 23, address: '123/5B đường Lê Lợi, Phường 6, thành phố Tuy Hòa, tỉnh Phú Yên'},
-  ])
 
-  // State cho form hiện tại
-  const [curEmployee, setCurEmployee] = useState({
-    id: null, name: '', age: '', address: ''
-  })
+    /* --------------------------- TOAST ---------------------------*/
+    const errorNotify = (message) => toast.error(message);
 
-  // State theo dõi chế độ Edit hay Add
-  const [isEditMode, setIsEditMode] = useState(false)
 
-  // State cho thông báo lỗi
-  const [errorMessage, setErrorMessage] = useState('')
 
-  const columns = [
-    { name: 'id', text: 'Id'},
-    { name: 'name', text: 'Name'},
-    { name: 'age', text: 'Age'},
-    { name: 'address', text: 'Address'},
-    { name: 'action', text: ''},
-  ]
+    /* --------------------------- Data ---------------------------*/
+    // Columns
+    const columns = [
+        { name: 'id', text: 'Id'},
+        { name: 'name', text: 'Name'},
+        { name: 'age', text: 'Age'},
+        { name: 'address', text: 'Address'},
+        { name: 'action', text: 'Hanh Dong'},
+    ]
+    // Rows
+    const [employees, setEmployees] = useState([
+        {id: 1, name: 'Nguyen Minh Viet', age: 25, address: 'Ha Noi'},
+        {id: 2, name: 'Nguyen Thuy Quynh', age: 26, address: 'Nam Dinh'},
+        {id: 3, name: 'Nguyen Kien Chung', age: 27, address: 'Phu Tho'},
+    ])
 
-  // Hàm mở dialog để thêm mới
-  const handleAddNew = () => {
-    setCurEmployee({ id: null, name: '', age: '', address: '' })
-    setIsEditMode(false)
-    setErrorMessage('')
-    setIsOpenDialog(true)
-  }
+    // State: Open Dialog
+    const [isOpenDialog, setIsOpenDialog] = useState(false);
 
-  // Hàm mở dialog để chỉnh sửa
-  const handleEdit = (employee) => {
-    setCurEmployee(employee)
-    setIsEditMode(true)
-    setErrorMessage('')
-    setIsOpenDialog(true)
-  }
+    // State: Edit Mode
+    const [isEditMode, setIsEditMode] = useState(false);
 
-  // Hàm xóa nhân viên
-  const handleDelete = (employeeId) => {
-    setEmployees(employees.filter(emp => emp.id !== employeeId))
-  }
+    // State: Open Delelte Dialog
+    const [isOpenDeleteDialog, setIsOpenDeleteDialog] = useState(false);
 
-  // Hàm đóng dialog
-  const handleCloseDialog = () => {
-    setIsOpenDialog(false)
-    setErrorMessage('')
-  }
+    // curEmployee
+    const [curEmployee, setCurEmployee] = useState(
+        {id: null, name: '', age: '', address: ''}
+    )
 
-  // Hàm kiểm tra validation
-  const validateForm = () => {
-    if (!curEmployee.name.trim()) {
-      setErrorMessage('Tên không được để trống')
-      return false
-    }
-    if (!curEmployee.age.toString().trim()) {
-      setErrorMessage('Tuổi không được để trống')
-      return false
-    }
-    if (!curEmployee.address.trim()) {
-      setErrorMessage('Địa chỉ không được để trống')
-      return false
-    }
-    return true
-  }
-
-  // Hàm lưu dữ liệu
-  const handleSave = () => {
-    if (!validateForm()) return
-
-    if (isEditMode) {
-      setEmployees(employees.map(emp =>
-          emp.id === curEmployee.id ? curEmployee : emp
-      ))
-    }
-    else {
-      const newId = Math.max(...employees.map(emp => emp.id)) + 1
-      const newEmployee = { ...curEmployee, id: newId }
-      setEmployees([...employees, newEmployee])
+    /* Function: ADD NEW */
+    const onAddNew = () => {
+        setIsOpenDialog(true)
+        setIsEditMode(false)
+        setCurEmployee({id: null, name: '', age: '', address: ''})
     }
 
-    handleCloseDialog()
-  }
+    /* Fucntion: CLOSE */
+    const onClose = () => {
+        setIsOpenDialog(false)
+        setIsOpenDeleteDialog(false)
+    }
 
-  // Hàm cập nhật input
-  const handleInputChange = (field, value) => {
-    setCurEmployee(prev => ({
-      ...prev,
-      [field]: value
-    }))
-  }
+    /* Function: EDIT */
+    const onEdit = (employee) => {
+        setIsOpenDialog(true)
+        setIsEditMode(true)
+        setCurEmployee({...employee})
+    }
 
-  return (
-      <>
-        {/* Dialog thêm/sửa nhân viên */}
-        <Dialog open={isOpenDialog} onClose={handleCloseDialog}>
-          <DialogTitle sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-            <span>{isEditMode ? 'Chỉnh sửa nhân viên' : 'Thêm nhân viên mới'}</span>
-            <CloseOutlinedIcon onClick={handleCloseDialog} sx={{cursor: 'pointer'}}/>
-          </DialogTitle>
-          <DialogContent>
-            {/* Hiển thị thông báo lỗi */}
-            {errorMessage && (
-                <Alert severity="error" sx={{mb: 2}}>
-                  {errorMessage}
-                </Alert>
-            )}
+    /* Function: onInputChange */
+    const onInputChange = (key, value) => {
+        setCurEmployee(prev => ({
+            ...prev,
+            [key]: value
+        }))
+    }
 
-            <TextField
-                fullWidth
-                label="Tên"
-                variant="standard"
-                value={curEmployee.name}
-                onChange={(e) => handleInputChange('name', e.target.value)}
-                sx={{mb: 2}}
+    /* Function: Validate */
+    const isValidate = () => {
+        if (!curEmployee.name.trim()) {
+            errorNotify('Name cannot be empty')
+            return false;
+        }
+        if (!curEmployee.age.toString().trim()) {
+            errorNotify('Age cannot be empty')
+            return false;
+        }
+        if (!curEmployee.address.trim()) {
+            errorNotify('Address cannot be empty')
+            return false;
+        }
+        return true;
+    }
+
+
+    /* Function: SAVE */
+    const onSave = () => {
+        if (!isValidate()) return
+        if (isEditMode) {
+            setEmployees(employees.map((employee) => (
+                    employee.id === curEmployee.id ? curEmployee : employee
+                )
+            ))
+        }
+        else {
+            const newId = Math.max(...employees.map((employee) => (employee.id))) + 1
+            const newEmployee = {...curEmployee, id: newId}
+            setEmployees([...employees, newEmployee])
+        }
+        onClose()
+    }
+
+    /* Function: Delete */
+    const onDelete = (employee) => {
+        setIsOpenDeleteDialog(true)
+        setCurEmployee({...employee})
+    }
+
+    /* Function: YES DELETE */
+    const onYesDelete = (curEmployee) => {
+        setEmployees([...employees.filter(employee => employee.id !== curEmployee.id)])
+        onClose()
+    }
+
+
+
+    useEffect(() => {
+        console.log('CurEmployee: ', curEmployee)
+    },[curEmployee])
+
+
+
+
+    /* --------------------------- RETURN ---------------------------*/
+    return (
+        <div style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
+            {/* Table */}
+            <TableComponent
+                columns={columns}
+                rows={employees}
+                onEdit={onEdit}
+                onDelete={onDelete}
             />
-            <TextField
-                fullWidth
-                label="Tuổi"
-                variant="standard"
-                type="number"
-                value={curEmployee.age}
-                onChange={(e) => handleInputChange('age', e.target.value)}
-                sx={{mb: 2}}
+
+            {/* Addnew/Edit Dialog */}
+            <DialogEmployee
+                isOpen={isOpenDialog}
+                curEmployee={curEmployee}
+                onClose={onClose}
+                onInput={onInputChange}
+                onSave={onSave}
             />
-            <TextField
-                fullWidth
-                label="Địa chỉ"
-                variant="standard"
-                value={curEmployee.address}
-                onChange={(e) => handleInputChange('address', e.target.value)}
+
+            {/* Delete Dialog */}
+            <DialogDeleteConfirm
+                isOpen={isOpenDeleteDialog}
+                curEmployee={curEmployee}
+                employees={employees}
+                onClose={onClose}
+                onDelete={onDelete}
+                onYesDelete={onYesDelete}
             />
-          </DialogContent>
-          <DialogActions>
-            <Button color={'error'} variant={'outlined'} onClick={handleCloseDialog}>
-              Hủy
+
+            {/* Button: ADD NEW */}
+            <Button
+                variant="outlined"
+                onClick={onAddNew}
+            >
+                ADD NEW
             </Button>
-            <Button color={'info'} variant={'outlined'} onClick={handleSave}>
-              {isEditMode ? 'Cập nhật' : 'Lưu'}
-            </Button>
-          </DialogActions>
-        </Dialog>
-
-        {/* Container cho Table và Button */}
-        <div style={{position: 'relative', width: '800px', margin: 'auto'}}>
-          {/* Button Add New ở góc phải trên */}
-          <Button
-              variant="outlined"
-              onClick={handleAddNew}
-              style={{
-                position: 'absolute',
-                top: '10px',
-                right: '0px',
-                zIndex: 1
-              }}
-          >
-            Thêm mới
-          </Button>
-
-          {/* Table với props mới */}
-          <Table
-              columns={columns}
-              rows={employees}
-              onEdit={handleEdit}
-              onDelete={handleDelete}
-          />
+            <ToastContainer />
         </div>
-      </>
-  )
+    )
 }
 
 export default App

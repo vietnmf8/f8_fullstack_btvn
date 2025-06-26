@@ -1,86 +1,71 @@
 import { useState } from 'react'
 import './App.css'
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
+    const errorNotify = (message) => toast.error(message);
+
+
     /* Khai bao */
-   const [num1, setNum1] = useState('')
-   const [num2, setNum2] = useState('')
-   let [result, setResult] = useState('Chưa có kết quả')
+    const [num1, setNum1] = useState('');
+    const [num2, setNum2] = useState('');
+    const [result, setResult] = useState('Chưa có kết quả');
+    const [error, setError] = useState('');
 
-    //handleInput 1
-    const handleInput1 = (event) => {
-        setNum1(event.target.value)
-        console.log("Nhập số thứ nhất: ", event.target.value)
-    }
-    //handleInput 2
-    const handleInput2 = (event) => {
-        setNum2(event.target.value)
-        console.log("Nhập số thứ hai: ", event.target.value)
+    /* Validate */
+    const isValidNumber = (value) => {
+        return !isNaN(value) && value.trim() !== ''
     }
 
-    /* Validate: Kiểm tra số hợp lệ và khoảng trắng  */
-    const isValidNumber = (number) => {
-        return !isNaN(number) && number.trim() !== ''
-        // //Tuong minh:
-        // // B1: Xóa khoảng trắng 2 đầu
-        // const numberTrim = number.trim()
-        //
-        // // B2: Nếu chuỗi rỗng thì không hợp lệ
-        // if (numberTrim === '') {
-        //     return false
-        // }
-        //
-        // // B3: Ép về kiểu số và kiểm tra
-        // const num = Number(numberTrim)
-        // if (isNaN(numberTrim)) {
-        //     return false
-        // }
-        // // B4: Nếu không rơi vào 2 trường hợp trên => hợp lệ
-        // return true
+    /* onInput */
+    const onInputChange = (value, setNum) => {
+        setNum(value)
+        setError('')
+        error && setResult('Chưa có kết quả')
     }
 
-    /* Calculate */
+    /* calculate */
     const calculate = (operation) => {
-        // Kiem tra so hop le
+
         if (!isValidNumber(num1) || !isValidNumber(num2)) {
-            alert('Vui lòng nhập số hợp lệ')
+            setError('Vui lòng nhập số hợp lệ')
             setResult('Chưa có kết quả')
-            return
+            errorNotify('Vui lòng nhập số hợp lệ')
+            return;
         }
 
-        //Cho phép nhập số thập phân
-        const num1float = parseFloat(num1)
-        const num2float = parseFloat(num2)
+        const num1Float = parseFloat(num1)
+        const num2Float = parseFloat(num2)
+        let result
 
-        // Thuc hien cac phep toan
         switch (operation) {
             case '+':
-                result = num1float + num2float
+                result = num1Float + num2Float
                 break;
             case '-':
-                result = num1float - num2float
+                result = num1Float - num2Float
                 break;
             case '*':
-                result = num1float * num2float
+                result = num1Float * num2Float
                 break;
             case '/':
-                if (num2float === 0) {
-                    alert('Phép tính không hợp lệ!')
+                if (num2Float === 0) {
+                    setError('Không thể chia cho 0')
                     setResult('Chưa có kết quả')
-                    return
+                    errorNotify('Không thể chia cho 0')
+                    return;
                 }
-                result = num1float / num2float
+                result = num1Float / num2Float
                 break;
-            default: return;
         }
         setResult(result)
-        console.log('Ket qua: ', result)
+        console.log(num1, operation, num2, '=', result)
     }
 
-
-    /* Clear */
+    /* clearAll */
     const clearAll = () => {
         setResult('Chưa có kết quả')
+        setError('')
         setNum1('')
         setNum2('')
     }
@@ -138,42 +123,46 @@ function App() {
             marginTop: '20px',
             fontSize: '18px',
             color: '#222',
-        },
+        }
     };
 
     return (
         <div style={styles.container}>
             <h2 style={styles.title}>Máy Tính Cơ Bản</h2>
 
+            {/* Num1 */}
             <input
                 type="number"
                 placeholder="Số thứ nhất"
                 style={styles.input}
                 value={num1}
-                onChange={handleInput1}
-
+                onChange={(event) => onInputChange(event.target.value, setNum1)}
             />
+
+            {/* Num2 */}
             <input
                 type="number"
                 placeholder="Số thứ hai"
                 style={styles.input}
                 value={num2}
-                onChange={handleInput2}
+                onChange={(event) => onInputChange(event.target.value, setNum2)}
             />
 
             <div style={styles.buttonGroup}>
-                <button onClick={() => calculate('+')} style={styles.button}>+</button>
-                <button onClick={() => calculate('-')} style={styles.button}>−</button>
-                <button onClick={() => calculate('*')} style={styles.button}>×</button>
-                <button onClick={() => calculate('/')} style={styles.button}>÷</button>
+                <button style={styles.button} onClick={() => calculate('+')}>+</button>
+                <button style={styles.button} onClick={() => calculate('-')}>−</button>
+                <button style={styles.button} onClick={() => calculate('*')}>×</button>
+                <button style={styles.button} onClick={() => calculate('/')}>÷</button>
             </div>
 
             <div style={styles.result}>
                 <strong>Kết quả:</strong> <span>{result}</span>
             </div>
 
+            {error ? <div>{error}</div> : null}
 
-            <button onClick={clearAll} style={styles.clearButton}>Clear</button>
+            <button style={styles.clearButton} onClick={clearAll}>Clear</button>
+            <ToastContainer />
         </div>
     );
 }
