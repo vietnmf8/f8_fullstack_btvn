@@ -915,6 +915,29 @@ window.SL_ResetIncorrect_VariablesOnly = function() {
 };
 
 // ==================================================================================
+// HÀM TỔNG HỢP CHO NÚT "THỬ LẠI"
+// ==================================================================================
+window.SL_PrepareForTryAgain = function() {
+    var player = GetPlayer();
+    var config = window.SL_MainConfig;
+
+    // 1. Reset logic của các câu trả lời sai
+    if (typeof window.SL_ResetIncorrect_VariablesOnly === 'function') {
+        window.SL_ResetIncorrect_VariablesOnly();
+    }
+
+    // 2. Xóa trạng thái của lớp phản hồi
+    if (typeof window.SL_ClearFeedbackState === 'function') {
+        window.SL_ClearFeedbackState();
+    }
+
+    // 3. Reset biến Completed về false
+    if (config.feedbackConfig && config.feedbackConfig.completionVar) {
+        player.SetVar(config.feedbackConfig.completionVar, false);
+    }
+};
+
+// ==================================================================================
 // HÀM XỬ LÝ SỰ KIỆN KÉO THẢ CHÍNH (ĐÃ SỬA LỖI)
 // ==================================================================================
 window.SL_HandleDrop = function(draggedItemKey, droppedOnTargetKey) {
