@@ -72,6 +72,8 @@ Han che reload component khong lien quan!
 npm i react-router
 
 
+alt-shift Enter
+
 
 
 
