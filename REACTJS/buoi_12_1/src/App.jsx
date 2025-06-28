@@ -1,24 +1,31 @@
 import { useState } from 'react'
 import './App.css'
 
-
-// 1. Tạo component nhận children
-function App({children}) {
+const Button = ({children, color})=> {
     return (
-        <div className="wrapper">
-            <h2>Tieu de co dinh!</h2>
+        <button style={{
+            background: color,
+            color: 'white',
+            padding: '10px 20px',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer'
+        }}>
             {children}
-        </div>
+        </button>
     )
 }
 
-/* 2. Sử dụng component với nội dung khác nhau */
-// <MyComponent>
-//     <p>Đây là nội dung 1</p>
-// </MyComponent>
 
-// <MyComponent>
-//     <button>Đây là nội dung 2</button>
-// </MyComponent>
+function App() {
+    return (
+        <>
+            <Button color='blue'>
+                DEF
+            </Button>
+        </>
+    )
+}
+
 
 export default App

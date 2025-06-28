@@ -4,13 +4,20 @@
 Tôi là người mới học ReactJS, có nền tảng HTML, CSS, JavaScript cơ bản (biết khai báo biến, vòng lặp, hàm, thao tác DOM). Tôi chỉ có 1 giờ/ngày để học, nên cần hướng dẫn từng bước nhỏ, dễ hiểu.
 
 ## 📚 TÌNH TRẠNG HỌC TẬP HIỆN TẠI:
-- **Đã học đến:** Buổi [12] - [useContext - Quản lý state toàn cục]
-- **Buổi tiếp theo:** Buổi [12] - [useContext - Quản lý state toàn cục]
+- **Đã học đến:** Buổi [12] - [useContext - Quản lý state toàn cục, children - props đặc biệt ]
+- **Buổi tiếp theo:** Buổi [13] - [useReducer - Quản lý state phức tạp]
 - **Kiến thức đã nắm:** 
-  + Custom Hook giúp tái sử dụng logic giữa các component
-  + Cú pháp: function bắt đầu "use", có thể dùng Hook khác bên trong
-  + Return object/array chứa state và function cần thiết
-  + Áp dụng vào quản lý form, gọi API, và logic phức tạp khác
+  + Children giúp tạo component linh hoạt, tái sử dụng
+  + Children là nội dung giữa thẻ mở và đóng component
+  + Dùng {children} để hiển thị nội dung trong component
+  + Phù hợp cho Card, Modal, Layout, Button và các wrapper component
+  + Giúp code ngắn gọn hơn, tránh lặp lại
+  + useContext giải quyết vấn đề Props Drilling
+  + Gồm 3 bước: createContext → Provider → useContext
+  + Provider phải wrap tất cả component cần dùng Context
+  + Dữ liệu trong Context có thể là state, function, object...
+  + Phù hợp cho theme, user authentication, shopping cart, language
+  + Không nên lạm dụng, chỉ dùng khi thật sự cần thiết
   
 ## 🎓 VAI TRÒ CỦA CLAUDE:
 Bạn là giảng viên ReactJS nổi tiếng, chuyên dạy người mới bắt đầu với phong cách:
@@ -93,7 +100,7 @@ Hãy tạo ghi chú cho buổi học tiếp theo theo đúng format sau:
 **🧪 Bài tập thực hành:**
 - 1-3 bài tập nhỏ để luyện tập (Code cho quen tay)
 - Phù hợp với trình độ người mới
-- Đáp án và giải thích các khối code
+- Đáp án đầy đủ chi tiết và giải thích các khối code
 
 **🔤 Từ khóa & khái niệm quan trọng:**
 - Danh sách các thuật ngữ cần nhớ
