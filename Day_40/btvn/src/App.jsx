@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useState, useEffect } from 'react';
+import React, {createContext, useContext, useReducer, useState, useEffect, memo, useCallback, useMemo} from 'react';
 
 // Dữ liệu câu hỏi
 const questions = [
@@ -172,14 +172,14 @@ function QuizProvider({ children }) {
 
 
 /* Component: Question */
-const Question = () => {
+const Question = memo(() => {
   const { state, dispatch } = useQuiz();
 
-  const currentQ = questions[state.currentQuestion];
+  const currentQ = useMemo(() => questions[state.currentQuestion], [state.currentQuestion]);;
   console.log("currentQ:", currentQ);
 
   // Xử lý khi chọn đáp án
-  const onSelectAnswer = (selectedOption) => {
+  const onSelectAnswer = useCallback((selectedOption) => {
       if (state.isAnswered) return; // Nếu đã trả lời thì không cho chọn nữa
       dispatch({
         type: actionTypes.SELECT_ANSWER,
@@ -187,10 +187,10 @@ const Question = () => {
       })
 
     console.log("Đáp án được chọn:", selectedOption);
-  }
+  }, [state.isAnswered, dispatch]);
 
   // Lấy màu sắc của đáp án
-  const getOptionColor = (option) => {
+  const getOptionColor = useCallback((option) => {
     if (!state.isAnswered) {
       return '#f5f5f5';
     }
@@ -204,7 +204,7 @@ const Question = () => {
     }
 
     return '#f5f5f5';
-  }
+  }, [state.isAnswered, state.selectedAnswer, currentQ]);
 
   return (
       <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', border: '1px solid red' }}>
@@ -293,16 +293,16 @@ const Question = () => {
 
       </div>
   )
-}
+})
 
 
 
-const Result = () => {
+const Result = memo(() => {
   const { state, dispatch } = useQuiz();
 
-  const handleRestart = () => {
+  const handleRestart = useCallback(() => {
     dispatch({ type: actionTypes.RESET_QUIZ });
-  };
+  }, [dispatch]);
 
   return (
       <div style={{
@@ -361,7 +361,7 @@ const Result = () => {
       </div>
       )
 
-}
+})
 
 
 /* Component: AppContent */

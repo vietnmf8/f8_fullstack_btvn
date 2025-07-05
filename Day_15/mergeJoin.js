@@ -1,7 +1,7 @@
 /*
 
 Mảng đã được sắp xếp:
-Binary Search: Tìm kiếm giá trị color trong mảng colors dựa vào colorId của flowers
+Binary SearchStr: Tìm kiếm giá trị color trong mảng colors dựa vào colorId của flowers
 Merge Join: Ghép 2 mảng flowers và colors theo đúng flower.id = color.id
 
 
@@ -125,7 +125,7 @@ const flowers =  [
 ]
 
 
-// Sắp xếp mảng colors theo id để sử dụng thuật toán Binary Search
+// Sắp xếp mảng colors theo id để sử dụng thuật toán Binary SearchStr
 colors.sort((a, b) => a.id - b.id);
 
 function binarySearch(array, targetID) {

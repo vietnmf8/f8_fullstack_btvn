@@ -28,7 +28,7 @@ const absencesSort = absences.sort((a, b) => a.employeeId - b.employeeId);
 
 
 /* Merge Join */
-// Sắp xếp mảng teams theo id để sử dụng thuật toán Binary Search
+// Sắp xếp mảng teams theo id để sử dụng thuật toán Binary SearchStr
 teams.sort((a, b) => a.id - b.id);
 function binarySearch(array, targetID) {
     let left = 0;

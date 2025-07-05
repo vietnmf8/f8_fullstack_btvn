@@ -77,6 +77,12 @@ alt-shift Enter
 
 npm i sass
 
+npm install redux
+npm install @reduxjs/toolkit
+npm install react-redux
+
+
+npm i uuid
 
 
 
