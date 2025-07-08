@@ -2,6 +2,7 @@ import {createStore} from "redux";
 import {productsReducer} from "./Product/index.jsx";
 import {searchReducer} from "./SearchStr/index.jsx";
 
+/* Khai báo store với cấu trúc sản phẩm mới */
 const initialState = {
     products: [
         // Sample data để test
@@ -16,6 +17,7 @@ const initialState = {
     searchStr: null
 }
 
+// Root reducer - kết hợp các reducer con
 const reducer = (state = initialState, action) => {
     return {
         products: productsReducer(state.products, action),

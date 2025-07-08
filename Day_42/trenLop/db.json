@@ -1,0 +1,12 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Iphone 14 Pro Max"
+    },
+    {
+      "id": 2,
+      "name": "Laptop Lenovo"
+    }
+  ]
+}

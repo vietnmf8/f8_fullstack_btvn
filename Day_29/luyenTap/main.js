@@ -1,4 +1,4 @@
-/* Access -> Products Container */
+/* Access -> ProductsSlice Container */
 const productsContainer = document.querySelector(".products-container");
 
 /* Call APT -> Fetch */
@@ -10,7 +10,7 @@ const products = async () => {
         const products = await response.json(); //-> JSON to JavaScript
         // console.log("Data: ", products);
 
-        // Render Products
+        // Render ProductsSlice
         renderProducts(products);
     }
     catch {
@@ -85,7 +85,7 @@ const createProductCard = (productItem) => {
 
 
 
-/* Function: Render Products */
+/* Function: Render ProductsSlice */
 const renderProducts = (products) => {
     products.forEach((productItem) => {
         const productCard = createProductCard(productItem);

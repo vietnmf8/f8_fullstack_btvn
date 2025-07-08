@@ -5,10 +5,12 @@ import { Search as SearchIcon } from '@mui/icons-material';
 import { SetSearchStr } from '../../store/SearchStr/action.jsx';
 import { selectSearchStr } from '../../store/selectors.js';
 
+// Component tìm kiếm sản phẩm
 const Search = () => {
     const dispatch = useDispatch();
     const searchStr = useSelector(selectSearchStr);
 
+    // Xử lý thay đổi input tìm kiếm
     const handleSearchChange = (e) => {
         const value = e.target.value;
         dispatch(SetSearchStr(value || null));

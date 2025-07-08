@@ -127,7 +127,7 @@ class Order {
         return this.#customer;
     }
 
-    // Phương thức lấy ra Products
+    // Phương thức lấy ra ProductsSlice
     getProducts() {
         // Trả về mảng mới (bảo ve dữ liệu gốc - DeepCopy)
         return [...this.#products];

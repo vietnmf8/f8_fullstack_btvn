@@ -81,8 +81,11 @@ npm install redux
 npm install @reduxjs/toolkit
 npm install react-redux
 
-
 npm i uuid
+
+
+import store from './app/store'
+import { Provider } from 'react-redux'
 
 
 

@@ -1,5 +1,6 @@
 import { SEARCH_INPUT } from './action.jsx';
 
+// Search Reducer - xử lý chuỗi tìm kiếm
 export const searchReducer = (state = null, action) => {
     switch (action.type) {
         case SEARCH_INPUT:

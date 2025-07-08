@@ -1,0 +1,40 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "name": "Clothes"
+    },
+    {
+      "id": "2",
+      "name": "Phone"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "iphone 18",
+      "categoryId": "2",
+      "orderNum": 14
+    },
+    {
+      "id": 2,
+      "name": "ao ",
+      "categoryId": "1",
+      "orderNum": 1
+    },
+    {
+      "id": 3,
+      "name": "iphone 19",
+      "categoryId": "1",
+      "orderNum": 12
+    },
+    {
+      "id": 4,
+      "name": "Ihpone",
+      "categoryId": "24",
+      "orderNum": "12",
+      "price": null,
+      "quantity": null
+    }
+  ]
+}

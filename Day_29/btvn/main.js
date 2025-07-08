@@ -68,7 +68,7 @@ const createProductCard = (product) => {
     return card;
 };
 
-/* Function: Render Products */
+/* Function: Render ProductsSlice */
 const renderProducts = (products) => {
     // Iterate through PRODUCT in the PRODUCTS ARRAY
     products.forEach(product => {

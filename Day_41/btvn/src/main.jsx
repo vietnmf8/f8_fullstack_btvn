@@ -7,6 +7,7 @@ import App from './App.jsx';
 import { store } from './store/index.js';
 import './index.css';
 
+// Tạo MUI theme
 const theme = createTheme({
     palette: {
         primary: {
@@ -18,6 +19,7 @@ const theme = createTheme({
     },
 });
 
+// Render ứng dụng với Redux Provider và MUI ThemeProvider
 createRoot(document.getElementById('root')).render(
     <Provider store={store}>
         <ThemeProvider theme={theme}>

@@ -20,21 +20,26 @@ import { DeleteProduct } from '../../store/Product/action.jsx';
 import { selectFilteredProducts } from '../../store/selectors.js';
 import ProductForm from '../ProductForm/index.jsx';
 
+// Component hiển thị danh sách sản phẩm
 const ProductList = () => {
     const dispatch = useDispatch();
     const products = useSelector(selectFilteredProducts);
 
+    // State cho popup form
     const [openForm, setOpenForm] = useState(false);
     const [editProduct, setEditProduct] = useState(null);
 
+    // State cho popup xác nhận xóa
     const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
     const [deleteProduct, setDeleteProduct] = useState(null);
 
+    // Xử lý mở popup xác nhận xóa
     const handleDelete = (product) => {
         setDeleteProduct(product);
         setOpenDeleteDialog(true);
     };
 
+    // Xử lý xác nhận xóa
     const handleConfirmDelete = () => {
         if (deleteProduct) {
             dispatch(DeleteProduct(deleteProduct.id));
@@ -43,26 +48,31 @@ const ProductList = () => {
         }
     };
 
+    // Hủy xóa
     const handleCancelDelete = () => {
         setOpenDeleteDialog(false);
         setDeleteProduct(null);
     };
 
+    // Mở form thêm sản phẩm
     const handleAdd = () => {
         setEditProduct(null);
         setOpenForm(true);
     };
 
+    // Mở form sửa sản phẩm
     const handleEdit = (product) => {
         setEditProduct(product);
         setOpenForm(true);
     };
 
+    // Đóng form
     const handleCloseForm = () => {
         setOpenForm(false);
         setEditProduct(null);
     };
 
+    // Format tiền VNĐ
     const formatPrice = (price) => {
         return price.toLocaleString('vi-VN') + ' VNĐ';
     };

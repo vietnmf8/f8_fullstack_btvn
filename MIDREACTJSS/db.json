@@ -1,0 +1,44 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "name": "Clothes"
+    },
+    {
+      "id": "2",
+      "name": "Phone"
+    }
+  ],
+  "products": [
+    {
+      "name": "iphone 1811",
+      "categoryId": 2,
+      "orderNum": 14,
+      "id": "1"
+    },
+    {
+      "name": "ao ",
+      "categoryId": 2,
+      "orderNum": 1,
+      "id": "2"
+    },
+    {
+      "id": "4",
+      "name": "Uwa",
+      "categoryId": 2,
+      "orderNum": 12
+    },
+    {
+      "id": "5",
+      "name": "Cong Minh",
+      "categoryId": 1,
+      "orderNum": 12
+    },
+    {
+      "id": "6",
+      "name": "Đẹp trai",
+      "categoryId": 1,
+      "orderNum": 12
+    }
+  ]
+}

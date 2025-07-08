@@ -4,6 +4,7 @@ import ProductList from './components/ProductList/index.jsx';
 import Search from './components/Search/index.jsx';
 import './App.css';
 
+// Component chính của ứng dụng
 function App() {
     return (
         <Container maxWidth="lg" style={{ marginTop: '20px' }}>

@@ -11,9 +11,11 @@ import {
 } from '@mui/material';
 import { AddProduct, UpdateProduct } from '../../store/Product/action.jsx';
 
+// Component form thêm/sửa sản phẩm
 const ProductForm = ({ open, onClose, product = null }) => {
     const dispatch = useDispatch();
 
+    // State cho form data
     const [formData, setFormData] = useState({
         id: '',
         name: '',
@@ -22,10 +24,13 @@ const ProductForm = ({ open, onClose, product = null }) => {
         unit: ''
     });
 
+    // Khi product thay đổi, cập nhật form data
     useEffect(() => {
         if (product) {
+            // Chế độ edit - điền dữ liệu sản phẩm
             setFormData(product);
         } else {
+            // Chế độ add - reset form
             setFormData({
                 id: '',
                 name: '',
@@ -36,6 +41,7 @@ const ProductForm = ({ open, onClose, product = null }) => {
         }
     }, [product]);
 
+    // Xử lý thay đổi input
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
@@ -44,13 +50,16 @@ const ProductForm = ({ open, onClose, product = null }) => {
         }));
     };
 
+    // Tạo ID tự động cho sản phẩm mới
     const generateId = () => {
         return 'p' + Date.now().toString().slice(-6);
     };
 
+    // Xử lý submit form
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        // Validation đơn giản
         if (!formData.name || !formData.price || !formData.quantity || !formData.unit) {
             alert('Vui lòng điền đầy đủ thông tin!');
             return;
@@ -63,6 +72,7 @@ const ProductForm = ({ open, onClose, product = null }) => {
             quantity: parseInt(formData.quantity)
         };
 
+        // Dispatch action tương ứng
         if (product) {
             dispatch(UpdateProduct(productData));
         } else {
