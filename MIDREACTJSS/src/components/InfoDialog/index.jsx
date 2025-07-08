@@ -90,45 +90,14 @@ const InfoDialog = ({open, onClose, product}) => {
         // Nếu không có sản phẩm nào, ID đầu tiên là SỐ 1
         if (validProducts.length === 0) return 1;
 
-        const ids = validProducts.map(product => parseInt(product.id));
+        const ids = validProducts.map(product => parseInt(String(product.id)));
         const maxId = Math.max(...ids);
 
         // Trả về ID lớn nhất + 1 (luôn là một số)
-        return maxId + 1;
+        return String(maxId + 1);
     }
 
-    // Hàm Submit
-    // const onSubmit = (e) => {
-    //     e.preventDefault() // Ngăn reload lại trang
-    //
-    //     console.log(formData)
-    //
-    //     // Validate
-    //     if (!formData.name || !formData.categoryId || !formData.orderNum) {
-    //         console.log("Bạn mình ơi còn thông tin chưa điền")
-    //     } else {
-    //         // Ta có Data mới như sau:
-    //         const newData = {
-    //             ...formData,
-    //             id: nextId(),
-    //             name: formData.name,
-    //             categoryId: parseFloat(formData.categoryId),
-    //             orderNum: parseFloat(formData.orderNum),
-    //         }
-    //
-    //         console.log(newData)
-    //
-    //         // Dispatch action tương ứng
-    //         if (product) {
-    //             dispatch(updateAPI({...newData, id: product.id}));
-    //         } else {
-    //             dispatch(postAPI(newData));
-    //             setFormData({name: '', categoryId: '', orderNum: ''})
-    //         }
-    //
-    //         onClose();
-    //     }
-    // }
+
 
     const onSubmit = (e) => {
         e.preventDefault();

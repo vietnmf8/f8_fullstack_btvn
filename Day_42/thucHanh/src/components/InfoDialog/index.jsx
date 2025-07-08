@@ -44,9 +44,9 @@ const InfoDialog = ({open, onClose, product}) => {
     // Hàm xử lý NextId
     const nextId = () => {
         if (products.length === 0) return '1';
-        const ids = products.map(product => parseInt(product.id))
+        const ids = products.map(product => parseInt(String(product.id)))
         const maxId = Math.max(...ids)
-        return maxId + 1
+        return String(maxId + 1) // Trả về string để nhất quán
     }
 
     // Hàm Submit
