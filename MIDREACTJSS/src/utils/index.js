@@ -12,15 +12,6 @@ const getAPI = createAsyncThunk('products/getAPI', async () => {
     }
 })
 
-const getCategoriesAPI = createAsyncThunk('categories/getAPI', async () => {
-    try {
-        const { data } = await api.get('categories/')
-        return data
-    }
-    catch (error) {
-        console.log("Thực hiện GET API không thành công!")
-    }
-})
 
 // POST
 const postAPI = createAsyncThunk('products/postAPI', async (body) => {
@@ -34,9 +25,19 @@ const postAPI = createAsyncThunk('products/postAPI', async (body) => {
 })
 
 // UPDATE
-const updateAPI = createAsyncThunk('products/updateAPI', async ({id, ...body}) => {
+// const updateAPI = createAsyncThunk('products/updateAPI', async ({id, ...body}) => {
+//     try {
+//         const { data } = await api.put(`products/${id}`, body)
+//         return data
+//     }
+//     catch (error) {
+//         console.log("Thực hiện UPDATE API không thành công!")
+//     }
+// })
+
+const updateAPI = createAsyncThunk('products/updateAPI', async (body) => {
     try {
-        const { data } = await api.put(`products/${id}`, body)
+        const { data } = await api.put(`products/${body.id}`, body)
         return data
     }
     catch (error) {
@@ -55,4 +56,4 @@ const deleteAPI = createAsyncThunk('products/deleteAPI', async (id) => {
     }
 })
 
-export {postAPI, deleteAPI, updateAPI, getAPI, getCategoriesAPI}
+export {postAPI, deleteAPI, updateAPI, getAPI}

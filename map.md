@@ -4,25 +4,13 @@ trenLop/
 ├── src/                     # Thư mục chính chứa mã nguồn ứng dụng
 │   ├── assets/              # (Tuỳ chọn) Chứa ảnh, icon, font, CSS, v.v.
 │   ├── components/          # Các React component
-│   │   ├── ProductForm/
-│   │   │   └── index.jsx
-│   │   ├── ProductList/
-│   │   │   └── index.jsx    # Component hiển thị danh sách sản phẩm
-│   │   ├── Search/
-│   │   │   └── index.jsx    # Component ô tìm kiếm
-│   │   └── index.js         # (Có thể là export chung hoặc logic riêng)
+│   ├── plugins/             # Chứa các plugin cấu hình, ví dụ: axios instance, middleware,...
+│   │   └── api.js           # Cấu hình axios (hoặc fetch) để gọi API
 │   ├── store/               # Redux store: chia slice
 │   │   ├── index.js
 │   │   ├── selectors.js
-│   │   ├── Count/
-│   │   │   ├── action.jsx   # Action creator cho Count
-│   │   │   └── index.jsx    # Reducer cho Count
-│   │   ├── Product/
-│   │   │   ├── action.jsx   # Action creator cho Product
-│   │   │   └── index.jsx    # Reducer cho Product
-│   │   └── SearchStr/
-│   │       ├── action.jsx   # Action creator cho SearchStr
-│   │       └── index.jsx    # Reducer cho SearchStr
+│   ├── utils/               # Chứa các hàm tiện ích dùng chung toàn app
+│   │   └── index.js
 │   ├── App.css              # CSS chính cho App
 │   ├── App.jsx              # Component gốc của ứng dụng
 │   └── main.js              # File khởi chạy ứng dụng React

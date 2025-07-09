@@ -8,18 +8,11 @@
       "unit": "23"
     },
     {
-      "id": "5",
-      "name": "Hôm nay",
+      "name": "Hôm nay1",
       "price": 30000,
       "quantity": 12,
-      "unit": "Chiếc"
-    },
-    {
-      "id": "6",
-      "name": "Dep",
-      "price": 32000,
-      "quantity": 12,
-      "unit": "kg"
+      "unit": "Chiếc",
+      "id": "5"
     }
   ]
 }
