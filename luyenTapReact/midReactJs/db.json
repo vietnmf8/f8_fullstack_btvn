@@ -1,0 +1,32 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "name": "Clothes"
+    },
+    {
+      "id": "2",
+      "name": "Phone"
+    }
+  ],
+  "products": [
+    {
+      "id": "4",
+      "name": "Nguyen Minh Viet",
+      "categoryId": "1",
+      "orderNum": 2
+    },
+    {
+      "id": "5",
+      "name": "Nguyen Minh Viet",
+      "categoryId": "2",
+      "orderNum": 14
+    },
+    {
+      "name": "Dep",
+      "categoryId": "1",
+      "orderNum": 15,
+      "id": "6"
+    }
+  ]
+}

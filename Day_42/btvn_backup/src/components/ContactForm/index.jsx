@@ -1,8 +1,7 @@
-import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, IconButton, Avatar} from "@mui/material";
+import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField} from "@mui/material";
 import {useEffect, useState} from "react";
 import {createContact, updateContact} from "../../utils/index.js";
 import {useDispatch} from "react-redux";
-import {PhotoCamera, Delete} from "@mui/icons-material";
 
 const ContactForm = ({open, onClose, contact, loading, setEditingContact, setIsOpenForm}) => {
 
@@ -19,8 +18,6 @@ const ContactForm = ({open, onClose, contact, loading, setEditingContact, setIsO
     // State cho validation errors
     const [errors, setErrors] = useState({});
 
-    // State cho preview ảnh
-    const [previewImage, setPreviewImage] = useState('');
 
     // Cập nhật form data khi contact thay đổi (để edit)
     useEffect(() => {
@@ -32,7 +29,6 @@ const ContactForm = ({open, onClose, contact, loading, setEditingContact, setIsO
                 phone: contact.phone || '',
                 image: contact.image || ''
             });
-            setPreviewImage(contact.image || '');
         } else {
             // Reset form cho trường hợp thêm mới
             setFormData({
@@ -42,48 +38,10 @@ const ContactForm = ({open, onClose, contact, loading, setEditingContact, setIsO
                 phone: '',
                 image: ''
             });
-            setPreviewImage('');
         }
         setErrors({});
     }, [contact, open]);
 
-    // Xử lý upload file ảnh
-    const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-        if (!file) return;
-
-        // Validate file type (chỉ chấp nhận ảnh)
-        if (!file.type.startsWith('image/')) {
-            setErrors(prev => ({...prev, image: 'Chỉ chấp nhận file ảnh'}));
-            return;
-        }
-
-        // Validate file size (max 5MB)
-        if (file.size > 5 * 1024 * 1024) {
-            setErrors(prev => ({...prev, image: 'Kích thước file không được vượt quá 5MB'}));
-            return;
-        }
-
-        // Convert sang base64
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const base64String = e.target.result;
-            setFormData(prev => ({...prev, image: base64String}));
-            setPreviewImage(base64String);
-            // Xóa error nếu có
-            setErrors(prev => ({...prev, image: ''}));
-        };
-        reader.readAsDataURL(file);
-    };
-
-    // Xử lý xóa ảnh
-    const handleRemoveImage = () => {
-        setFormData(prev => ({...prev, image: ''}));
-        setPreviewImage('');
-        // Reset input file để có thể chọn lại ảnh đã xóa
-        const fileInput = document.getElementById('image-upload');
-        if (fileInput) fileInput.value = '';
-    };
 
     const validateForm = () => {
         const newErrors = {};
@@ -106,9 +64,14 @@ const ContactForm = ({open, onClose, contact, loading, setEditingContact, setIsO
         return Object.keys(newErrors).length === 0;
     };
 
+    useEffect(() => {
+        console.log(errors)
+    }, [errors])
+
     const onSubmit = async (e) => {
         try {
             e.preventDefault();
+            console.log(validateForm())
             if(validateForm()) {
                 if (contact) {
                     // Cập nhật contact
@@ -133,6 +96,7 @@ const ContactForm = ({open, onClose, contact, loading, setEditingContact, setIsO
         }
     };
 
+
     const onChangeInput = (e) => {
         const {name, value} = e.target;
         setFormData(prev => ({
@@ -149,6 +113,7 @@ const ContactForm = ({open, onClose, contact, loading, setEditingContact, setIsO
         }
     }
 
+
     return (
         <Dialog
             open={open}
@@ -163,53 +128,6 @@ const ContactForm = ({open, onClose, contact, loading, setEditingContact, setIsO
             <form onSubmit={onSubmit}>
                 <DialogContent>
                     <Box sx={{display: 'flex', flexDirection: 'column', gap: 2}}>
-                        {/* Avatar Upload Section */}
-                        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1}}>
-                            {/* Preview Avatar */}
-                            <Avatar
-                                src={previewImage}
-                                sx={{width: 100, height: 100, bgcolor: 'primary.main'}}
-                            >
-                                {formData.firstName.charAt(0).toUpperCase()}
-                            </Avatar>
-
-                            {/* Upload và Remove buttons */}
-                            <Box sx={{display: 'flex', gap: 1}}>
-                                <input
-                                    accept="image/*"
-                                    style={{display: 'none'}}
-                                    id="image-upload"
-                                    type="file"
-                                    onChange={handleImageUpload}
-                                />
-                                <label htmlFor="image-upload">
-                                    <IconButton color="primary" component="span">
-                                        {/*<PhotoCamera />*/}
-                                        <Button
-                                            variant="outlined"
-                                            component="span"
-                                            startIcon={<PhotoCamera />}
-                                        >
-                                            Chọn ảnh
-                                        </Button>
-                                    </IconButton>
-                                </label>
-
-                                {previewImage && (
-                                    <IconButton color="error" onClick={handleRemoveImage}>
-                                        <Delete />
-                                    </IconButton>
-                                )}
-                            </Box>
-
-                            {/* Error message cho ảnh */}
-                            {errors.image && (
-                                <Box sx={{color: 'error.main', fontSize: '0.75rem'}}>
-                                    {errors.image}
-                                </Box>
-                            )}
-                        </Box>
-
                         {/* First Name */}
                         <TextField
                             name="firstName"
@@ -257,6 +175,17 @@ const ContactForm = ({open, onClose, contact, loading, setEditingContact, setIsO
                             helperText={errors.phone}
                             fullWidth
                             required
+                        />
+
+                        {/* Image URL */}
+                        <TextField
+                            name="image"
+                            label="Avatar URL (Base64 hoặc URL)"
+                            value={formData.image}
+                            onChange={onChangeInput}
+                            fullWidth
+                            placeholder="data:image/png;base64,..."
+                            helperText="Chuyển ảnh sang base64"
                         />
                     </Box>
                 </DialogContent>

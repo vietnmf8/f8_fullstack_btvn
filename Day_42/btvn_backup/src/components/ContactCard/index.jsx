@@ -1,4 +1,3 @@
-import React from 'react';
 import {Avatar, Box, Button, Card, CardActions, CardContent, Typography} from "@mui/material";
 import { Edit, Delete, Phone, Email } from '@mui/icons-material';
 import {deleteContact} from "../../utils/index.js";
@@ -8,6 +7,7 @@ const ContactCard = ({contact, setEditingContact, setIsOpenForm}) => {
     const dispatch = useDispatch();
     // Kết hợp firstName + lastName
     const fullName = `${contact.firstName} ${contact.lastName}`
+
 
     // Hàm xử lý khi nhấn vào nút SỬA
     const onEdit = (contact) => {
@@ -91,5 +91,4 @@ const ContactCard = ({contact, setEditingContact, setIsOpenForm}) => {
     )
 }
 
-// Tối ưu re-render: Chỉ render lại khi props thay đổi
-export default React.memo(ContactCard);
+export default ContactCard;

@@ -1,0 +1,20 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "name": "Clothes"
+    },
+    {
+      "id": "2",
+      "name": "Phone"
+    }
+  ],
+  "products": [
+    {
+      "name": "iphone 16",
+      "categoryId": "2",
+      "orderNum": 12,
+      "id": "1"
+    }
+  ]
+}
