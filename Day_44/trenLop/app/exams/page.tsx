@@ -8,6 +8,8 @@ export default function () {
   const [exams, setExams] = useState([])
   const router = useRouter()
 
+
+
   const getExams = async () => {
     try {
       const {data} = await api.get('/exams/')

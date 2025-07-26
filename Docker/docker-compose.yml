@@ -1,0 +1,35 @@
+# Thể hiện container trực tiếp
+service:
+  web:
+    # Tên container
+    container_name: docker-k14-web
+
+    # build -> context: Folder hiện taị
+#    build:
+#      context: ./web
+#      dockerfile: Dockerfile
+
+    # node
+    image: node:24-alpine3.21
+
+    # work Directory
+    working_dir: /app/web
+
+    # Cập nhật code real-time liên tục (Thay thế lệnh copy)
+    # [PC folder]:[Docker folder]
+    volumes:
+      - './web:app/web'
+
+
+    # Image đã tạo
+    # image: docker-k14-web
+
+    # ports -> Truy câp vào cổng PC
+    ports:
+      - 5173:5173
+
+    # Ghi de lệnh CMD
+    command:
+      - npm
+      - run
+      - dev
