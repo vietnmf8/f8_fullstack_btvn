@@ -37,16 +37,28 @@ const ClassDetail = () => {
     useEffect(() => {
         // Phân đoạn path
         const pathSegments = location.pathname.split("/").filter(Boolean)
-        // Lấy phần cuối của path
-        const currentTabPath = pathSegments.length > 2 ? pathSegments[pathSegments.length - 1] : ""
+
         // Tìm chỉ mục index tương ứng
-        const currentTabIndex = tabs.findIndex(tab => tab.path === currentTabPath)
-        console.log(currentTabIndex)
+        const currentTabIndex = tabs.findIndex(tab => {
+            if (tab.path === '') {
+                return pathSegments.length === 2;
+            }
+
+            return pathSegments.includes(tab.path);
+        })
+        console.log("currentTabIndex →", currentTabIndex);
 
         if (currentTabIndex !== -1) {
             setActiveTab(currentTabIndex);
         }
     }, [location.pathname]);
+
+
+
+
+
+
+
 
     // Nhấn vào các tab -> chuyển URL
     const onTabChange = (newTab: number) => {

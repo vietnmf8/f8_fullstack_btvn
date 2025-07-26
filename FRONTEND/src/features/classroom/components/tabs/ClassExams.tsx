@@ -21,7 +21,7 @@ const ClassExams = () => {
     return (
         <Box sx={{
             display: 'flex',
-            height: 'calc(100vh - 64px)',
+            minHeight: 'calc(100vh - 64px)',
             p: 4,
         }}>
 

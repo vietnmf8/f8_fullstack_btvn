@@ -39,6 +39,9 @@ const TabContainer = ({tabs, onTabChange, activeTab}: TabContainerProps) => {
                             color: '#31b5ee',
                             fontWeight: '500',
                             bgcolor: '#f0f9ff'
+                        },
+                        '&: hover': {
+                            color: '#31b5ee',
                         }
                     },
                     '& .MuiTabs-indicator': {

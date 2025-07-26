@@ -13,6 +13,8 @@ import ClassOverview from "../features/classroom/components/tabs/ClassOverview.t
 import ClassExams from "../features/classroom/components/tabs/ClassExams.tsx";
 import ClassMembers from "../features/classroom/components/tabs/ClassMembers.tsx";
 import ExamDetail from "../features/exam/pages/ExamDetail.tsx";
+import QuestionForm from "../features/exam/pages/QuestionForm.tsx";
+import ExamMarkingPage from "../features/exam/pages/ExamMarkingPage.tsx";
 
 const router = createBrowserRouter([
     {
@@ -66,16 +68,25 @@ const router = createBrowserRouter([
                         element: <ClassExams/>
                     },
                     {
+                        path: 'exam/:examId',
+                        element: <ExamDetail />
+                    },
+                    {
+                        path: 'exam/:examId/marking', // Route mới cho trang chấm bài
+                        element: <ExamMarkingPage />
+                    },
+                    {
+                        path: 'exam/:examId/:questionId',
+                        element: <QuestionForm />
+                    },
+                    {
                         path: 'member',
                         element: <ClassMembers/>
                     }
                 ]
             },
 
-            {
-                path: 'class/:classId/exam/:testId',
-                element: <ExamDetail />
-            },
+
 
             {
                 path: 'profile',

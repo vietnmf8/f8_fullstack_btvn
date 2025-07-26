@@ -186,7 +186,7 @@ const AddClass = () => {
                         <Button
                             variant="text"
                             sx={{
-                                padding: '0 24px',
+                                padding: '8px 24px',
                                 textTransform: 'none',
                                 fontSize: '16px',
                                 minWidth: '100px',

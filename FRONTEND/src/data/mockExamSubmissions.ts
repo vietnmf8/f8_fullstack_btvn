@@ -1,22 +1,22 @@
 // Danh sách bài đã làm
-export const mockTestSubmissions = [
+export const mockExamSubmissions = [
     {
-        id: 'sub1',
+        id: '1',
         student: {
-            name: 'Phạm Thùy Dương',
-            email: 'duongduongshawn@gmail.com',
-            avatar: 'PD'
+            name: 'Trịnh Trần Phương Tuấn',
+            email: 'j97@gmail.com',
+            avatar: 'J'
         },
         timeTaken: '',
         completedQuestions: '',
         status: 'chưa chấm lại'
     },
     {
-        id: 'sub2',
+        id: '2',
         student: {
-            name: 'bang',
-            email: 'bang@test.com',
-            avatar: 'B'
+            name: 'Trần Nguyn Thiên An',
+            email: 'thienan@gmail.com',
+            avatar: 'TA'
         },
         timeTaken: '',
         completedQuestions: '',

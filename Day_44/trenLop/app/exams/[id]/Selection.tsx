@@ -16,7 +16,7 @@ export default function () {
   return (
     <>
       <Box className={style.toolBar}>
-        <Box className={style.numberOfQuestion}>12</Box>
+        <Box className={style.numberOfQuestion}>{question.id}</Box>
         <Box>
           <Box>
             <CalculateIcon style={{color: '#1976D2'}}/>

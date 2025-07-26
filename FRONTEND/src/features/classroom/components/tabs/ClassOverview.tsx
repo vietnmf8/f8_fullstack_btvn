@@ -60,7 +60,7 @@ const ClassOverview = () => {
             p: 4,
         }}>
             {/* Main Content */}
-            <Box sx={{width: '100%', height: '100%'}}>
+            <Box sx={{width: '100%', height: '100%', maxHeight: '100vh', overflowY: 'auto'}}>
                 <Grid container spacing={4} sx={{height: '100%'}}>
                     <Grid
                         size={8}
@@ -222,7 +222,9 @@ const ClassOverview = () => {
                                 mt: 3,
                                 flexGrow: 1,
                                 display: 'flex',
-                                flexDirection: 'column'
+                                flexDirection: 'column',
+                                overflowY: 'auto',
+                                height: '100px'
                             }}
                         >
                             <MembersList members={members}/>
