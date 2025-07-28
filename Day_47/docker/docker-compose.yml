@@ -1,0 +1,28 @@
+# The hien container truc tiep
+services:
+  #---------------------------WEB --------------------------
+  web:
+    container_name: docker-k14-web  # Tên container
+
+    # image: docker-k14-web         # image da tao
+    build:                          # Thay the lenh docker build image
+      context: ./web                  # folder hien tai Docker compose
+      dockerfile: Dockerfile
+    #or
+    image: node:24-alpine3.21
+
+    # Thay the WORKDIR
+    working_dir: '/app/web'
+
+    # Thay the COPY - Dong bo hoa, anh xa 2 folder de sua code realtime
+    volumes:
+      - './web:/app/web' # [folder_PC]:[folder_Docker]
+
+    # [port_PC]:[port_Docker]
+    ports:
+      - 5173:5173
+
+    command:                        # Thay the lenh CMD
+      - npm
+      - run
+      - dev

@@ -1,0 +1,19 @@
+services:
+  #______________________________btvn____________________________________
+  btvn:
+    container_name: docker-btvn
+
+    build:                    # Thay the lenh docker build image
+      context: .              # Thư mục chứa Dockerfile
+      dockerfile: Dockerfile  # File build image
+
+    volumes:
+      - '.:/app/btvn' # [folder_PC]:[folder_Docker]
+
+    ports:
+      - 5173:5173
+
+    command:
+      - npm
+      - run
+      - dev
