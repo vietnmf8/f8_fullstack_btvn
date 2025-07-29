@@ -42,3 +42,8 @@ Truy cạp vào container
 - docker compose run --rm web sh
 - npm i
 - Run: docker compose up (Bật chương trình)
+
+
+- docker compose up [tag_name]
+- sudo docker-compose down --remove-orphans
+- sudo docker-compose build
