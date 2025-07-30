@@ -25,21 +25,21 @@ alter table Book
 
 -- Thêm value cho cột
 insert into Book(book_id, title, author, publish_year, publisher, category, page_count, price, stock, import_date, status, language, shelf_position) values
-                                                                                                                                                         (1, 'The Adventures of Cricket', 'To Hoai', 2010, 'Kim Dong', 'Literature', 150, 75000.00, 10, '2020-01-15', 'Available', 'Vietnamese', 'A1'),
-                                                                                                                                                         (2, 'The Alchemist', 'Paulo Coelho', 2013, 'NXB Tre', 'Novel', 228, 85000.00, 7, '2020-02-20', 'Available', 'Vietnamese', 'A2'),
-                                                                                                                                                         (3, 'How to Win Friends', 'Dale Carnegie', 2016, 'NXB Tong Hop', 'Psychology', 320, 120000.00, 5, '2020-03-10', 'Borrowed', 'Vietnamese', 'B1'),
-                                                                                                                                                         (4, 'Mắt biếc', 'Nguyen Nhat Anh', 2019, 'NXB Trẻ', 'Tiểu thuyết', 195, 88000.00, 12, '2020-12-10', 'Available', 'Vietnamese', 'A4'),
-                                                                                                                                                         (5, 'Vật Lý Đại Cương', 'David Halliday', 2014, 'NXB Giao Duc', 'Textbook', 850, 320000.00, 3, '2021-01-20', 'Available', 'Vietnamese', 'F1'),
-                                                                                                                                                         (6, 'Le Petit Prince', 'Antoine de Saint-Exupéry', 1998, 'Gallimard', 'Tiểu thuyết', 120, 150000.00, 0, '2021-02-15', 'Removed', 'France', 'B3'),
-                                                                                                                                                         (7, 'Blockchain cơ bản', 'Satoshi Nakamoto', 2021, 'NXB Công nghệ', 'Technology', 320, 220000.00, 5, '2021-03-10', 'Available', 'English', 'D3'),
-                                                                                                                                                         (8, 'Sapiens: Lược Sử Loài Người', 'Yuval Noah Harari', 2015, 'Omega Plus', 'History', 512, 250000.00, 8, '2021-05-22', 'Available', 'Vietnamese', 'C2'),
-                                                                                                                                                         (9, 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', 'Classic', 180, 110000.00, 4, '2021-06-18', 'Borrowed', 'English', 'A3'),
-                                                                                                                                                         (10, '1984', 'George Orwell', 1949, 'Secker & Warburg', 'Dystopian', 328, 135000.00, 6, '2021-07-30', 'Available', 'English', 'D1'),
-                                                                                                                                                         (11, 'Rừng Na Uy', 'Haruki Murakami', 1987, 'Nha Nam', 'Novel', 480, 145000.00, 9, '2022-01-11', 'Available', 'Japanese', 'B2'),
-                                                                                                                                                         (12, 'Lược Sử Thời Gian', 'Stephen Hawking', 1988, 'NXB Tre', 'Science', 256, 140000.00, 2, '2022-03-05', 'Borrowed', 'Vietnamese', 'F2'),
-                                                                                                                                                         (13, 'Bố Già', 'Mario Puzo', 1969, 'G. P. Putnams Sons', 'Crime', 448, 175000.00, 3, '2022-04-19', 'Available', 'English', 'A5'),
-                                                                                                                                                         (14, 'Tội Ác và Hình Phạt', 'Fyodor Dostoevsky', 1866, 'NXB Van Hoc', 'Classic', 671, 190000.00, 1, '2022-08-01', 'Available', 'Vietnamese', 'C4'),
-                                                                                                                                                         (15, 'Đi Tìm Lẽ Sống', 'Viktor Frankl', 2020, 'First News', 'Psychology', 154, 95000.00, 11, '2022-09-10', 'Available', 'Vietnamese', 'B4');
+(1, 'The Adventures of Cricket', 'To Hoai', 2010, 'Kim Dong', 'Literature', 150, 75000.00, 10, '2020-01-15', 'Available', 'Vietnamese', 'A1'),
+(2, 'The Alchemist', 'Paulo Coelho', 2013, 'NXB Tre', 'Novel', 228, 85000.00, 7, '2020-02-20', 'Available', 'Vietnamese', 'A2'),
+(3, 'How to Win Friends', 'Dale Carnegie', 2016, 'NXB Tong Hop', 'Psychology', 320, 120000.00, 5, '2020-03-10', 'Borrowed', 'Vietnamese', 'B1'),
+(4, 'Mắt biếc', 'Nguyen Nhat Anh', 2019, 'NXB Trẻ', 'Tiểu thuyết', 195, 88000.00, 12, '2020-12-10', 'Available', 'Vietnamese', 'A4'),
+(5, 'Vật Lý Đại Cương', 'David Halliday', 2014, 'NXB Giao Duc', 'Textbook', 850, 320000.00, 3, '2021-01-20', 'Available', 'Vietnamese', 'F1'),
+(6, 'Le Petit Prince', 'Antoine de Saint-Exupéry', 1998, 'Gallimard', 'Tiểu thuyết', 120, 150000.00, 0, '2021-02-15', 'Removed', 'France', 'B3'),
+(7, 'Blockchain cơ bản', 'Satoshi Nakamoto', 2021, 'NXB Công nghệ', 'Technology', 320, 220000.00, 5, '2021-03-10', 'Available', 'English', 'D3'),
+(8, 'Sapiens: Lược Sử Loài Người', 'Yuval Noah Harari', 2015, 'Omega Plus', 'History', 512, 250000.00, 8, '2021-05-22', 'Available', 'Vietnamese', 'C2'),
+(9, 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Scribner', 'Classic', 180, 110000.00, 4, '2021-06-18', 'Borrowed', 'English', 'A3'),
+(10, '1984', 'George Orwell', 1949, 'Secker & Warburg', 'Dystopian', 328, 135000.00, 6, '2021-07-30', 'Available', 'English', 'D1'),
+(11, 'Rừng Na Uy', 'Haruki Murakami', 1987, 'Nha Nam', 'Novel', 480, 145000.00, 9, '2022-01-11', 'Available', 'Japanese', 'B2'),
+(12, 'Lược Sử Thời Gian', 'Stephen Hawking', 1988, 'NXB Tre', 'Science', 256, 140000.00, 2, '2022-03-05', 'Borrowed', 'Vietnamese', 'F2'),
+(13, 'Bố Già', 'Mario Puzo', 1969, 'G. P. Putnams Sons', 'Crime', 448, 175000.00, 3, '2022-04-19', 'Available', 'English', 'A5'),
+(14, 'Tội Ác và Hình Phạt', 'Fyodor Dostoevsky', 1866, 'NXB Van Hoc', 'Classic', 671, 190000.00, 1, '2022-08-01', 'Available', 'Vietnamese', 'C4'),
+(15, 'Đi Tìm Lẽ Sống', 'Viktor Frankl', 2020, 'First News', 'Psychology', 154, 95000.00, 11, '2022-09-10', 'Available', 'Vietnamese', 'B4');
 
 
 
