@@ -47,3 +47,9 @@ Truy cạp vào container
 - docker compose up [tag_name]
 - sudo docker-compose down --remove-orphans
 - sudo docker-compose build
+
+Cap quyen thu muc:
+sudo chmod -R 777 /home/viet/Desktop/BTVN/Day_48/btvn
+
+Xoa thu muc:
+sudo rm -rf /home/viet/Desktop/BTVN/Day_48/btvn
