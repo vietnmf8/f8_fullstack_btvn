@@ -53,3 +53,14 @@ sudo chmod -R 777 /home/viet/Desktop/BTVN/Day_48/btvn
 
 Xoa thu muc:
 sudo rm -rf /home/viet/Desktop/BTVN/Day_48/btvn
+
+
+
+- docker ps -a (Kiem tra container hien co)
+- docker rm [tag_name] (Xoa container cu)
+- docker stop [tag_name] (Stop container)
+
+
+
+Quan hệ 1-1 hoặc 1-Nhiều → foreign key là đủ. (ở bên "nhiều".)
+Quan hệ Nhiều-Nhiều → luôn luôn cần bảng trung gian.

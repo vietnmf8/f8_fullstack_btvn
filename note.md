@@ -101,6 +101,9 @@
    UI phải phản hồi ngay lập tức khi user tương tác, không được có delay
    Optimistic Updates cần được implement đúng thứ tự: UI update trước → API call sau
 
+---------------------------------------------------------------------------------------------------
+
+
 
 
 
