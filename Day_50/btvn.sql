@@ -386,6 +386,13 @@ SELECT *
 FROM product
 WHERE price BETWEEN 400 AND 600;
 
+/*
+Giải thích:
+    - PostgreSQL chọn Index Scan khi số lượng bản ghi trả về nhỏ (thường < 1% tổng số bản ghi)
+    - PostgreSQL chọn Bitmap Index Scan khi số lượng bản ghi trả về lớn hơn nhưng vẫn đủ nhỏ để không dùng Sequential Scan
+    - Trong trường hợp này, có thể cả hai truy vấn đều trả về số lượng bản ghi đủ lớn để PostgreSQL chọn Bitmap Index Scan
+*/
+
 
 
 /* ==========================================================================================
@@ -451,6 +458,13 @@ GROUP BY p.category;
 
 CREATE INDEX idx_order_item_product_id ON order_item(product_id);
 
+/*
+Phân tích hiệu suất sau khi tạo index:
+    - Trước khi tạo index: Hash Join giữa order_item và product, chi phí cao do phải quét toàn bộ bảng order_item
+    - Sau khi tạo index: Nested Loop Join hoặc Hash Join với chi phí thấp hơn, vì có thể sử dụng index để tìm các bản ghi phù hợp
+    - HashAgg cho GROUP BY không thay đổi, nhưng tổng chi phí giảm do JOIN hiệu quả hơn
+*/
+
 
 
 
@@ -470,11 +484,17 @@ WHERE status = 'Shipped'
   AND total_amount > 1000;
 
 /*
-Giải thích:
-    - Bitmap Index Scan
+Phân tích:
+- Index composite (status, payment_method, total_amount) không tối ưu cho điều kiện total_amount > 1000
+- Hai index riêng biệt cho phép PostgreSQL sử dụng Bitmap Index Scan trên cả hai index và kết hợp kết quả
+- PostgreSQL có thể sử dụng BitmapAnd để kết hợp kết quả từ hai Bitmap Index Scan
 */
 
 CREATE INDEX idx_order_status_payment_total ON "order"(status, payment_method, total_amount);
+CREATE INDEX idx_order_status_payment ON "order"(status, payment_method);
+CREATE INDEX idx_order_total_amount ON "order"(total_amount);
+
+
 
 
 
